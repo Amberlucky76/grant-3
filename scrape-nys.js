@@ -15,59 +15,82 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
   await page.setViewport({ width: 1280, height: 900 });
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 
-  console.log('Navigating to NYS grants page...');
+  console.log('Navigating...');
   try {
     await page.goto(NYS_URL, { waitUntil: 'networkidle0', timeout: 60000 });
   } catch (e) {
-    console.log('Navigation note:', e.message);
+    console.log('Nav note:', e.message);
   }
 
-  console.log('Waiting for PeopleSoft to render...');
   await new Promise(r => setTimeout(r, 8000));
 
+  // Log full HTML so we can see exactly what PeopleSoft renders
   const html = await page.content();
-  console.log('Page HTML length:', html.length);
-  console.log('HTML preview:', html.slice(0, 1000));
+  fs.writeFileSync('/tmp/nys-page.html', html);
+  console.log('HTML length:', html.length);
 
-  const tableCount = await page.evaluate(() => document.querySelectorAll('table').length);
-  const rowCount = await page.evaluate(() => document.querySelectorAll('tr').length);
-  console.log(`Tables: ${tableCount}, Rows: ${rowCount}`);
+  // Log all table HTML
+  const tables = await page.evaluate(() => {
+    return Array.from(document.querySelectorAll('table')).map((t, i) => ({
+      index: i,
+      rows: t.rows.length,
+      html: t.outerHTML.slice(0, 500),
+    }));
+  });
+  console.log('Tables:', JSON.stringify(tables));
 
-  const links = await page.evaluate(() =>
-    Array.from(document.querySelectorAll('a'))
-      .map(a => ({ text: a.innerText?.trim(), href: a.href }))
-      .filter(l => l.text && l.text.length > 5)
-  );
-  console.log('Links:', JSON.stringify(links.slice(0, 20)));
-
+  // Try to find rows that look like grants:
+  // Real grant rows have an Event ID pattern (letters+numbers) and a link with AUC in the href
   const grants = await page.evaluate(() => {
     const results = [];
+    const seen = new Set();
 
-    // Strategy 1: standard table rows
-    for (const row of document.querySelectorAll('tr')) {
-      const cells = row.querySelectorAll('td');
-      if (cells.length < 3) continue;
-      const id = cells[0]?.innerText?.trim();
-      const agency = cells[1]?.innerText?.trim();
-      const titleCell = cells[2];
-      const title = titleCell?.innerText?.trim();
-      const status = cells[3]?.innerText?.trim() || '';
-      const eligibility = cells[4]?.innerText?.trim() || '';
-      const anchor = titleCell?.querySelector('a');
-      const link = anchor?.href || '';
-      if (!id || !title || id === 'Event ID' || title === 'Grant Opportunity') continue;
-      if (title.length < 4) continue;
-      results.push({ id, agency, title, status, eligibility, link, source: 'NYS' });
-    }
-    if (results.length > 0) return results;
+    // Look for links that go to grant detail pages
+    const allLinks = document.querySelectorAll('a[href*="AUC"], a[href*="auc"], a[href*="BID"], a[href*="bid"]');
+    console.log('Grant-like links found:', allLinks.length);
 
-    // Strategy 2: any div with a link that looks like a grant row
-    for (const el of document.querySelectorAll('div[class*="row"], div[class*="grid"], li')) {
-      const anchor = el.querySelector('a');
-      if (!anchor) continue;
-      const title = anchor.innerText?.trim();
+    for (const a of allLinks) {
+      const title = a.innerText?.trim();
+      const href = a.href;
+
+      // Skip navigation items
+      const navTerms = ['favorites', 'main menu', 'new window', 'sign in', 'skip', 'search', 'refine', 'popup', 'sort'];
       if (!title || title.length < 5) continue;
-      results.push({ id: '', agency: '', title, status: '', eligibility: '', link: anchor.href, source: 'NYS' });
+      if (navTerms.some(n => title.toLowerCase() === n)) continue;
+      if (seen.has(title)) continue;
+      seen.add(title);
+
+      // Try to get surrounding row data
+      const row = a.closest('tr');
+      let id = '', agency = '', status = '', eligibility = '';
+
+      if (row) {
+        const cells = row.querySelectorAll('td');
+        if (cells.length >= 3) {
+          id = cells[0]?.innerText?.trim() || '';
+          agency = cells[1]?.innerText?.trim() || '';
+          status = cells[3]?.innerText?.trim() || '';
+          eligibility = cells[4]?.innerText?.trim() || '';
+        }
+      }
+
+      // Only include if it looks like a real grant (has an agency code or ID)
+      // Event IDs typically look like: AGM-WFD26, FPIG20, VT0000003 etc
+      const looksLikeGrantId = /^[A-Z]{2,}[\-0-9]/.test(id) || id.length > 3;
+      const looksLikeNavLink = ['favorites', 'main menu', 'new window', 'search', 'refine'].includes(title.toLowerCase());
+
+      if (looksLikeNavLink) continue;
+      if (!looksLikeGrantId && !agency) continue;
+
+      results.push({
+        id: id || '',
+        agency: agency || '',
+        title,
+        status: status || 'Available',
+        eligibility: eligibility || '',
+        link: href,
+        source: 'NYS',
+      });
     }
 
     return results;
@@ -76,7 +99,9 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
   await browser.close();
 
   console.log(`Found ${grants.length} grants`);
+  grants.forEach(g => console.log(` - [${g.id}] ${g.title} | ${g.agency} | ${g.status}`));
+
   const output = { grants, fetched: new Date().toISOString(), count: grants.length };
   fs.writeFileSync(path.join(process.cwd(), 'nys-grants.json'), JSON.stringify(output, null, 2));
-  console.log('Done');
+  console.log('Saved nys-grants.json');
 })();
