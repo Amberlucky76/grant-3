@@ -1,8 +1,276 @@
 {
-  "grants": [],
-  "fetched": "2026-04-18T04:06:28.880Z",
-  "count": 0,
-  "debug": {
-    "ajaxCount": 48
-  }
+  "grants": [
+    {
+      "id": "",
+      "agency": "Search Criteria \n\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\n\n\t\n\n\t\n\n\t\nEvent ID\n\n\t\t\n\n\t\nSearch by Grant Opportunity\n\n\t\t\n\n\t\t\nFrom\n\n\t\nSearch by Due Date\n\n\t\t\n\n\t\nTo\n\n\t\n \nAnticipated\nAnticipated and Available\nAvailable\nClosed\n\n\t\nSearch by Status\n\n\t\t\n \nFor Profit\nGovernmental Entity\nIndividual\nNot-For-Profit\nTribal Organization\n\n\t\nSearch by Eligibility\n\n\t\n\n\t\nSearch by Funding Agency\n\n\t\n \nAgricultural Supports\nEducation Supports\nEnvironmental Supports\nFamily Supports\nGovernment Supports\nHealth Services\nHousing and Shelter Services\nJustice Services\nPublic Safety Supports\nPublic Transportation Services\nWorkforce Development\n\n\t\nSearch by Service Area",
+      "title": "Search Criteria",
+      "status": "Event ID\n\n\t\t\n\n\t\nSearch by Grant Opportunity\n\n\t\t\n\n\t\t\nFrom\n\n\t\nSearch by Due Date\n\n\t\t\n\n\t\nTo\n\n\t\n \nAnticipated\nAnticipated and Available\nAvailable\nClosed\n\n\t\nSearch by Status\n\n\t\t\n \nFor Profit\nGovernmental Entity\nIndividual\nNot-For-Profit\nTribal Organization\n\n\t\nSearch by Eligibility\n\n\t\n\n\t\nSearch by Funding Agency\n\n\t\n \nAgricultural Supports\nEducation Supports\nEnvironmental Supports\nFamily Supports\nGovernment Supports\nHealth Services\nHousing and Shelter Services\nJustice Services\nPublic Safety Supports\nPublic Transportation Services\nWorkforce Development\n\n\t\nSearch by Service Area",
+      "eligibility": "",
+      "link": "javascript:submitAction_win0(document.win0,'RESP_INQA_WK_AUC_GROUP_BOX1');",
+      "source": "NYS"
+    },
+    {
+      "id": "",
+      "agency": "Search Results\n\t \n1-25 of 25\n  \n\n\nEvent ID\t  \n\t\nFunding Agency\t  \n\t\nGrant Opportunity\t  \n\t\nStatus\t  \n\t\nEligibility\t  \n\t\nAvailability Date\t  \n\t\nAnticipated Release Date\t  \n\t\nDue Date\t  \n\t \n\n\nAGM-WFD26\n\t\nAGM01\n\t\nAg and Food Systems Workforce Development Grant\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n01/27/26  2:00PM\n\t\n01/27/26  2:00PM\n\t\n04/28/2026  3:00PM EDT\n\t \n\nFPIG20\n\t\nAGM01\n\t\nRound 20 Farmland Protection Implementation Grants\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n12/18/25  8:00AM\n\t\n12/18/25  8:00AM\n\t\n06/01/2026  4:00PM EDT\n\t \n\nFPSC01\n\t\nAGM01\n\t\nFarmland Protection Staff Capacity, Round 1\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26 12:00PM\n\t\n03/24/26 12:00PM\n\t\n06/26/2026  4:00PM EDT\n\t \n\nEVT0000003\n\t\nCFS01\n\t\nSOI 1234 Dolly Parton's Imagination Library\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n03/05/26  3:02PM\n\t\n03/05/26  3:02PM\n\t\n04/30/2026  4:00PM EDT\n\t \n\nEVT0000006\n\t\nDCJ01\n\t\nYouth Development and Professional Opportunities\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n02/25/26 12:00PM\n\t\n02/25/26 12:00PM\n\t\n04/22/2026 12:00PM EDT\n\t \n\nEVT0000007\n\t\nDCJ01\n\t\nHavens of Opportunity, Peace & Empowerment\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/08/26  9:00AM\n\t\n04/08/26  9:00AM\n\t\n07/01/2026 12:00PM EDT\n\t \n\nEVT0000008\n\t\nDCJ01\n\t\n2026 Securing Communities Against Hate Crimes RFA\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/15/26  9:00AM\n\t\n04/15/26  9:00AM\n\t\n07/08/2026 12:00PM EDT\n\t \n\nEJCIG R13\n\t\nDEC01\n\t\nEJ Community Impact Grant Program Round 13\n\t\nAvailable\n\t\nNot-For-Profit, Tribal Organization\n\t\n04/15/26  9:38AM\n\t\n04/15/26  9:38AM\n\t\n07/01/2026  3:00PM EDT\n\t \n\nMWRR 2024\n\t\nDEC01\n\t\nMunicipal Waste Reduction and Rcycling. Prgrm. 24\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n11/01/24 12:00AM\n\t\n11/01/24 12:00AM\n\t\n11/01/2027  3:00PM EDT\n\t \n\nEVT0000003\n\t\nDMV01\n\t\n2027 Highway Traffic Safety Grant\n\t\nAdvertised Only - Not in SFS\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/10/26  9:37AM\n\t\n03/10/26  9:37AM\n\t\n05/01/2026 11:59PM EDT\n\t \n\nDWFRFA2028\n\t\nDOH01\n\t\nDrinking Water Fluoridation RFA\n\t\nAdvertised Only - Not in SFS\n\t\nFor Profit, Governmental Entity, Not-For-Profit\n\t\n02/11/26  2:00PM\n\t\n02/11/26  5:00PM\n\t\n09/28/2028  4:00PM EDT\n\t \n\nEEETT-A26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp A\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-B26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp B\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-C26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp C\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-D26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp D\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-E26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp E\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nHECOE2025\n\t\nDOH01\n\t\nRFA #20662 - HE Training Center of Expertise\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/19/26 11:00AM\n\t\n03/19/26 11:00AM\n\t\n05/07/2026  4:00PM EDT\n\t \n\nNAV2026\n\t\nDOH01\n\t\nRFA#20706: Consumer Assistance Navigator Program\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/26/26  9:00AM\n\t\n03/26/26  9:00AM\n\t\n05/14/2026  4:00PM EDT\n\t \n\nNIA12027\n\t\nDOH01\n\t\nRFA 20733 New Investigators in SCI\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/18/26  9:00AM\n\t\n03/18/26  9:00AM\n\t\n06/10/2026  4:00PM EDT\n\t \n\nGCEW-EV\n\t\nDOL01\n\t\nNYSDOL OJET GCEW-EV\n\t\nAvailable\n\t\nFor Profit, Governmental Entity, Not-For-Profit\n\t\n04/10/26  9:00AM\n\t\n04/10/26  9:00AM\n\t\n06/05/2026  4:00PM EDT\n\t \n\nEVT0000001\n\t\nJUS01\n\t\nJUS01-TRAID-2026\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/01/26 10:04AM\n\t\n04/01/26 10:04AM\n\t\n05/01/2026  6:00PM EDT\n\t \n\nEVT0000003\n\t\nOAS01\n\t\nSETT-24029 Recovery Residences\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n01/31/25 11:00AM\n\t\n01/31/25 11:00AM\n\t\n07/31/2026  4:00PM EDT\n\t \n\nMH253022\n\t\nOMH01\n\t\nCommunity-Based Diversion Programs\n\t\nAvailable\n\t\nNot-For-Profit\n\t\n03/10/26  8:00AM\n\t\n03/10/26  8:00AM\n\t\n05/13/2026  2:00PM EDT\n\t \n\nMH253024\n\t\nOMH01\n\t\nAging in Place Pilot - Western NY\n\t\nAvailable\n\t\nNot-For-Profit\n\t\n04/15/26  8:00AM\n\t\n04/15/26  8:00AM\n\t\n06/25/2026  2:00PM EDT\n\t \n\nNNDS 2027\n\t\nTDA01\n\t\nNutrition Navigators Direct Services\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n01/23/26  2:00PM\n\t\n01/23/26  2:00PM\n\t\n04/24/2026  2:00PM EDT",
+      "title": "1-25 of 25",
+      "status": "",
+      "eligibility": "1-25 of 25",
+      "link": "",
+      "source": "NYS"
+    },
+    {
+      "id": "Event ID\t  \n\t\nFunding Agency\t  \n\t\nGrant Opportunity\t  \n\t\nStatus\t  \n\t\nEligibility\t  \n\t\nAvailability Date\t  \n\t\nAnticipated Release Date\t  \n\t\nDue Date\t  \n\t \n\n\nAGM-WFD26\n\t\nAGM01\n\t\nAg and Food Systems Workforce Development Grant\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n01/27/26  2:00PM\n\t\n01/27/26  2:00PM\n\t\n04/28/2026  3:00PM EDT\n\t \n\nFPIG20\n\t\nAGM01\n\t\nRound 20 Farmland Protection Implementation Grants\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n12/18/25  8:00AM\n\t\n12/18/25  8:00AM\n\t\n06/01/2026  4:00PM EDT\n\t \n\nFPSC01\n\t\nAGM01\n\t\nFarmland Protection Staff Capacity, Round 1\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26 12:00PM\n\t\n03/24/26 12:00PM\n\t\n06/26/2026  4:00PM EDT\n\t \n\nEVT0000003\n\t\nCFS01\n\t\nSOI 1234 Dolly Parton's Imagination Library\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n03/05/26  3:02PM\n\t\n03/05/26  3:02PM\n\t\n04/30/2026  4:00PM EDT\n\t \n\nEVT0000006\n\t\nDCJ01\n\t\nYouth Development and Professional Opportunities\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n02/25/26 12:00PM\n\t\n02/25/26 12:00PM\n\t\n04/22/2026 12:00PM EDT\n\t \n\nEVT0000007\n\t\nDCJ01\n\t\nHavens of Opportunity, Peace & Empowerment\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/08/26  9:00AM\n\t\n04/08/26  9:00AM\n\t\n07/01/2026 12:00PM EDT\n\t \n\nEVT0000008\n\t\nDCJ01\n\t\n2026 Securing Communities Against Hate Crimes RFA\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/15/26  9:00AM\n\t\n04/15/26  9:00AM\n\t\n07/08/2026 12:00PM EDT\n\t \n\nEJCIG R13\n\t\nDEC01\n\t\nEJ Community Impact Grant Program Round 13\n\t\nAvailable\n\t\nNot-For-Profit, Tribal Organization\n\t\n04/15/26  9:38AM\n\t\n04/15/26  9:38AM\n\t\n07/01/2026  3:00PM EDT\n\t \n\nMWRR 2024\n\t\nDEC01\n\t\nMunicipal Waste Reduction and Rcycling. Prgrm. 24\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n11/01/24 12:00AM\n\t\n11/01/24 12:00AM\n\t\n11/01/2027  3:00PM EDT\n\t \n\nEVT0000003\n\t\nDMV01\n\t\n2027 Highway Traffic Safety Grant\n\t\nAdvertised Only - Not in SFS\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/10/26  9:37AM\n\t\n03/10/26  9:37AM\n\t\n05/01/2026 11:59PM EDT\n\t \n\nDWFRFA2028\n\t\nDOH01\n\t\nDrinking Water Fluoridation RFA\n\t\nAdvertised Only - Not in SFS\n\t\nFor Profit, Governmental Entity, Not-For-Profit\n\t\n02/11/26  2:00PM\n\t\n02/11/26  5:00PM\n\t\n09/28/2028  4:00PM EDT\n\t \n\nEEETT-A26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp A\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-B26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp B\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-C26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp C\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-D26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp D\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-E26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp E\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nHECOE2025\n\t\nDOH01\n\t\nRFA #20662 - HE Training Center of Expertise\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/19/26 11:00AM\n\t\n03/19/26 11:00AM\n\t\n05/07/2026  4:00PM EDT\n\t \n\nNAV2026\n\t\nDOH01\n\t\nRFA#20706: Consumer Assistance Navigator Program\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/26/26  9:00AM\n\t\n03/26/26  9:00AM\n\t\n05/14/2026  4:00PM EDT\n\t \n\nNIA12027\n\t\nDOH01\n\t\nRFA 20733 New Investigators in SCI\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/18/26  9:00AM\n\t\n03/18/26  9:00AM\n\t\n06/10/2026  4:00PM EDT\n\t \n\nGCEW-EV\n\t\nDOL01\n\t\nNYSDOL OJET GCEW-EV\n\t\nAvailable\n\t\nFor Profit, Governmental Entity, Not-For-Profit\n\t\n04/10/26  9:00AM\n\t\n04/10/26  9:00AM\n\t\n06/05/2026  4:00PM EDT\n\t \n\nEVT0000001\n\t\nJUS01\n\t\nJUS01-TRAID-2026\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/01/26 10:04AM\n\t\n04/01/26 10:04AM\n\t\n05/01/2026  6:00PM EDT\n\t \n\nEVT0000003\n\t\nOAS01\n\t\nSETT-24029 Recovery Residences\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n01/31/25 11:00AM\n\t\n01/31/25 11:00AM\n\t\n07/31/2026  4:00PM EDT\n\t \n\nMH253022\n\t\nOMH01\n\t\nCommunity-Based Diversion Programs\n\t\nAvailable\n\t\nNot-For-Profit\n\t\n03/10/26  8:00AM\n\t\n03/10/26  8:00AM\n\t\n05/13/2026  2:00PM EDT\n\t \n\nMH253024\n\t\nOMH01\n\t\nAging in Place Pilot - Western NY\n\t\nAvailable\n\t\nNot-For-Profit\n\t\n04/15/26  8:00AM\n\t\n04/15/26  8:00AM\n\t\n06/25/2026  2:00PM EDT\n\t \n\nNNDS 2027\n\t\nTDA01\n\t\nNutrition Navigators Direct Services\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n01/23/26  2:00PM\n\t\n01/23/26  2:00PM\n\t\n04/24/2026  2:00PM EDT",
+      "agency": "Event ID\t  \n\t\nFunding Agency\t  \n\t\nGrant Opportunity\t  \n\t\nStatus\t  \n\t\nEligibility\t  \n\t\nAvailability Date\t  \n\t\nAnticipated Release Date\t  \n\t\nDue Date",
+      "title": "Event ID\t  \n\t\nFunding Agency\t  \n\t\nGrant Opportunity\t  \n\t\nStatus\t  \n\t\nEligibility\t  \n\t\nAvailability Date\t  \n\t\nAnticipated Release Date\t  \n\t\nDue Date",
+      "status": "Event ID\t  \n\t\nFunding Agency\t  \n\t\nGrant Opportunity\t  \n\t\nStatus\t  \n\t\nEligibility\t  \n\t\nAvailability Date\t  \n\t\nAnticipated Release Date\t  \n\t\nDue Date",
+      "eligibility": "Event ID",
+      "link": "",
+      "source": "NYS"
+    },
+    {
+      "id": "AGM-WFD26\n\t\nAGM01\n\t\nAg and Food Systems Workforce Development Grant\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n01/27/26  2:00PM\n\t\n01/27/26  2:00PM\n\t\n04/28/2026  3:00PM EDT\n\t \n\nFPIG20\n\t\nAGM01\n\t\nRound 20 Farmland Protection Implementation Grants\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n12/18/25  8:00AM\n\t\n12/18/25  8:00AM\n\t\n06/01/2026  4:00PM EDT\n\t \n\nFPSC01\n\t\nAGM01\n\t\nFarmland Protection Staff Capacity, Round 1\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26 12:00PM\n\t\n03/24/26 12:00PM\n\t\n06/26/2026  4:00PM EDT\n\t \n\nEVT0000003\n\t\nCFS01\n\t\nSOI 1234 Dolly Parton's Imagination Library\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n03/05/26  3:02PM\n\t\n03/05/26  3:02PM\n\t\n04/30/2026  4:00PM EDT\n\t \n\nEVT0000006\n\t\nDCJ01\n\t\nYouth Development and Professional Opportunities\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n02/25/26 12:00PM\n\t\n02/25/26 12:00PM\n\t\n04/22/2026 12:00PM EDT\n\t \n\nEVT0000007\n\t\nDCJ01\n\t\nHavens of Opportunity, Peace & Empowerment\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/08/26  9:00AM\n\t\n04/08/26  9:00AM\n\t\n07/01/2026 12:00PM EDT\n\t \n\nEVT0000008\n\t\nDCJ01\n\t\n2026 Securing Communities Against Hate Crimes RFA\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/15/26  9:00AM\n\t\n04/15/26  9:00AM\n\t\n07/08/2026 12:00PM EDT\n\t \n\nEJCIG R13\n\t\nDEC01\n\t\nEJ Community Impact Grant Program Round 13\n\t\nAvailable\n\t\nNot-For-Profit, Tribal Organization\n\t\n04/15/26  9:38AM\n\t\n04/15/26  9:38AM\n\t\n07/01/2026  3:00PM EDT\n\t \n\nMWRR 2024\n\t\nDEC01\n\t\nMunicipal Waste Reduction and Rcycling. Prgrm. 24\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n11/01/24 12:00AM\n\t\n11/01/24 12:00AM\n\t\n11/01/2027  3:00PM EDT\n\t \n\nEVT0000003\n\t\nDMV01\n\t\n2027 Highway Traffic Safety Grant\n\t\nAdvertised Only - Not in SFS\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/10/26  9:37AM\n\t\n03/10/26  9:37AM\n\t\n05/01/2026 11:59PM EDT\n\t \n\nDWFRFA2028\n\t\nDOH01\n\t\nDrinking Water Fluoridation RFA\n\t\nAdvertised Only - Not in SFS\n\t\nFor Profit, Governmental Entity, Not-For-Profit\n\t\n02/11/26  2:00PM\n\t\n02/11/26  5:00PM\n\t\n09/28/2028  4:00PM EDT\n\t \n\nEEETT-A26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp A\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-B26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp B\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-C26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp C\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-D26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp D\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-E26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp E\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nHECOE2025\n\t\nDOH01\n\t\nRFA #20662 - HE Training Center of Expertise\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/19/26 11:00AM\n\t\n03/19/26 11:00AM\n\t\n05/07/2026  4:00PM EDT\n\t \n\nNAV2026\n\t\nDOH01\n\t\nRFA#20706: Consumer Assistance Navigator Program\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/26/26  9:00AM\n\t\n03/26/26  9:00AM\n\t\n05/14/2026  4:00PM EDT\n\t \n\nNIA12027\n\t\nDOH01\n\t\nRFA 20733 New Investigators in SCI\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/18/26  9:00AM\n\t\n03/18/26  9:00AM\n\t\n06/10/2026  4:00PM EDT\n\t \n\nGCEW-EV\n\t\nDOL01\n\t\nNYSDOL OJET GCEW-EV\n\t\nAvailable\n\t\nFor Profit, Governmental Entity, Not-For-Profit\n\t\n04/10/26  9:00AM\n\t\n04/10/26  9:00AM\n\t\n06/05/2026  4:00PM EDT\n\t \n\nEVT0000001\n\t\nJUS01\n\t\nJUS01-TRAID-2026\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/01/26 10:04AM\n\t\n04/01/26 10:04AM\n\t\n05/01/2026  6:00PM EDT\n\t \n\nEVT0000003\n\t\nOAS01\n\t\nSETT-24029 Recovery Residences\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n01/31/25 11:00AM\n\t\n01/31/25 11:00AM\n\t\n07/31/2026  4:00PM EDT\n\t \n\nMH253022\n\t\nOMH01\n\t\nCommunity-Based Diversion Programs\n\t\nAvailable\n\t\nNot-For-Profit\n\t\n03/10/26  8:00AM\n\t\n03/10/26  8:00AM\n\t\n05/13/2026  2:00PM EDT\n\t \n\nMH253024\n\t\nOMH01\n\t\nAging in Place Pilot - Western NY\n\t\nAvailable\n\t\nNot-For-Profit\n\t\n04/15/26  8:00AM\n\t\n04/15/26  8:00AM\n\t\n06/25/2026  2:00PM EDT\n\t \n\nNNDS 2027\n\t\nTDA01\n\t\nNutrition Navigators Direct Services\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n01/23/26  2:00PM\n\t\n01/23/26  2:00PM\n\t\n04/24/2026  2:00PM EDT",
+      "agency": "AGM-WFD26\n\t\nAGM01\n\t\nAg and Food Systems Workforce Development Grant\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n01/27/26  2:00PM\n\t\n01/27/26  2:00PM\n\t\n04/28/2026  3:00PM EDT\n\t \n\nFPIG20\n\t\nAGM01\n\t\nRound 20 Farmland Protection Implementation Grants\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n12/18/25  8:00AM\n\t\n12/18/25  8:00AM\n\t\n06/01/2026  4:00PM EDT\n\t \n\nFPSC01\n\t\nAGM01\n\t\nFarmland Protection Staff Capacity, Round 1\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26 12:00PM\n\t\n03/24/26 12:00PM\n\t\n06/26/2026  4:00PM EDT\n\t \n\nEVT0000003\n\t\nCFS01\n\t\nSOI 1234 Dolly Parton's Imagination Library\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n03/05/26  3:02PM\n\t\n03/05/26  3:02PM\n\t\n04/30/2026  4:00PM EDT\n\t \n\nEVT0000006\n\t\nDCJ01\n\t\nYouth Development and Professional Opportunities\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n02/25/26 12:00PM\n\t\n02/25/26 12:00PM\n\t\n04/22/2026 12:00PM EDT\n\t \n\nEVT0000007\n\t\nDCJ01\n\t\nHavens of Opportunity, Peace & Empowerment\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/08/26  9:00AM\n\t\n04/08/26  9:00AM\n\t\n07/01/2026 12:00PM EDT\n\t \n\nEVT0000008\n\t\nDCJ01\n\t\n2026 Securing Communities Against Hate Crimes RFA\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/15/26  9:00AM\n\t\n04/15/26  9:00AM\n\t\n07/08/2026 12:00PM EDT\n\t \n\nEJCIG R13\n\t\nDEC01\n\t\nEJ Community Impact Grant Program Round 13\n\t\nAvailable\n\t\nNot-For-Profit, Tribal Organization\n\t\n04/15/26  9:38AM\n\t\n04/15/26  9:38AM\n\t\n07/01/2026  3:00PM EDT\n\t \n\nMWRR 2024\n\t\nDEC01\n\t\nMunicipal Waste Reduction and Rcycling. Prgrm. 24\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n11/01/24 12:00AM\n\t\n11/01/24 12:00AM\n\t\n11/01/2027  3:00PM EDT\n\t \n\nEVT0000003\n\t\nDMV01\n\t\n2027 Highway Traffic Safety Grant\n\t\nAdvertised Only - Not in SFS\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/10/26  9:37AM\n\t\n03/10/26  9:37AM\n\t\n05/01/2026 11:59PM EDT\n\t \n\nDWFRFA2028\n\t\nDOH01\n\t\nDrinking Water Fluoridation RFA\n\t\nAdvertised Only - Not in SFS\n\t\nFor Profit, Governmental Entity, Not-For-Profit\n\t\n02/11/26  2:00PM\n\t\n02/11/26  5:00PM\n\t\n09/28/2028  4:00PM EDT\n\t \n\nEEETT-A26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp A\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-B26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp B\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-C26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp C\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-D26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp D\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-E26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp E\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nHECOE2025\n\t\nDOH01\n\t\nRFA #20662 - HE Training Center of Expertise\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/19/26 11:00AM\n\t\n03/19/26 11:00AM\n\t\n05/07/2026  4:00PM EDT\n\t \n\nNAV2026\n\t\nDOH01\n\t\nRFA#20706: Consumer Assistance Navigator Program\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/26/26  9:00AM\n\t\n03/26/26  9:00AM\n\t\n05/14/2026  4:00PM EDT\n\t \n\nNIA12027\n\t\nDOH01\n\t\nRFA 20733 New Investigators in SCI\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/18/26  9:00AM\n\t\n03/18/26  9:00AM\n\t\n06/10/2026  4:00PM EDT\n\t \n\nGCEW-EV\n\t\nDOL01\n\t\nNYSDOL OJET GCEW-EV\n\t\nAvailable\n\t\nFor Profit, Governmental Entity, Not-For-Profit\n\t\n04/10/26  9:00AM\n\t\n04/10/26  9:00AM\n\t\n06/05/2026  4:00PM EDT\n\t \n\nEVT0000001\n\t\nJUS01\n\t\nJUS01-TRAID-2026\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/01/26 10:04AM\n\t\n04/01/26 10:04AM\n\t\n05/01/2026  6:00PM EDT\n\t \n\nEVT0000003\n\t\nOAS01\n\t\nSETT-24029 Recovery Residences\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n01/31/25 11:00AM\n\t\n01/31/25 11:00AM\n\t\n07/31/2026  4:00PM EDT\n\t \n\nMH253022\n\t\nOMH01\n\t\nCommunity-Based Diversion Programs\n\t\nAvailable\n\t\nNot-For-Profit\n\t\n03/10/26  8:00AM\n\t\n03/10/26  8:00AM\n\t\n05/13/2026  2:00PM EDT\n\t \n\nMH253024\n\t\nOMH01\n\t\nAging in Place Pilot - Western NY\n\t\nAvailable\n\t\nNot-For-Profit\n\t\n04/15/26  8:00AM\n\t\n04/15/26  8:00AM\n\t\n06/25/2026  2:00PM EDT\n\t \n\nNNDS 2027\n\t\nTDA01\n\t\nNutrition Navigators Direct Services\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n01/23/26  2:00PM\n\t\n01/23/26  2:00PM\n\t\n04/24/2026  2:00PM EDT",
+      "title": "AGM-WFD26",
+      "status": "AGM01",
+      "eligibility": "Ag and Food Systems Workforce Development Grant",
+      "link": "",
+      "source": "NYS"
+    },
+    {
+      "id": "AGM-WFD26\n\t\nAGM01\n\t\nAg and Food Systems Workforce Development Grant\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n01/27/26  2:00PM\n\t\n01/27/26  2:00PM\n\t\n04/28/2026  3:00PM EDT\n\t \n\nFPIG20\n\t\nAGM01\n\t\nRound 20 Farmland Protection Implementation Grants\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n12/18/25  8:00AM\n\t\n12/18/25  8:00AM\n\t\n06/01/2026  4:00PM EDT\n\t \n\nFPSC01\n\t\nAGM01\n\t\nFarmland Protection Staff Capacity, Round 1\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26 12:00PM\n\t\n03/24/26 12:00PM\n\t\n06/26/2026  4:00PM EDT\n\t \n\nEVT0000003\n\t\nCFS01\n\t\nSOI 1234 Dolly Parton's Imagination Library\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n03/05/26  3:02PM\n\t\n03/05/26  3:02PM\n\t\n04/30/2026  4:00PM EDT\n\t \n\nEVT0000006\n\t\nDCJ01\n\t\nYouth Development and Professional Opportunities\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n02/25/26 12:00PM\n\t\n02/25/26 12:00PM\n\t\n04/22/2026 12:00PM EDT\n\t \n\nEVT0000007\n\t\nDCJ01\n\t\nHavens of Opportunity, Peace & Empowerment\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/08/26  9:00AM\n\t\n04/08/26  9:00AM\n\t\n07/01/2026 12:00PM EDT\n\t \n\nEVT0000008\n\t\nDCJ01\n\t\n2026 Securing Communities Against Hate Crimes RFA\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/15/26  9:00AM\n\t\n04/15/26  9:00AM\n\t\n07/08/2026 12:00PM EDT\n\t \n\nEJCIG R13\n\t\nDEC01\n\t\nEJ Community Impact Grant Program Round 13\n\t\nAvailable\n\t\nNot-For-Profit, Tribal Organization\n\t\n04/15/26  9:38AM\n\t\n04/15/26  9:38AM\n\t\n07/01/2026  3:00PM EDT\n\t \n\nMWRR 2024\n\t\nDEC01\n\t\nMunicipal Waste Reduction and Rcycling. Prgrm. 24\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n11/01/24 12:00AM\n\t\n11/01/24 12:00AM\n\t\n11/01/2027  3:00PM EDT\n\t \n\nEVT0000003\n\t\nDMV01\n\t\n2027 Highway Traffic Safety Grant\n\t\nAdvertised Only - Not in SFS\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/10/26  9:37AM\n\t\n03/10/26  9:37AM\n\t\n05/01/2026 11:59PM EDT\n\t \n\nDWFRFA2028\n\t\nDOH01\n\t\nDrinking Water Fluoridation RFA\n\t\nAdvertised Only - Not in SFS\n\t\nFor Profit, Governmental Entity, Not-For-Profit\n\t\n02/11/26  2:00PM\n\t\n02/11/26  5:00PM\n\t\n09/28/2028  4:00PM EDT\n\t \n\nEEETT-A26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp A\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-B26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp B\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-C26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp C\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-D26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp D\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nEEETT-E26\n\t\nDOH01\n\t\nRFA#20760 Ending Epidemics Ed & Training Comp E\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/24/26  9:00AM\n\t\n03/24/26  9:00AM\n\t\n05/12/2026  4:00PM EDT\n\t \n\nHECOE2025\n\t\nDOH01\n\t\nRFA #20662 - HE Training Center of Expertise\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/19/26 11:00AM\n\t\n03/19/26 11:00AM\n\t\n05/07/2026  4:00PM EDT\n\t \n\nNAV2026\n\t\nDOH01\n\t\nRFA#20706: Consumer Assistance Navigator Program\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n03/26/26  9:00AM\n\t\n03/26/26  9:00AM\n\t\n05/14/2026  4:00PM EDT\n\t \n\nNIA12027\n\t\nDOH01\n\t\nRFA 20733 New Investigators in SCI\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit\n\t\n03/18/26  9:00AM\n\t\n03/18/26  9:00AM\n\t\n06/10/2026  4:00PM EDT\n\t \n\nGCEW-EV\n\t\nDOL01\n\t\nNYSDOL OJET GCEW-EV\n\t\nAvailable\n\t\nFor Profit, Governmental Entity, Not-For-Profit\n\t\n04/10/26  9:00AM\n\t\n04/10/26  9:00AM\n\t\n06/05/2026  4:00PM EDT\n\t \n\nEVT0000001\n\t\nJUS01\n\t\nJUS01-TRAID-2026\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n04/01/26 10:04AM\n\t\n04/01/26 10:04AM\n\t\n05/01/2026  6:00PM EDT\n\t \n\nEVT0000003\n\t\nOAS01\n\t\nSETT-24029 Recovery Residences\n\t\nAdvertised Only - Not in SFS\n\t\nNot-For-Profit\n\t\n01/31/25 11:00AM\n\t\n01/31/25 11:00AM\n\t\n07/31/2026  4:00PM EDT\n\t \n\nMH253022\n\t\nOMH01\n\t\nCommunity-Based Diversion Programs\n\t\nAvailable\n\t\nNot-For-Profit\n\t\n03/10/26  8:00AM\n\t\n03/10/26  8:00AM\n\t\n05/13/2026  2:00PM EDT\n\t \n\nMH253024\n\t\nOMH01\n\t\nAging in Place Pilot - Western NY\n\t\nAvailable\n\t\nNot-For-Profit\n\t\n04/15/26  8:00AM\n\t\n04/15/26  8:00AM\n\t\n06/25/2026  2:00PM EDT\n\t \n\nNNDS 2027\n\t\nTDA01\n\t\nNutrition Navigators Direct Services\n\t\nAvailable\n\t\nGovernmental Entity, Not-For-Profit, Tribal Organization\n\t\n01/23/26  2:00PM\n\t\n01/23/26  2:00PM\n\t\n04/24/2026  2:00PM EDT",
+      "agency": "AGM-WFD26",
+      "title": "AGM01",
+      "status": "Ag and Food Systems Workforce Development Grant",
+      "eligibility": "Available",
+      "link": "",
+      "source": "NYS"
+    },
+    {
+      "id": "AGM-WFD26",
+      "agency": "AGM01",
+      "title": "Ag and Food Systems Workforce Development Grant",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$0');",
+      "source": "NYS"
+    },
+    {
+      "id": "FPIG20",
+      "agency": "AGM01",
+      "title": "Round 20 Farmland Protection Implementation Grants",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$1');",
+      "source": "NYS"
+    },
+    {
+      "id": "FPSC01",
+      "agency": "AGM01",
+      "title": "Farmland Protection Staff Capacity, Round 1",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$2');",
+      "source": "NYS"
+    },
+    {
+      "id": "EVT0000003",
+      "agency": "CFS01",
+      "title": "SOI 1234 Dolly Parton's Imagination Library",
+      "status": "Advertised Only - Not in SFS",
+      "eligibility": "Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$3');",
+      "source": "NYS"
+    },
+    {
+      "id": "EVT0000006",
+      "agency": "DCJ01",
+      "title": "Youth Development and Professional Opportunities",
+      "status": "Advertised Only - Not in SFS",
+      "eligibility": "Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$4');",
+      "source": "NYS"
+    },
+    {
+      "id": "EVT0000007",
+      "agency": "DCJ01",
+      "title": "Havens of Opportunity, Peace & Empowerment",
+      "status": "Advertised Only - Not in SFS",
+      "eligibility": "Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$5');",
+      "source": "NYS"
+    },
+    {
+      "id": "EVT0000008",
+      "agency": "DCJ01",
+      "title": "2026 Securing Communities Against Hate Crimes RFA",
+      "status": "Advertised Only - Not in SFS",
+      "eligibility": "Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$6');",
+      "source": "NYS"
+    },
+    {
+      "id": "EJCIG R13",
+      "agency": "DEC01",
+      "title": "EJ Community Impact Grant Program Round 13",
+      "status": "Available",
+      "eligibility": "Not-For-Profit, Tribal Organization",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$7');",
+      "source": "NYS"
+    },
+    {
+      "id": "MWRR 2024",
+      "agency": "DEC01",
+      "title": "Municipal Waste Reduction and Rcycling. Prgrm. 24",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$8');",
+      "source": "NYS"
+    },
+    {
+      "id": "EVT0000003",
+      "agency": "DMV01",
+      "title": "2027 Highway Traffic Safety Grant",
+      "status": "Advertised Only - Not in SFS",
+      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$9');",
+      "source": "NYS"
+    },
+    {
+      "id": "DWFRFA2028",
+      "agency": "DOH01",
+      "title": "Drinking Water Fluoridation RFA",
+      "status": "Advertised Only - Not in SFS",
+      "eligibility": "For Profit, Governmental Entity, Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$10');",
+      "source": "NYS"
+    },
+    {
+      "id": "EEETT-A26",
+      "agency": "DOH01",
+      "title": "RFA#20760 Ending Epidemics Ed & Training Comp A",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$11');",
+      "source": "NYS"
+    },
+    {
+      "id": "EEETT-B26",
+      "agency": "DOH01",
+      "title": "RFA#20760 Ending Epidemics Ed & Training Comp B",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$12');",
+      "source": "NYS"
+    },
+    {
+      "id": "EEETT-C26",
+      "agency": "DOH01",
+      "title": "RFA#20760 Ending Epidemics Ed & Training Comp C",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$13');",
+      "source": "NYS"
+    },
+    {
+      "id": "EEETT-D26",
+      "agency": "DOH01",
+      "title": "RFA#20760 Ending Epidemics Ed & Training Comp D",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$14');",
+      "source": "NYS"
+    },
+    {
+      "id": "EEETT-E26",
+      "agency": "DOH01",
+      "title": "RFA#20760 Ending Epidemics Ed & Training Comp E",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$15');",
+      "source": "NYS"
+    },
+    {
+      "id": "HECOE2025",
+      "agency": "DOH01",
+      "title": "RFA #20662 - HE Training Center of Expertise",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$16');",
+      "source": "NYS"
+    },
+    {
+      "id": "NAV2026",
+      "agency": "DOH01",
+      "title": "RFA#20706: Consumer Assistance Navigator Program",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$17');",
+      "source": "NYS"
+    },
+    {
+      "id": "NIA12027",
+      "agency": "DOH01",
+      "title": "RFA 20733 New Investigators in SCI",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$18');",
+      "source": "NYS"
+    },
+    {
+      "id": "GCEW-EV",
+      "agency": "DOL01",
+      "title": "NYSDOL OJET GCEW-EV",
+      "status": "Available",
+      "eligibility": "For Profit, Governmental Entity, Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$19');",
+      "source": "NYS"
+    },
+    {
+      "id": "EVT0000001",
+      "agency": "JUS01",
+      "title": "JUS01-TRAID-2026",
+      "status": "Advertised Only - Not in SFS",
+      "eligibility": "Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$20');",
+      "source": "NYS"
+    },
+    {
+      "id": "EVT0000003",
+      "agency": "OAS01",
+      "title": "SETT-24029 Recovery Residences",
+      "status": "Advertised Only - Not in SFS",
+      "eligibility": "Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$21');",
+      "source": "NYS"
+    },
+    {
+      "id": "MH253022",
+      "agency": "OMH01",
+      "title": "Community-Based Diversion Programs",
+      "status": "Available",
+      "eligibility": "Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$22');",
+      "source": "NYS"
+    },
+    {
+      "id": "MH253024",
+      "agency": "OMH01",
+      "title": "Aging in Place Pilot - Western NY",
+      "status": "Available",
+      "eligibility": "Not-For-Profit",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$23');",
+      "source": "NYS"
+    },
+    {
+      "id": "NNDS 2027",
+      "agency": "TDA01",
+      "title": "Nutrition Navigators Direct Services",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
+      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$24');",
+      "source": "NYS"
+    }
+  ],
+  "fetched": "2026-04-18T04:11:16.067Z",
+  "count": 30
 }
