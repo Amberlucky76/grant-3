@@ -20,6 +20,7 @@
     --white: #fdfaf4;
     --red: #8b3a2a;
     --green: #4a7c59;
+    --nys-blue: #1a4a7a;
     --radius: 6px;
     --shadow: 0 1px 3px rgba(26,22,16,0.12), 0 4px 12px rgba(26,22,16,0.06);
   }
@@ -188,22 +189,6 @@
     margin-left: auto;
     display: flex; align-items: center; gap: 8px;
   }
-  .sort-select {
-    height: 26px;
-    border: 1px solid var(--cream-border);
-    border-radius: var(--radius);
-    background: var(--white);
-    padding: 0 22px 0 8px;
-    font-size: 11.5px;
-    font-family: 'IBM Plex Sans', sans-serif;
-    color: var(--ink);
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b5f4e'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 6px center;
-    cursor: pointer;
-    outline: none;
-  }
 
   /* ── GRID ── */
   .grants-grid {
@@ -305,6 +290,65 @@
     display: inline-flex; align-items: center; gap: 4px;
   }
   .view-btn:hover { background: var(--ochre); color: var(--white); border-color: var(--ochre); }
+
+  /* ── NYS ID STRIP ── */
+  .nys-id-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--cream-dark);
+    border: 1px solid var(--cream-border);
+    border-radius: 4px;
+    padding: 5px 8px;
+    margin-top: 2px;
+    gap: 8px;
+  }
+  .nys-id-label {
+    font-size: 9px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 2px;
+  }
+  .nys-id-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .copy-btn {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    background: var(--cream-dark);
+    border: 1px solid var(--cream-border);
+    color: var(--ink-mid);
+    transition: all 0.12s;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .copy-btn:hover { background: var(--ochre); color: var(--white); border-color: var(--ochre); }
+
+  .nys-search-btn {
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    background: var(--nys-blue);
+    border: 1px solid var(--nys-blue);
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.12s;
+    display: inline-flex; align-items: center; gap: 4px;
+    white-space: nowrap;
+  }
+  .nys-search-btn:hover { background: #0f3259; border-color: #0f3259; }
 
   /* ── STATES ── */
   .loading-state, .error-state, .empty-state {
@@ -564,7 +608,7 @@
       <span id="active-tags"></span>
       <div class="toolbar-right">
         <span style="font-size:11px;color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;">
-          Source: <strong style="color:var(--ink-mid)">Grants.gov</strong>
+          Source: <strong style="color:var(--ink-mid)">Grants.gov + NYS SFS</strong>
         </span>
       </div>
     </div>
@@ -670,16 +714,6 @@ async function fetchGrants() {
 }
 
 // ── LOCAL GOV FILTER ──────────────────────────────────────────
-// Agencies that primarily fund local governments
-const LOCAL_GOV_AGENCIES = [
-  "HUD","DOT","FHWA","FTA","EPA","FEMA","DHS","EDA","DOC","USDA","RD",
-  "DOJ","BJA","COPS","OJP","OVC","HHS","CDC","SAMHSA","ACF","HRSA",
-  "DOE","ED","NEA","NEH","DOI","NPS","BLM","USFWS","USACE","SBA",
-  "CNCS","AmeriCorps","IMLS","DOL","ETA","VISTA","HHS-ACF","CDBG",
-  "USDA-RD","ARC","DRA","NRCS","FSA"
-];
-
-// Agency codes that are NOT typically for local govts
 const NON_LOCAL_AGENCIES = [
   "DOS","NASA","NIH","NSF","AFOSR","ONR","ARO","DARPA","DOD","AF",
   "NAVY","ARMY","DTRA","DIA","NRO","AFRL","NIST","NOAA","DOE-SC",
@@ -690,7 +724,6 @@ function filterLocalGov(grants) {
   return grants.filter(g => {
     const code = (g.agencyCode || '').toUpperCase();
     const root = code.split('-')[0];
-    // Exclude if it's a clearly non-local agency
     if (NON_LOCAL_AGENCIES.some(a => code.startsWith(a) || root === a)) return false;
     return true;
   });
@@ -715,9 +748,20 @@ function renderGrants() {
   let html = "";
 
   if (hasNYS) {
-    html += `<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--cream-border);margin-bottom:2px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink-light);">📍 New York State Grants <span style="font-weight:400;color:var(--ink-faint);">(${state.nysGrants.length} opportunities)</span> <a href="https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL?" target="_blank" style="font-weight:400;color:var(--ochre);text-decoration:underline;margin-left:8px;">Browse all on NYS SFS ↗</a></div>`;
+    html += `
+      <div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--cream-border);margin-bottom:2px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink-light);">
+        📍 New York State Grants
+        <span style="font-weight:400;color:var(--ink-faint);">(${state.nysGrants.length} opportunities)</span>
+        <a href="https://grantsmanagement.ny.gov/search-funding-sfs" target="_blank"
+           style="font-weight:400;color:var(--nys-blue);text-decoration:underline;margin-left:8px;">
+          Browse all on NYS SFS ↗
+        </a>
+      </div>`;
     html += state.nysGrants.map(g => renderNYSCard(g)).join("");
-    html += `<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--cream-border);margin:8px 0 2px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink-light);">🇺🇸 Federal Grants (Grants.gov)</div>`;
+    html += `
+      <div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--cream-border);margin:8px 0 2px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink-light);">
+        🇺🇸 Federal Grants (Grants.gov)
+      </div>`;
   }
 
   if (hasFed) {
@@ -727,18 +771,13 @@ function renderGrants() {
   grid.innerHTML = html;
 }
 
+// ── FEDERAL CARD ───────────────────────────────────────────────
 function renderCard(g) {
   const saved = state.saved.has(g.id);
   const statusClass = g.oppStatus === 'posted' ? 'tag-posted'
     : g.oppStatus === 'forecasted' ? 'tag-forecasted' : 'tag-closed';
   const statusLabel = g.oppStatus || 'unknown';
 
-  const cats = (g.alnist || []).map(a => {
-    const code = g.fundingCategories;
-    return '';
-  });
-
-  // parse close date
   let deadlineHtml = '';
   if (!g.closeDate) {
     deadlineHtml = `<span class="deadline-row rolling">⟳ Rolling / no fixed deadline</span>`;
@@ -784,6 +823,52 @@ function renderCard(g) {
            target="_blank" rel="noopener"
            onclick="event.stopPropagation()">
           View →
+        </a>
+      </div>
+    </div>`;
+}
+
+// ── NYS CARD ───────────────────────────────────────────────────
+function renderNYSCard(g) {
+  const saved = state.saved.has("nys-" + g.id);
+  const statusClass = (g.status || "").toLowerCase().includes("available") ? "tag-posted" : "tag-closed";
+
+  return `
+    <div class="grant-card">
+      <div class="card-top">
+        <div style="display:flex;gap:5px;flex-wrap:wrap;">
+          <span class="tag" style="background:var(--nys-blue);color:#f5f0e8;">NYS</span>
+          <span class="tag ${statusClass}">${escHtml(g.status || "Available")}</span>
+        </div>
+        <button class="card-heart ${saved ? "saved" : ""}"
+          onclick="event.stopPropagation(); toggleSave('nys-${g.id}', this)">
+          ${saved ? "♥" : "♡"}
+        </button>
+      </div>
+      <div class="card-title">${escHtml(g.title)}</div>
+      <div class="card-agency">${escHtml(g.agency || "New York State")}</div>
+      <div class="card-mid">
+        ${g.eligibility ? `<span class="card-category" style="font-size:10px;">${escHtml(g.eligibility.slice(0,40))}</span>` : "<span></span>"}
+      </div>
+      ${g.dueDate ? `<span class="deadline-row urgent">⏱ Due: ${escHtml(g.dueDate)}</span>` : ''}
+
+      <div class="nys-id-strip">
+        <div>
+          <div class="nys-id-label">Event ID — paste this into NYS search</div>
+          <div class="nys-id-value">${escHtml(g.id)}</div>
+        </div>
+        <button class="copy-btn" onclick="event.stopPropagation(); copyId('${escHtml(g.id)}', this)">
+          📋 Copy
+        </button>
+      </div>
+
+      <div class="card-bottom">
+        <div></div>
+        <a class="nys-search-btn"
+           href="https://grantsmanagement.ny.gov/search-funding-sfs"
+           target="_blank" rel="noopener"
+           onclick="event.stopPropagation()">
+          Search NYS Grants ↗
         </a>
       </div>
     </div>`;
@@ -935,6 +1020,25 @@ function toggleSaveModal(id) {
   if (modalBtn) modalBtn.textContent = state.saved.has(sid) ? '♥ Saved' : '♡ Save to shortlist';
 }
 
+// ── COPY EVENT ID ─────────────────────────────────────────────
+function copyId(eventId, btn) {
+  navigator.clipboard.writeText(eventId).then(() => {
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✓ Copied!';
+    btn.style.background = 'var(--green)';
+    btn.style.color = 'white';
+    btn.style.borderColor = 'var(--green)';
+    setTimeout(() => {
+      btn.innerHTML = orig;
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }, 2000);
+  }).catch(() => {
+    prompt('Copy this Event ID to search on NYS Grants:', eventId);
+  });
+}
+
 // ── PAGINATION ────────────────────────────────────────────────
 function renderPagination() {
   const total = Math.ceil(state.totalHits / PAGE_SIZE);
@@ -1040,6 +1144,7 @@ document.getElementById('keyword-input').addEventListener('keydown', e => {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModalDirect();
 });
+
 // ── NYS GRANTS ────────────────────────────────────────────────
 async function fetchNYSGrants() {
   try {
@@ -1050,59 +1155,8 @@ async function fetchNYSGrants() {
     renderGrants();
     console.log(`Loaded ${state.nysGrants.length} NYS grants`);
   } catch (e) {
-    console.log("NYS grants not available yet:", e.message);
+    console.log("NYS grants not available:", e.message);
   }
-}
-
-function renderNYSCard(g) {
-  const saved = state.saved.has("nys-" + g.id);
-  const statusClass = (g.status || "").toLowerCase().includes("available") ? "tag-posted" : "tag-closed";
-  return `
-    <div class="grant-card">
-      <div class="card-top">
-        <div style="display:flex;gap:5px;flex-wrap:wrap;">
-          <span class="tag" style="background:#1a4a7a;color:#f5f0e8;">NYS</span>
-          <span class="tag ${statusClass}">${g.status || "Available"}</span>
-        </div>
-        <button class="card-heart ${saved ? "saved" : ""}"
-          onclick="event.stopPropagation(); toggleSave('nys-${g.id}', this)">
-          ${saved ? "♥" : "♡"}
-        </button>
-      </div>
-      <div class="card-title">${escHtml(g.title)}</div>
-      <div class="card-agency">${escHtml(g.agency || "New York State")}</div>
-      <div class="card-mid">
-        ${g.eligibility ? `<span class="card-category" style="font-size:10px;">${escHtml(g.eligibility.slice(0,35))}</span>` : "<span></span>"}
-      </div>
-      ${g.dueDate ? `<span class="deadline-row ${g.dueDate ? 'urgent' : ''}">⏱ Due: ${escHtml(g.dueDate)}</span>` : ''}
-      <div class="card-bottom">
-        <div class="card-id">ID · ${escHtml(g.id)}</div>
-        <button class="view-btn" style="font-size:10.5px;"
-           onclick="event.stopPropagation(); copyId('${g.id}', this)">
-          📋 Copy ID
-        </button>
-      </div>
-    </div>`;
-}
-
-
-// ── NYS COPY ID ───────────────────────────────────────────────
-function copyId(eventId, btn) {
-  navigator.clipboard.writeText(eventId).then(() => {
-    const orig = btn.innerHTML;
-    btn.innerHTML = '✓ Copied!';
-    btn.style.background = 'var(--green)';
-    btn.style.color = 'white';
-    btn.style.borderColor = 'var(--green)';
-    setTimeout(() => {
-      btn.innerHTML = orig;
-      btn.style.background = '';
-      btn.style.color = '';
-      btn.style.borderColor = '';
-    }, 2000);
-  }).catch(() => {
-    prompt('Copy this Event ID to search on NYS SFS:', eventId);
-  });
 }
 
 // ── INIT ──────────────────────────────────────────────────────
