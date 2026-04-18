@@ -80,11 +80,15 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
 
       // Only include if eligible for governmental entities
       const eligLower = eligibility.toLowerCase();
-      if (eligLower && !eligLower.includes('governmental') && !eligLower.includes('government')) continue;
+      if (eligLower && !eligLower.includes('governmental') && !eligLower.includes('government')) {
+        console.log(`SKIPPED (eligibility): [${id}] ${title} | elig: ${eligibility}`);
+        continue;
+      }
 
       const anchor = cells[colTitle]?.querySelector('a');
       const link = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL';
 
+      console.log(`KEEPING: [${id}] ${title} | elig: ${eligibility}`);
       results.push({ id, agency, title, status, eligibility, dueDate, link, source: 'NYS' });
     }
     return results;
