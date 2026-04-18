@@ -1077,8 +1077,13 @@ function renderNYSCard(g) {
       ${g.dueDate ? `<span class="deadline-row ${g.dueDate ? 'urgent' : ''}">⏱ Due: ${escHtml(g.dueDate)}</span>` : ''}
       <div class="card-bottom">
         <div class="card-id">ID · ${escHtml(g.id)}</div>
-        <a class="view-btn" href="${escHtml(g.link)}" target="_blank" rel="noopener"
-           onclick="event.stopPropagation()">View →</a>
+        <a class="view-btn"
+           href="https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL"
+           target="_blank" rel="noopener"
+           onclick="event.stopPropagation(); try { navigator.clipboard.writeText(g.id); } catch(e) {}"
+           title="Opens NYS SFS grants portal — search for ID: ${escHtml(g.id)}">
+          Search NYS →
+        </a>
       </div>
     </div>`;
 }
