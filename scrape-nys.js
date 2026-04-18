@@ -31,58 +31,69 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
   });
   await new Promise(r => setTimeout(r, 7000));
 
+  // Log the actual header row so we know column order
+  const headers = await page.evaluate(() => {
+    for (const row of document.querySelectorAll('tr')) {
+      const ths = row.querySelectorAll('th');
+      if (ths.length > 2) {
+        return Array.from(ths).map(th => th.innerText.trim());
+      }
+      // Also check td rows that look like headers
+      const tds = row.querySelectorAll('td');
+      if (tds.length > 2) {
+        const texts = Array.from(tds).map(td => td.innerText.trim());
+        if (texts[0].toLowerCase().includes('event')) return texts;
+      }
+    }
+    return [];
+  });
+  console.log('Headers:', JSON.stringify(headers));
+
   const grants = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
 
-    // Real Event IDs are short and follow patterns like: AGM-WFD26, FPIG20, EVT0000003, EJCIG-R13
-    // They are never longer than ~20 chars and don't contain newlines
-    function isValidEventId(id) {
-      if (!id || id.length > 25 || id.includes('\n')) return false;
-      // Must start with letters and contain alphanumeric/dash chars only
-      return /^[A-Z][A-Z0-9\-]{1,24}$/.test(id.trim());
-    }
-
-    // Real grant titles are typically under 120 chars and don't repeat themselves
-    function isValidTitle(title) {
-      if (!title || title.length < 5 || title.length > 150) return false;
-      if (title.includes('\n')) return false;
-      const skipWords = ['event id', 'grant opportunity', 'funding agency', 'status',
-        'eligibility', 'availability date', 'due date', 'search criteria', 'search results'];
-      return !skipWords.some(w => title.toLowerCase().includes(w));
-    }
+    // Find the header row first to know column positions
+    let colEventId = 0, colAgency = 1, colTitle = 2, colStatus = 3, colEligibility = 4, colDueDate = 7;
 
     for (const row of document.querySelectorAll('tr')) {
       const cells = Array.from(row.querySelectorAll('td'));
       if (cells.length < 4) continue;
 
-      // Each cell should have clean single-line text
-      const id = cells[0]?.innerText?.trim().split('\n')[0] || '';
-      const agency = cells[1]?.innerText?.trim().split('\n')[0] || '';
-      const title = cells[2]?.innerText?.trim().split('\n')[0] || '';
-      const status = cells[3]?.innerText?.trim().split('\n')[0] || '';
-      const eligibility = cells[4]?.innerText?.trim().split('\n')[0] || '';
-      const availDate = cells[5]?.innerText?.trim().split('\n')[0] || '';
-      const dueDate = cells[7]?.innerText?.trim().split('\n')[0] || cells[6]?.innerText?.trim().split('\n')[0] || '';
+      const texts = cells.map(c => c.innerText.trim().replace(/\s+/g, ' ').split('\n')[0]);
 
-      if (!isValidEventId(id)) continue;
-      if (!isValidTitle(title)) continue;
+      // Detect header row and skip it
+      if (texts[0].toLowerCase().includes('event id') || texts[2]?.toLowerCase().includes('grant opportunity')) continue;
+
+      const id = texts[colEventId];
+      const agency = texts[colAgency];
+      const title = texts[colTitle];
+      const status = texts[colStatus];
+      const eligibility = texts[colEligibility] || '';
+      const dueDate = texts[colDueDate] || texts[6] || '';
+
+      // Validate: real Event IDs are short alphanumeric codes
+      if (!id || id.length > 25 || !/^[A-Z]/.test(id)) continue;
+      if (!title || title.length < 4 || title.length > 150) continue;
       if (seen.has(id)) continue;
       seen.add(id);
 
-      const anchor = cells[2]?.querySelector('a');
-      const link = anchor?.href || 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL';
+      // Only include if eligible for governmental entities
+      const eligLower = eligibility.toLowerCase();
+      if (eligLower && !eligLower.includes('governmental') && !eligLower.includes('government')) continue;
 
-      results.push({ id, agency, title, status, eligibility, availDate, dueDate, link, source: 'NYS' });
+      const anchor = cells[colTitle]?.querySelector('a');
+      const link = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL';
+
+      results.push({ id, agency, title, status, eligibility, dueDate, link, source: 'NYS' });
     }
-
     return results;
   });
 
   await browser.close();
 
-  console.log(`Found ${grants.length} grants`);
-  grants.forEach(g => console.log(` - [${g.id}] ${g.title} | ${g.status} | due: ${g.dueDate}`));
+  console.log(`Found ${grants.length} governmental grants`);
+  grants.forEach(g => console.log(` - [${g.id}] ${g.title} | ${g.eligibility}`));
 
   const output = { grants, fetched: new Date().toISOString(), count: grants.length };
   fs.writeFileSync(path.join(process.cwd(), 'nys-grants.json'), JSON.stringify(output, null, 2));
