@@ -715,7 +715,7 @@ function renderGrants() {
   let html = "";
 
   if (hasNYS) {
-    html += `<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--cream-border);margin-bottom:2px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink-light);">📍 New York State Grants <span style="font-weight:400;color:var(--ink-faint);">(${state.nysGrants.length} opportunities)</span></div>`;
+    html += `<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--cream-border);margin-bottom:2px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink-light);">📍 New York State Grants <span style="font-weight:400;color:var(--ink-faint);">(${state.nysGrants.length} opportunities)</span> <a href="https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL?" target="_blank" style="font-weight:400;color:var(--ochre);text-decoration:underline;margin-left:8px;">Browse all on NYS SFS ↗</a></div>`;
     html += state.nysGrants.map(g => renderNYSCard(g)).join("");
     html += `<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--cream-border);margin:8px 0 2px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink-light);">🇺🇸 Federal Grants (Grants.gov)</div>`;
   }
@@ -1077,28 +1077,32 @@ function renderNYSCard(g) {
       ${g.dueDate ? `<span class="deadline-row ${g.dueDate ? 'urgent' : ''}">⏱ Due: ${escHtml(g.dueDate)}</span>` : ''}
       <div class="card-bottom">
         <div class="card-id">ID · ${escHtml(g.id)}</div>
-        <button class="view-btn"
-           onclick="event.stopPropagation(); copyAndOpen('${g.id}')">
-          Copy ID & Search →
+        <button class="view-btn" style="font-size:10.5px;"
+           onclick="event.stopPropagation(); copyId('${g.id}', this)">
+          📋 Copy ID
         </button>
       </div>
     </div>`;
 }
 
 
-// ── NYS COPY & OPEN ───────────────────────────────────────────
-function copyAndOpen(eventId) {
+// ── NYS COPY ID ───────────────────────────────────────────────
+function copyId(eventId, btn) {
   navigator.clipboard.writeText(eventId).then(() => {
-    // Show a brief toast
-    const toast = document.createElement('div');
-    toast.textContent = `Event ID "${eventId}" copied! Paste it into the search box on the NYS page.`;
-    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1610;color:#f5f0e8;padding:10px 18px;border-radius:6px;font-size:12px;font-family:IBM Plex Mono,monospace;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,0.3);';
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 4000);
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✓ Copied!';
+    btn.style.background = 'var(--green)';
+    btn.style.color = 'white';
+    btn.style.borderColor = 'var(--green)';
+    setTimeout(() => {
+      btn.innerHTML = orig;
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }, 2000);
   }).catch(() => {
-    prompt('Copy this Event ID and paste it on the NYS site:', eventId);
+    prompt('Copy this Event ID to search on NYS SFS:', eventId);
   });
-  window.open('https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL?', '_blank');
 }
 
 // ── INIT ──────────────────────────────────────────────────────
