@@ -41,6 +41,16 @@
       "source": "NYS"
     },
     {
+      "id": "EVT0000003",
+      "agency": "DMV01",
+      "title": "2027 Highway Traffic Safety Grant",
+      "status": "Advertised Only - Not in SFS",
+      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
+      "dueDate": "05/01/2026 11:59PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
+      "source": "NYS"
+    },
+    {
       "id": "DWFRFA2028",
       "agency": "DOH01",
       "title": "Drinking Water Fluoridation RFA",
@@ -151,6 +161,6 @@
       "source": "NYS"
     }
   ],
-  "fetched": "2026-04-18T05:01:56.747Z",
-  "count": 15
+  "fetched": "2026-04-18T05:05:53.176Z",
+  "count": 16
 }
