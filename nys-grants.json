@@ -1,5 +1,8 @@
 {
   "grants": [],
-  "fetched": "2026-04-18T03:58:19.435Z",
-  "count": 0
+  "fetched": "2026-04-18T04:06:28.880Z",
+  "count": 0,
+  "debug": {
+    "ajaxCount": 48
+  }
 }
