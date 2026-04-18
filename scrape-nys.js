@@ -23,69 +23,59 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
   }
   await new Promise(r => setTimeout(r, 5000));
 
-  // Click Search button
-  try {
-    await page.evaluate(() => {
-      const btns = Array.from(document.querySelectorAll('input[type=submit], button, a'));
-      const btn = btns.find(b => (b.value || b.innerText || '').trim().toLowerCase() === 'search');
-      if (btn) btn.click();
-    });
-    await new Promise(r => setTimeout(r, 7000));
-    console.log('Clicked search, waiting for results...');
-  } catch (e) {
-    console.log('Search click note:', e.message);
-  }
+  // Click Search
+  await page.evaluate(() => {
+    const btns = Array.from(document.querySelectorAll('input[type=submit], button, a'));
+    const btn = btns.find(b => (b.value || b.innerText || '').trim().toLowerCase() === 'search');
+    if (btn) btn.click();
+  });
+  await new Promise(r => setTimeout(r, 7000));
 
-  // Extract grants by parsing the grid properly
   const grants = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
 
-    // PeopleSoft renders results in a grid - each row is a <tr> with specific cell structure
-    // Columns: Event ID | Funding Agency | Grant Opportunity | Status | Eligibility | Availability Date | Anticipated Release Date | Due Date
-    const rows = document.querySelectorAll('tr');
+    // Real Event IDs are short and follow patterns like: AGM-WFD26, FPIG20, EVT0000003, EJCIG-R13
+    // They are never longer than ~20 chars and don't contain newlines
+    function isValidEventId(id) {
+      if (!id || id.length > 25 || id.includes('\n')) return false;
+      // Must start with letters and contain alphanumeric/dash chars only
+      return /^[A-Z][A-Z0-9\-]{1,24}$/.test(id.trim());
+    }
 
-    for (const row of rows) {
+    // Real grant titles are typically under 120 chars and don't repeat themselves
+    function isValidTitle(title) {
+      if (!title || title.length < 5 || title.length > 150) return false;
+      if (title.includes('\n')) return false;
+      const skipWords = ['event id', 'grant opportunity', 'funding agency', 'status',
+        'eligibility', 'availability date', 'due date', 'search criteria', 'search results'];
+      return !skipWords.some(w => title.toLowerCase().includes(w));
+    }
+
+    for (const row of document.querySelectorAll('tr')) {
       const cells = Array.from(row.querySelectorAll('td'));
       if (cells.length < 4) continue;
 
-      // Get text of each cell cleanly
-      const cellTexts = cells.map(c => c.innerText?.trim().replace(/\s+/g, ' ') || '');
+      // Each cell should have clean single-line text
+      const id = cells[0]?.innerText?.trim().split('\n')[0] || '';
+      const agency = cells[1]?.innerText?.trim().split('\n')[0] || '';
+      const title = cells[2]?.innerText?.trim().split('\n')[0] || '';
+      const status = cells[3]?.innerText?.trim().split('\n')[0] || '';
+      const eligibility = cells[4]?.innerText?.trim().split('\n')[0] || '';
+      const availDate = cells[5]?.innerText?.trim().split('\n')[0] || '';
+      const dueDate = cells[7]?.innerText?.trim().split('\n')[0] || cells[6]?.innerText?.trim().split('\n')[0] || '';
 
-      const id = cellTexts[0];
-      const agency = cellTexts[1];
-      const title = cellTexts[2];
-      const status = cellTexts[3];
-      const eligibility = cellTexts[4] || '';
-      const availDate = cellTexts[5] || '';
-      const releaseDate = cellTexts[6] || '';
-      const dueDate = cellTexts[7] || '';
+      if (!isValidEventId(id)) continue;
+      if (!isValidTitle(title)) continue;
+      if (seen.has(id)) continue;
+      seen.add(id);
 
-      // Skip header rows and empty rows
-      const skipTitles = ['event id', 'grant opportunity', 'funding agency', 'status', 'eligibility',
-        'availability date', 'anticipated release date', 'due date', 'search criteria'];
-      if (!id || !title || title.length < 4) continue;
-      if (skipTitles.some(s => title.toLowerCase().includes(s))) continue;
-      if (skipTitles.some(s => id.toLowerCase().includes(s))) continue;
-      if (seen.has(id + title)) continue;
-      seen.add(id + title);
-
-      // Get the link from the title cell
       const anchor = cells[2]?.querySelector('a');
       const link = anchor?.href || 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL';
 
-      results.push({
-        id,
-        agency,
-        title,
-        status,
-        eligibility,
-        availDate,
-        dueDate: dueDate || releaseDate,
-        link,
-        source: 'NYS',
-      });
+      results.push({ id, agency, title, status, eligibility, availDate, dueDate, link, source: 'NYS' });
     }
+
     return results;
   });
 
@@ -96,5 +86,5 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
 
   const output = { grants, fetched: new Date().toISOString(), count: grants.length };
   fs.writeFileSync(path.join(process.cwd(), 'nys-grants.json'), JSON.stringify(output, null, 2));
-  console.log('Saved nys-grants.json');
+  console.log('Saved.');
 })();
