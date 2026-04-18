@@ -1,33 +1,5 @@
 {
-  "grants": [
-    {
-      "id": "",
-      "agency": "",
-      "title": "Favorites",
-      "status": "",
-      "eligibility": "",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL?",
-      "source": "NYS"
-    },
-    {
-      "id": "",
-      "agency": "",
-      "title": "Main Menu",
-      "status": "",
-      "eligibility": "",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL?",
-      "source": "NYS"
-    },
-    {
-      "id": "",
-      "agency": "",
-      "title": "New Window",
-      "status": "",
-      "eligibility": "",
-      "link": "",
-      "source": "NYS"
-    }
-  ],
-  "fetched": "2026-04-18T03:45:52.174Z",
-  "count": 3
+  "grants": [],
+  "fetched": "2026-04-18T03:58:19.435Z",
+  "count": 0
 }
