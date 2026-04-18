@@ -1078,11 +1078,11 @@ function renderNYSCard(g) {
       <div class="card-bottom">
         <div class="card-id">ID · ${escHtml(g.id)}</div>
         <a class="view-btn"
-           href="https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL"
+           href="https://grantsmanagement.ny.gov/find-grant-opportunities"
            target="_blank" rel="noopener"
-           onclick="event.stopPropagation(); try { navigator.clipboard.writeText(g.id); } catch(e) {}"
-           title="Opens NYS SFS grants portal — search for ID: ${escHtml(g.id)}">
-          Search NYS →
+           onclick="event.stopPropagation(); try { navigator.clipboard.writeText('${g.id}'); } catch(e) {}"
+           title="ID ${escHtml(g.id)} copied — paste into Event ID field on NYS site">
+          Copy ID & Search →
         </a>
       </div>
     </div>`;
