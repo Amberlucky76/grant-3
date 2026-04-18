@@ -75,8 +75,8 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
       // Validate: real Event IDs are short alphanumeric codes
       if (!id || id.length > 25 || !/^[A-Z]/.test(id)) continue;
       if (!title || title.length < 4 || title.length > 150) continue;
-      if (seen.has(id)) continue;
-      seen.add(id);
+      if (seen.has(title)) continue;
+      seen.add(title);
 
       // Only include if eligible for governmental entities
       const eligLower = eligibility.toLowerCase();
