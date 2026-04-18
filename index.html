@@ -1046,13 +1046,7 @@ async function fetchNYSGrants() {
     const res = await fetch("./nys-grants.json?_=" + Date.now());
     if (!res.ok) return;
     const data = await res.json();
-    const allNYS = data.grants || [];
-    // Only keep grants where eligibility includes governmental entities
-    state.nysGrants = allNYS.filter(g => {
-      const elig = (g.eligibility || '').toLowerCase();
-      if (!elig) return true; // include if no eligibility info
-      return elig.includes('governmental') || elig.includes('government');
-    });
+    state.nysGrants = data.grants || [];
     renderGrants();
     console.log(`Loaded ${state.nysGrants.length} NYS grants`);
   } catch (e) {
