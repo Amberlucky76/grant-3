@@ -7,64 +7,67 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
 (async () => {
   console.log('Launching browser...');
   const browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
     headless: true,
   });
 
   const page = await browser.newPage();
-  await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36');
+  await page.setViewport({ width: 1280, height: 900 });
+  await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 
   console.log('Navigating to NYS grants page...');
-  await page.goto(NYS_URL, { waitUntil: 'networkidle2', timeout: 60000 });
-
-  // Wait for the grants table to appear
   try {
-    await page.waitForSelector('table', { timeout: 20000 });
+    await page.goto(NYS_URL, { waitUntil: 'networkidle0', timeout: 60000 });
   } catch (e) {
-    console.log('Table not found within timeout, trying anyway...');
+    console.log('Navigation note:', e.message);
   }
 
-  // Give JS a moment to finish rendering
-  await new Promise(r => setTimeout(r, 3000));
+  console.log('Waiting for PeopleSoft to render...');
+  await new Promise(r => setTimeout(r, 8000));
 
-  console.log('Extracting grant data...');
+  const html = await page.content();
+  console.log('Page HTML length:', html.length);
+  console.log('HTML preview:', html.slice(0, 1000));
+
+  const tableCount = await page.evaluate(() => document.querySelectorAll('table').length);
+  const rowCount = await page.evaluate(() => document.querySelectorAll('tr').length);
+  console.log(`Tables: ${tableCount}, Rows: ${rowCount}`);
+
+  const links = await page.evaluate(() =>
+    Array.from(document.querySelectorAll('a'))
+      .map(a => ({ text: a.innerText?.trim(), href: a.href }))
+      .filter(l => l.text && l.text.length > 5)
+  );
+  console.log('Links:', JSON.stringify(links.slice(0, 20)));
+
   const grants = await page.evaluate(() => {
     const results = [];
 
-    // Find all table rows
-    const rows = document.querySelectorAll('tr');
-
-    for (const row of rows) {
+    // Strategy 1: standard table rows
+    for (const row of document.querySelectorAll('tr')) {
       const cells = row.querySelectorAll('td');
-      if (cells.length < 4) continue;
-
+      if (cells.length < 3) continue;
       const id = cells[0]?.innerText?.trim();
       const agency = cells[1]?.innerText?.trim();
       const titleCell = cells[2];
       const title = titleCell?.innerText?.trim();
-      const status = cells[3]?.innerText?.trim();
+      const status = cells[3]?.innerText?.trim() || '';
       const eligibility = cells[4]?.innerText?.trim() || '';
-
-      // Get the link from the title cell
       const anchor = titleCell?.querySelector('a');
-      let link = anchor?.href || '';
-      if (!link && anchor) {
-        link = 'https://esupplier.sfs.ny.gov' + anchor.getAttribute('href');
-      }
+      const link = anchor?.href || '';
+      if (!id || !title || id === 'Event ID' || title === 'Grant Opportunity') continue;
+      if (title.length < 4) continue;
+      results.push({ id, agency, title, status, eligibility, link, source: 'NYS' });
+    }
+    if (results.length > 0) return results;
 
-      // Filter out header rows and empty rows
-      if (!id || !title || title.toLowerCase() === 'grant opportunity') continue;
-      if (id.toLowerCase() === 'event id') continue;
-
-      results.push({
-        id,
-        agency,
-        title,
-        status,
-        eligibility,
-        link: link || 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL',
-        source: 'NYS',
-      });
+    // Strategy 2: any div with a link that looks like a grant row
+    for (const el of document.querySelectorAll('div[class*="row"], div[class*="grid"], li')) {
+      const anchor = el.querySelector('a');
+      if (!anchor) continue;
+      const title = anchor.innerText?.trim();
+      if (!title || title.length < 5) continue;
+      results.push({ id: '', agency: '', title, status: '', eligibility: '', link: anchor.href, source: 'NYS' });
     }
 
     return results;
@@ -73,15 +76,7 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
   await browser.close();
 
   console.log(`Found ${grants.length} grants`);
-
-  // Write to nys-grants.json in the repo root
-  const output = {
-    grants,
-    fetched: new Date().toISOString(),
-    count: grants.length,
-  };
-
-  const outPath = path.join(process.cwd(), 'nys-grants.json');
-  fs.writeFileSync(outPath, JSON.stringify(output, null, 2));
-  console.log(`Saved to ${outPath}`);
+  const output = { grants, fetched: new Date().toISOString(), count: grants.length };
+  fs.writeFileSync(path.join(process.cwd(), 'nys-grants.json'), JSON.stringify(output, null, 2));
+  console.log('Done');
 })();
