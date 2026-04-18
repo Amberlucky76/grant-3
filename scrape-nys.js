@@ -15,6 +15,27 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
   await page.setViewport({ width: 1280, height: 900 });
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 
+  // Intercept all network responses to find the AJAX call that loads grant data
+  const ajaxResponses = [];
+  page.on('response', async (response) => {
+    const url = response.url();
+    const contentType = response.headers()['content-type'] || '';
+    // Capture any XHR/fetch responses that might contain grant data
+    if (
+      url.includes('AUC') ||
+      url.includes('fscm') ||
+      contentType.includes('json') ||
+      contentType.includes('xml')
+    ) {
+      try {
+        const text = await response.text();
+        if (text.length > 100 && text.length < 500000) {
+          ajaxResponses.push({ url, contentType, body: text.slice(0, 2000) });
+        }
+      } catch (e) {}
+    }
+  });
+
   console.log('Navigating...');
   try {
     await page.goto(NYS_URL, { waitUntil: 'networkidle0', timeout: 60000 });
@@ -22,86 +43,41 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
     console.log('Nav note:', e.message);
   }
 
-  await new Promise(r => setTimeout(r, 8000));
+  // Wait longer for AJAX to fire
+  await new Promise(r => setTimeout(r, 10000));
 
-  // Log full HTML so we can see exactly what PeopleSoft renders
-  const html = await page.content();
-  fs.writeFileSync('/tmp/nys-page.html', html);
-  console.log('HTML length:', html.length);
-
-  // Log all table HTML
-  const tables = await page.evaluate(() => {
-    return Array.from(document.querySelectorAll('table')).map((t, i) => ({
-      index: i,
-      rows: t.rows.length,
-      html: t.outerHTML.slice(0, 500),
-    }));
+  console.log(`Captured ${ajaxResponses.length} AJAX responses`);
+  ajaxResponses.forEach((r, i) => {
+    console.log(`\n--- Response ${i + 1} ---`);
+    console.log('URL:', r.url);
+    console.log('Type:', r.contentType);
+    console.log('Body preview:', r.body.slice(0, 300));
   });
-  console.log('Tables:', JSON.stringify(tables));
 
-  // Try to find rows that look like grants:
-  // Real grant rows have an Event ID pattern (letters+numbers) and a link with AUC in the href
-  const grants = await page.evaluate(() => {
-    const results = [];
-    const seen = new Set();
+  // Also try scrolling/clicking to trigger lazy load
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await new Promise(r => setTimeout(r, 3000));
 
-    // Look for links that go to grant detail pages
-    const allLinks = document.querySelectorAll('a[href*="AUC"], a[href*="auc"], a[href*="BID"], a[href*="bid"]');
-    console.log('Grant-like links found:', allLinks.length);
+  // Check if content appeared after scroll
+  const pageText = await page.evaluate(() => document.body.innerText);
+  console.log('\nPage text preview:', pageText.slice(0, 1000));
 
-    for (const a of allLinks) {
-      const title = a.innerText?.trim();
-      const href = a.href;
-
-      // Skip navigation items
-      const navTerms = ['favorites', 'main menu', 'new window', 'sign in', 'skip', 'search', 'refine', 'popup', 'sort'];
-      if (!title || title.length < 5) continue;
-      if (navTerms.some(n => title.toLowerCase() === n)) continue;
-      if (seen.has(title)) continue;
-      seen.add(title);
-
-      // Try to get surrounding row data
-      const row = a.closest('tr');
-      let id = '', agency = '', status = '', eligibility = '';
-
-      if (row) {
-        const cells = row.querySelectorAll('td');
-        if (cells.length >= 3) {
-          id = cells[0]?.innerText?.trim() || '';
-          agency = cells[1]?.innerText?.trim() || '';
-          status = cells[3]?.innerText?.trim() || '';
-          eligibility = cells[4]?.innerText?.trim() || '';
-        }
-      }
-
-      // Only include if it looks like a real grant (has an agency code or ID)
-      // Event IDs typically look like: AGM-WFD26, FPIG20, VT0000003 etc
-      const looksLikeGrantId = /^[A-Z]{2,}[\-0-9]/.test(id) || id.length > 3;
-      const looksLikeNavLink = ['favorites', 'main menu', 'new window', 'search', 'refine'].includes(title.toLowerCase());
-
-      if (looksLikeNavLink) continue;
-      if (!looksLikeGrantId && !agency) continue;
-
-      results.push({
-        id: id || '',
-        agency: agency || '',
-        title,
-        status: status || 'Available',
-        eligibility: eligibility || '',
-        link: href,
-        source: 'NYS',
-      });
-    }
-
-    return results;
-  });
+  // Look for any grant-like text patterns on the page
+  const grantPatterns = pageText.match(/[A-Z]{2,4}[\-0-9][A-Z0-9\-]{3,}/g) || [];
+  console.log('Grant ID patterns found:', grantPatterns.slice(0, 20));
 
   await browser.close();
 
-  console.log(`Found ${grants.length} grants`);
-  grants.forEach(g => console.log(` - [${g.id}] ${g.title} | ${g.agency} | ${g.status}`));
+  // Try to parse grant data from AJAX responses
+  const grants = [];
+  for (const r of ajaxResponses) {
+    if (r.body.includes('Grant') || r.body.includes('grant') || r.body.includes('AUC')) {
+      console.log('\nPotential grant data in:', r.url);
+      console.log(r.body.slice(0, 500));
+    }
+  }
 
-  const output = { grants, fetched: new Date().toISOString(), count: grants.length };
+  const output = { grants, fetched: new Date().toISOString(), count: grants.length, debug: { ajaxCount: ajaxResponses.length } };
   fs.writeFileSync(path.join(process.cwd(), 'nys-grants.json'), JSON.stringify(output, null, 2));
-  console.log('Saved nys-grants.json');
+  console.log('Done');
 })();
