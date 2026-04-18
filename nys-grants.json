@@ -2,12 +2,11 @@
   "grants": [
     {
       "id": "AGM-WFD26",
-      "agency": "AGM-WFD26",
-      "title": "AGM-WFD26",
-      "status": "AGM01",
-      "eligibility": "Ag and Food Systems Workforce Development Grant",
-      "availDate": "Available",
-      "dueDate": "01/27/26  2:00PM",
+      "agency": "AGM01",
+      "title": "Ag and Food Systems Workforce Development Grant",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
+      "dueDate": "04/28/2026 3:00PM EDT",
       "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
@@ -17,9 +16,8 @@
       "title": "Round 20 Farmland Protection Implementation Grants",
       "status": "Available",
       "eligibility": "Governmental Entity, Not-For-Profit",
-      "availDate": "12/18/25  8:00AM",
-      "dueDate": "06/01/2026  4:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$1');",
+      "dueDate": "06/01/2026 4:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
@@ -28,53 +26,18 @@
       "title": "Farmland Protection Staff Capacity, Round 1",
       "status": "Available",
       "eligibility": "Governmental Entity, Not-For-Profit",
-      "availDate": "03/24/26 12:00PM",
-      "dueDate": "06/26/2026  4:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$2');",
+      "dueDate": "06/26/2026 4:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
-      "id": "EVT0000003",
-      "agency": "CFS01",
-      "title": "SOI 1234 Dolly Parton's Imagination Library",
-      "status": "Advertised Only - Not in SFS",
-      "eligibility": "Not-For-Profit",
-      "availDate": "03/05/26  3:02PM",
-      "dueDate": "04/30/2026  4:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$3');",
-      "source": "NYS"
-    },
-    {
-      "id": "EVT0000006",
-      "agency": "DCJ01",
-      "title": "Youth Development and Professional Opportunities",
-      "status": "Advertised Only - Not in SFS",
-      "eligibility": "Not-For-Profit",
-      "availDate": "02/25/26 12:00PM",
-      "dueDate": "04/22/2026 12:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$4');",
-      "source": "NYS"
-    },
-    {
-      "id": "EVT0000007",
-      "agency": "DCJ01",
-      "title": "Havens of Opportunity, Peace & Empowerment",
-      "status": "Advertised Only - Not in SFS",
-      "eligibility": "Not-For-Profit",
-      "availDate": "04/08/26  9:00AM",
-      "dueDate": "07/01/2026 12:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$5');",
-      "source": "NYS"
-    },
-    {
-      "id": "EVT0000008",
-      "agency": "DCJ01",
-      "title": "2026 Securing Communities Against Hate Crimes RFA",
-      "status": "Advertised Only - Not in SFS",
-      "eligibility": "Not-For-Profit",
-      "availDate": "04/15/26  9:00AM",
-      "dueDate": "07/08/2026 12:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$6');",
+      "id": "MWRR 2024",
+      "agency": "DEC01",
+      "title": "Municipal Waste Reduction and Rcycling. Prgrm. 24",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
+      "dueDate": "11/01/2027 3:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
@@ -83,9 +46,8 @@
       "title": "Drinking Water Fluoridation RFA",
       "status": "Advertised Only - Not in SFS",
       "eligibility": "For Profit, Governmental Entity, Not-For-Profit",
-      "availDate": "02/11/26  2:00PM",
-      "dueDate": "09/28/2028  4:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$10');",
+      "dueDate": "09/28/2028 4:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
@@ -94,9 +56,8 @@
       "title": "RFA#20760 Ending Epidemics Ed & Training Comp A",
       "status": "Available",
       "eligibility": "Governmental Entity, Not-For-Profit",
-      "availDate": "03/24/26  9:00AM",
-      "dueDate": "05/12/2026  4:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$11');",
+      "dueDate": "05/12/2026 4:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
@@ -105,9 +66,8 @@
       "title": "RFA#20760 Ending Epidemics Ed & Training Comp B",
       "status": "Available",
       "eligibility": "Governmental Entity, Not-For-Profit",
-      "availDate": "03/24/26  9:00AM",
-      "dueDate": "05/12/2026  4:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$12');",
+      "dueDate": "05/12/2026 4:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
@@ -116,9 +76,8 @@
       "title": "RFA#20760 Ending Epidemics Ed & Training Comp C",
       "status": "Available",
       "eligibility": "Governmental Entity, Not-For-Profit",
-      "availDate": "03/24/26  9:00AM",
-      "dueDate": "05/12/2026  4:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$13');",
+      "dueDate": "05/12/2026 4:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
@@ -127,9 +86,8 @@
       "title": "RFA#20760 Ending Epidemics Ed & Training Comp D",
       "status": "Available",
       "eligibility": "Governmental Entity, Not-For-Profit",
-      "availDate": "03/24/26  9:00AM",
-      "dueDate": "05/12/2026  4:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$14');",
+      "dueDate": "05/12/2026 4:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
@@ -138,9 +96,8 @@
       "title": "RFA#20760 Ending Epidemics Ed & Training Comp E",
       "status": "Available",
       "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
-      "availDate": "03/24/26  9:00AM",
-      "dueDate": "05/12/2026  4:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$15');",
+      "dueDate": "05/12/2026 4:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
@@ -149,9 +106,8 @@
       "title": "RFA #20662 - HE Training Center of Expertise",
       "status": "Available",
       "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
-      "availDate": "03/19/26 11:00AM",
-      "dueDate": "05/07/2026  4:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$16');",
+      "dueDate": "05/07/2026 4:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
@@ -160,9 +116,8 @@
       "title": "RFA#20706: Consumer Assistance Navigator Program",
       "status": "Available",
       "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
-      "availDate": "03/26/26  9:00AM",
-      "dueDate": "05/14/2026  4:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$17');",
+      "dueDate": "05/14/2026 4:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
@@ -171,9 +126,8 @@
       "title": "RFA 20733 New Investigators in SCI",
       "status": "Available",
       "eligibility": "Governmental Entity, Not-For-Profit",
-      "availDate": "03/18/26  9:00AM",
-      "dueDate": "06/10/2026  4:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$18');",
+      "dueDate": "06/10/2026 4:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
@@ -182,45 +136,21 @@
       "title": "NYSDOL OJET GCEW-EV",
       "status": "Available",
       "eligibility": "For Profit, Governmental Entity, Not-For-Profit",
-      "availDate": "04/10/26  9:00AM",
-      "dueDate": "06/05/2026  4:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$19');",
+      "dueDate": "06/05/2026 4:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
-      "id": "EVT0000001",
-      "agency": "JUS01",
-      "title": "JUS01-TRAID-2026",
-      "status": "Advertised Only - Not in SFS",
-      "eligibility": "Not-For-Profit",
-      "availDate": "04/01/26 10:04AM",
-      "dueDate": "05/01/2026  6:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$20');",
-      "source": "NYS"
-    },
-    {
-      "id": "MH253022",
-      "agency": "OMH01",
-      "title": "Community-Based Diversion Programs",
+      "id": "NNDS 2027",
+      "agency": "TDA01",
+      "title": "Nutrition Navigators Direct Services",
       "status": "Available",
-      "eligibility": "Not-For-Profit",
-      "availDate": "03/10/26  8:00AM",
-      "dueDate": "05/13/2026  2:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$22');",
-      "source": "NYS"
-    },
-    {
-      "id": "MH253024",
-      "agency": "OMH01",
-      "title": "Aging in Place Pilot - Western NY",
-      "status": "Available",
-      "eligibility": "Not-For-Profit",
-      "availDate": "04/15/26  8:00AM",
-      "dueDate": "06/25/2026  2:00PM EDT",
-      "link": "javascript:submitAction_win0(document.win0,'AUC_NAME_LNK$23');",
+      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
+      "dueDate": "04/24/2026 2:00PM EDT",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     }
   ],
-  "fetched": "2026-04-18T04:22:12.947Z",
-  "count": 20
+  "fetched": "2026-04-18T04:48:51.272Z",
+  "count": 15
 }
