@@ -1043,7 +1043,7 @@ document.addEventListener('keydown', e => {
 // ── NYS GRANTS ────────────────────────────────────────────────
 async function fetchNYSGrants() {
   try {
-    const res = await fetch(`${window.location.origin.includes("github.io") || true ? "" : ""}/nys-grants.json?_=${Date.now()}`);
+    const res = await fetch("./nys-grants.json?_=" + Date.now());
     if (!res.ok) return;
     const data = await res.json();
     state.nysGrants = data.grants || [];
