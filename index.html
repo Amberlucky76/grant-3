@@ -1072,8 +1072,9 @@ function renderNYSCard(g) {
       <div class="card-title">${escHtml(g.title)}</div>
       <div class="card-agency">${escHtml(g.agency || "New York State")}</div>
       <div class="card-mid">
-        ${g.eligibility ? `<span class="card-category" style="font-size:10px;">${escHtml(g.eligibility.slice(0,40))}</span>` : "<span></span>"}
+        ${g.eligibility ? `<span class="card-category" style="font-size:10px;">${escHtml(g.eligibility.slice(0,35))}</span>` : "<span></span>"}
       </div>
+      ${g.dueDate ? `<span class="deadline-row ${g.dueDate ? 'urgent' : ''}">⏱ Due: ${escHtml(g.dueDate)}</span>` : ''}
       <div class="card-bottom">
         <div class="card-id">ID · ${escHtml(g.id)}</div>
         <a class="view-btn" href="${escHtml(g.link)}" target="_blank" rel="noopener"
