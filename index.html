@@ -742,29 +742,46 @@ function renderSplitList(){
 }
 
 async function selectGrant(id, idx) {
-  sp.selectedId=id;
-  document.querySelectorAll('.split-item').forEach((el,i)=>el.classList.toggle('active',i===idx));
-  const g=sp.grants[idx]||sp.grants.find(x=>x.id===id)||{id};
-  // show skeleton
-  const panel=document.getElementById('split-detail');
-  panel.innerHTML=`
-    <div class="detail-tags"><span class="detail-tag federal">${esc((g.agencyCode||'FEDERAL').split('-')[0])}</span><span class="detail-tag">${esc(g.oppStatus||'posted')}</span></div>
-    <div class="detail-title">${esc(g.title||'Grant Details')}</div>
-    <div class="detail-subtitle">${esc(g.agencyName||'')} · ID ${esc(String(g.number||g.id))}</div>
-    <div class="detail-actions">
-      <a class="btn-primary" href="https://grants.gov/search-results-detail/${esc(String(id))}" target="_blank">Start application →</a>
-      <button class="btn-action" onclick="toggleSplitSave('${esc(String(id))}',this)">♡ Save to shortlist</button>
-      <a class="btn-action" href="https://grants.gov/search-results-detail/${esc(String(id))}" target="_blank">↗ Share</a>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;padding:20px 0;color:var(--ink-faint);">
-      <div class="loading-spinner" style="width:18px;height:18px;border-width:2px;"></div>
-      <span style="font-size:12px;font-family:'IBM Plex Mono',monospace;">Loading details…</span>
-    </div>`;
+  sp.selectedId = id;
+  document.querySelectorAll('.split-item').forEach((el, i) => el.classList.toggle('active', i === idx));
+  const g = sp.grants[idx] || sp.grants.find(x => x.id === id) || { id };
+  renderDetailSkeleton(g);
+
+  // Try simpler API first (has summary field), fall back to legacy
   try {
-    const r=await fetch(`https://api.grants.gov/v1/api/fetchOpportunity?oppId=${id}`);
-    const d=await r.json();
-    renderDetail(g, d.data?.opportunityDetails||{});
-  } catch(e){ renderDetail(g,{}); }
+    const r = await fetch(`https://api.simpler.grants.gov/v1/opportunities/${id}`);
+    const d = await r.json();
+    const opp = d.data || {};
+    // Map simpler API fields to your renderDetail expectations
+    const mapped = {
+      opportunityTitle: opp.opportunity_title,
+      agencyName: opp.agency_name,
+      agencyCode: opp.agency_code,
+      opportunityNumber: opp.opportunity_number,
+      opportunityStatus: opp.opportunity_status,
+      postDate: opp.post_date,
+      closeDate: opp.close_date,
+      cfdaNumbers: opp.cfda_numbers,
+      awardCeiling: opp.award_ceiling,
+      awardFloor: opp.award_floor,
+      expectedNumberOfAwards: opp.expected_number_of_awards,
+      performanceLength: opp.performance_length,
+      costSharingOrMatchingRequirement: opp.is_cost_sharing ? 'Y' : 'N',
+      eligibleApplicants: opp.applicant_types,
+      fundingCategories: opp.funding_categories,
+      synopsis: { synopsis: opp.summary || '' },  // ← this is the key field
+    };
+    renderDetail(g, mapped);
+  } catch (e) {
+    // fall back to legacy API
+    try {
+      const r2 = await fetch(`https://api.grants.gov/v1/api/fetchOpportunity?oppId=${id}`);
+      const d2 = await r2.json();
+      renderDetail(g, d2.data?.opportunityDetails || {});
+    } catch (e2) {
+      renderDetail(g, {});
+    }
+  }
 }
 
 function renderDetail(g, opp) {
