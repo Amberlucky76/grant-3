@@ -164,3 +164,16 @@
   "fetched": "2026-04-21T02:55:02.388Z",
   "count": 16
 }
+{
+  "grants": [
+    {
+      "id": "nys-1776747217302",
+      "title": "NY PLAYS: Places for Learning, Activity, and Youth Socialization",
+      "agency": "New York State Office of Parks, Recreation and Historic Preservation (“NYS OPRHP”) and administered by the Dormitory Authority of the State of New York (“DASNY”).",
+      "status": "Available",
+      "dueDate": "6/15/2026",
+      "description": "NY PLAYS Grants can be used to fund the acquisition, design, construction, major\nrenovation, and equipping of a Playground, along with other related Capital Costs\nnecessary to effectuate the NY PLAYS Initiative.",
+      "url": "https://www.dasny.org/PLAYS"
+    }
+  ]
+}
