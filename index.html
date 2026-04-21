@@ -41,7 +41,7 @@
     display: flex;
     align-items: center;
     height: 44px;
-    gap: 16px;
+    gap: 0;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -53,6 +53,7 @@
     font-size: 13px;
     color: var(--ink);
     flex-shrink: 0;
+    margin-right: 4px;
   }
   .brand-icon {
     width: 24px; height: 24px;
@@ -63,6 +64,30 @@
     font-size: 12px;
     font-weight: 700;
   }
+
+  /* ── NAV TABS ── */
+  .nav-tabs {
+    display: flex;
+    gap: 0;
+    margin-right: 16px;
+  }
+  .nav-tab {
+    padding: 0 14px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s;
+    white-space: nowrap;
+    font-family: 'IBM Plex Sans', sans-serif;
+    user-select: none;
+  }
+  .nav-tab:hover { color: var(--ink-mid); }
+  .nav-tab.active { color: var(--ink); border-bottom-color: var(--ochre); font-weight: 500; }
+
   .topbar-search {
     flex: 1;
     max-width: 420px;
@@ -411,6 +436,23 @@
   .page-btn.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
   .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
+  /* ── PLACEHOLDER TABS ── */
+  .tab-placeholder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+    color: var(--ink-faint);
+    gap: 10px;
+    min-height: calc(100vh - 44px);
+  }
+  .tab-placeholder-icon { font-size: 36px; margin-bottom: 4px; }
+  .tab-placeholder-title { font-size: 15px; color: var(--ink-mid); font-weight: 500; font-family: 'Playfair Display', serif; }
+  .tab-placeholder-sub { font-size: 12px; color: var(--ink-faint); max-width: 320px; line-height: 1.6; }
+
   /* ── MODAL ── */
   .modal-overlay {
     display: none;
@@ -531,124 +573,121 @@
   </div>
 </header>
 
-/* ── NAV TABS ── */
-.nav-tabs {
-  display: flex;
-  gap: 0;
-  margin-left: 12px;
-}
-.nav-tab {
-  padding: 0 16px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  font-size: 12.5px;
-  color: var(--ink-faint);
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: color 0.15s;
-  white-space: nowrap;
-  font-family: 'IBM Plex Sans', sans-serif;
-}
-.nav-tab:hover { color: var(--ink-mid); }
-.nav-tab.active { color: var(--ink); border-bottom-color: var(--ochre); font-weight: 500; }
-<!-- LAYOUT -->
-<div class="layout">
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-
-    <div class="filter-group">
-      <h4>Category</h4>
-      <select class="select-filter" id="filter-category">
-        <option value="">All categories</option>
-        <option value="AG">Agriculture</option>
-        <option value="AR">Arts</option>
-        <option value="BC">Business & Commerce</option>
-        <option value="CD">Community Development</option>
-        <option value="CP">Consumer Protection</option>
-        <option value="DPR">Disaster Prevention</option>
-        <option value="ED">Education</option>
-        <option value="ELT">Employment</option>
-        <option value="EN">Energy</option>
-        <option value="ENV">Environment</option>
-        <option value="FN">Food & Nutrition</option>
-        <option value="HL">Health</option>
-        <option value="HO">Housing</option>
-        <option value="HU">Humanities</option>
-        <option value="IIJ">Information Technology</option>
-        <option value="IS">Income Security</option>
-        <option value="LJL">Law & Justice</option>
-        <option value="NR">Natural Resources</option>
-        <option value="OZ">Opportunity Zones</option>
-        <option value="RD">Regional Development</option>
-        <option value="ST">Science & Technology</option>
-        <option value="T">Transportation</option>
-        <option value="ACA">Affordable Care Act</option>
-        <option value="RA">Recovery Act</option>
-        <option value="O">Other</option>
-      </select>
-    </div>
-
-    <div class="filter-group">
-      <h4>Status</h4>
-      <div class="filter-item"><input type="checkbox" id="s-posted" checked><label for="s-posted">Posted / Open</label></div>
-      <div class="filter-item"><input type="checkbox" id="s-forecasted"><label for="s-forecasted">Forecasted</label></div>
-      <div class="filter-item"><input type="checkbox" id="s-closed"><label for="s-closed">Closed</label></div>
-    </div>
-
-    <div class="filter-group">
-      <h4>Eligibility</h4>
-      <select class="select-filter" id="filter-eligibility">
-        <option value="01|02|04|08" selected>Local government (all)</option>
-        <option value="">Any / unrestricted</option>
-        <option value="00">State governments</option>
-        <option value="01">County governments</option>
-        <option value="02">City or township governments</option>
-        <option value="04">Special district governments</option>
-        <option value="05">Independent school districts</option>
-        <option value="06">Public &amp; state universities</option>
-        <option value="07">Native American tribal govts</option>
-        <option value="08">Public housing authorities</option>
-        <option value="22">Nonprofits (501c3)</option>
-        <option value="99">Unrestricted</option>
-      </select>
-    </div>
-
-    <div class="filter-group">
-      <h4>Sort</h4>
-      <select class="select-filter" id="filter-sort">
-        <option value="openDate|desc">Newest first</option>
-        <option value="closeDate|asc">Deadline soonest</option>
-        <option value="closeDate|desc">Deadline latest</option>
-        <option value="openDate|asc">Oldest first</option>
-      </select>
-    </div>
-
-    <button class="apply-filters-btn" onclick="applyFilters()">Apply filters</button>
-
-  </aside>
-
-  <!-- MAIN -->
-  <main class="main">
-    <div class="toolbar">
-      <span id="active-tags"></span>
-      <div class="toolbar-right">
-        <span style="font-size:11px;color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;">
-          Source: <strong style="color:var(--ink-mid)">Grants.gov + NYS SFS</strong>
-        </span>
+<!-- BROWSE TAB (default) -->
+<div id="tab-browse">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="filter-group">
+        <h4>Category</h4>
+        <select class="select-filter" id="filter-category">
+          <option value="">All categories</option>
+          <option value="AG">Agriculture</option>
+          <option value="AR">Arts</option>
+          <option value="BC">Business &amp; Commerce</option>
+          <option value="CD">Community Development</option>
+          <option value="CP">Consumer Protection</option>
+          <option value="DPR">Disaster Prevention</option>
+          <option value="ED">Education</option>
+          <option value="ELT">Employment</option>
+          <option value="EN">Energy</option>
+          <option value="ENV">Environment</option>
+          <option value="FN">Food &amp; Nutrition</option>
+          <option value="HL">Health</option>
+          <option value="HO">Housing</option>
+          <option value="HU">Humanities</option>
+          <option value="IIJ">Information Technology</option>
+          <option value="IS">Income Security</option>
+          <option value="LJL">Law &amp; Justice</option>
+          <option value="NR">Natural Resources</option>
+          <option value="OZ">Opportunity Zones</option>
+          <option value="RD">Regional Development</option>
+          <option value="ST">Science &amp; Technology</option>
+          <option value="T">Transportation</option>
+          <option value="ACA">Affordable Care Act</option>
+          <option value="RA">Recovery Act</option>
+          <option value="O">Other</option>
+        </select>
       </div>
-    </div>
-
-    <div class="grants-grid" id="grants-grid">
-      <div class="loading-state">
-        <div class="loading-spinner"></div>
-        <div class="loading-label">Fetching from Grants.gov…</div>
+      <div class="filter-group">
+        <h4>Status</h4>
+        <div class="filter-item"><input type="checkbox" id="s-posted" checked><label for="s-posted">Posted / Open</label></div>
+        <div class="filter-item"><input type="checkbox" id="s-forecasted"><label for="s-forecasted">Forecasted</label></div>
+        <div class="filter-item"><input type="checkbox" id="s-closed"><label for="s-closed">Closed</label></div>
       </div>
-    </div>
+      <div class="filter-group">
+        <h4>Eligibility</h4>
+        <select class="select-filter" id="filter-eligibility">
+          <option value="01|02|04|08" selected>Local government (all)</option>
+          <option value="">Any / unrestricted</option>
+          <option value="00">State governments</option>
+          <option value="01">County governments</option>
+          <option value="02">City or township governments</option>
+          <option value="04">Special district governments</option>
+          <option value="05">Independent school districts</option>
+          <option value="06">Public &amp; state universities</option>
+          <option value="07">Native American tribal govts</option>
+          <option value="08">Public housing authorities</option>
+          <option value="22">Nonprofits (501c3)</option>
+          <option value="99">Unrestricted</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <h4>Sort</h4>
+        <select class="select-filter" id="filter-sort">
+          <option value="openDate|desc">Newest first</option>
+          <option value="closeDate|asc">Deadline soonest</option>
+          <option value="closeDate|desc">Deadline latest</option>
+          <option value="openDate|asc">Oldest first</option>
+        </select>
+      </div>
+      <button class="apply-filters-btn" onclick="applyFilters()">Apply filters</button>
+    </aside>
 
-    <div class="pagination" id="pagination"></div>
-  </main>
+    <main class="main">
+      <div class="toolbar">
+        <span id="active-tags"></span>
+        <div class="toolbar-right">
+          <span style="font-size:11px;color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;">
+            Source: <strong style="color:var(--ink-mid)">Grants.gov + NYS SFS</strong>
+          </span>
+        </div>
+      </div>
+      <div class="grants-grid" id="grants-grid">
+        <div class="loading-state">
+          <div class="loading-spinner"></div>
+          <div class="loading-label">Fetching from Grants.gov…</div>
+        </div>
+      </div>
+      <div class="pagination" id="pagination"></div>
+    </main>
+  </div>
+</div>
+
+<!-- PIPELINE TAB -->
+<div id="tab-pipeline" style="display:none;">
+  <div class="tab-placeholder">
+    <div class="tab-placeholder-icon">📋</div>
+    <div class="tab-placeholder-title">Pipeline</div>
+    <div class="tab-placeholder-sub">Grants you're actively tracking will appear here. Save grants from Browse to add them to your pipeline.</div>
+  </div>
+</div>
+
+<!-- APPLIED TAB -->
+<div id="tab-applied" style="display:none;">
+  <div class="tab-placeholder">
+    <div class="tab-placeholder-icon">✉️</div>
+    <div class="tab-placeholder-title">Applied</div>
+    <div class="tab-placeholder-sub">Grants you've submitted applications for will appear here.</div>
+  </div>
+</div>
+
+<!-- REPORTS TAB -->
+<div id="tab-reports" style="display:none;">
+  <div class="tab-placeholder">
+    <div class="tab-placeholder-icon">📊</div>
+    <div class="tab-placeholder-title">Reports</div>
+    <div class="tab-placeholder-sub">Grant activity reports and analytics will appear here.</div>
+  </div>
 </div>
 
 <!-- MODAL -->
@@ -678,6 +717,20 @@ let state = {
   loading: false,
 };
 
+// ── TAB SWITCHING ─────────────────────────────────────────────
+function switchTab(tab, el) {
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-browse').style.display = tab === 'browse' ? '' : 'none';
+  document.getElementById('tab-pipeline').style.display = tab === 'pipeline' ? '' : 'none';
+  document.getElementById('tab-applied').style.display = tab === 'applied' ? '' : 'none';
+  document.getElementById('tab-reports').style.display = tab === 'reports' ? '' : 'none';
+
+  // Hide search bar on non-browse tabs
+  document.getElementById('keyword-input').style.display = tab === 'browse' ? '' : 'none';
+  document.getElementById('result-summary').style.display = tab === 'browse' ? '' : 'none';
+}
+
 // ── CATEGORY LABELS ────────────────────────────────────────────
 const CAT_LABELS = {
   AG:'Agriculture', AR:'Arts', BC:'Business & Commerce', CD:'Community Development',
@@ -693,7 +746,6 @@ const CAT_LABELS = {
 async function fetchGrants() {
   if (state.loading) return;
   state.loading = true;
-
   showLoading();
 
   const statuses = state.statuses.join('|') || 'posted';
@@ -719,13 +771,11 @@ async function fetchGrants() {
 
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-
     if (data.errorcode !== 0) throw new Error(data.msg || 'API error');
 
     let grants = data.data.oppHits || [];
-    if (state.eligibility === '01|02|04|08') {
-      grants = filterLocalGov(grants);
-    }
+    if (state.eligibility === '01|02|04|08') grants = filterLocalGov(grants);
+
     state.grants = grants;
     state.totalHits = data.data.hitCount || 0;
     state.loading = false;
@@ -772,7 +822,7 @@ function renderGrants() {
     return;
   }
 
-  let html = "";
+  let html = '';
 
   if (hasNYS) {
     html += `
@@ -784,16 +834,14 @@ function renderGrants() {
           Browse all on NYS SFS ↗
         </a>
       </div>`;
-    html += state.nysGrants.map(g => renderNYSCard(g)).join("");
+    html += state.nysGrants.map(g => renderNYSCard(g)).join('');
     html += `
       <div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--cream-border);margin:8px 0 2px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink-light);">
         🇺🇸 Federal Grants (Grants.gov)
       </div>`;
   }
 
-  if (hasFed) {
-    html += state.grants.map(g => renderCard(g)).join("");
-  }
+  if (hasFed) html += state.grants.map(g => renderCard(g)).join('');
 
   grid.innerHTML = html;
 }
@@ -818,10 +866,7 @@ function renderCard(g) {
     deadlineHtml = `<span class="deadline-row ${cls}">⏱ ${label}</span>`;
   }
 
-  const catLabel = g.fundingCategories
-    ? (CAT_LABELS[g.fundingCategories] || g.fundingCategories)
-    : '';
-
+  const catLabel = g.fundingCategories ? (CAT_LABELS[g.fundingCategories] || g.fundingCategories) : '';
   const agencyShort = (g.agencyName || g.agencyCode || '').slice(0, 60);
 
   return `
@@ -857,28 +902,27 @@ function renderCard(g) {
 
 // ── NYS CARD ───────────────────────────────────────────────────
 function renderNYSCard(g) {
-  const saved = state.saved.has("nys-" + g.id);
-  const statusClass = (g.status || "").toLowerCase().includes("available") ? "tag-posted" : "tag-closed";
+  const saved = state.saved.has('nys-' + g.id);
+  const statusClass = (g.status || '').toLowerCase().includes('available') ? 'tag-posted' : 'tag-closed';
 
   return `
     <div class="grant-card">
       <div class="card-top">
         <div style="display:flex;gap:5px;flex-wrap:wrap;">
           <span class="tag" style="background:var(--nys-blue);color:#f5f0e8;">NYS</span>
-          <span class="tag ${statusClass}">${escHtml(g.status || "Available")}</span>
+          <span class="tag ${statusClass}">${escHtml(g.status || 'Available')}</span>
         </div>
-        <button class="card-heart ${saved ? "saved" : ""}"
+        <button class="card-heart ${saved ? 'saved' : ''}"
           onclick="event.stopPropagation(); toggleSave('nys-${g.id}', this)">
-          ${saved ? "♥" : "♡"}
+          ${saved ? '♥' : '♡'}
         </button>
       </div>
       <div class="card-title">${escHtml(g.title)}</div>
-      <div class="card-agency">${escHtml(g.agency || "New York State")}</div>
+      <div class="card-agency">${escHtml(g.agency || 'New York State')}</div>
       <div class="card-mid">
-        ${g.eligibility ? `<span class="card-category" style="font-size:10px;">${escHtml(g.eligibility.slice(0,40))}</span>` : "<span></span>"}
+        ${g.eligibility ? `<span class="card-category" style="font-size:10px;">${escHtml(g.eligibility.slice(0,40))}</span>` : '<span></span>'}
       </div>
       ${g.dueDate ? `<span class="deadline-row urgent">⏱ Due: ${escHtml(g.dueDate)}</span>` : ''}
-
       <div class="nys-id-strip">
         <div>
           <div class="nys-id-label">Event ID — paste this into NYS search</div>
@@ -888,7 +932,6 @@ function renderNYSCard(g) {
           📋 Copy
         </button>
       </div>
-
       <div class="card-bottom">
         <div></div>
         <a class="nys-search-btn"
@@ -940,7 +983,6 @@ async function openModal(id) {
       </div>
       <div class="modal-title">${escHtml(title)}</div>
       <div class="modal-agency">${escHtml(agency)} · ID ${num}</div>
-
       <div class="modal-grid">
         <div class="modal-section">
           <div class="modal-section-title">At a glance</div>
@@ -954,7 +996,6 @@ async function openModal(id) {
           <div class="modal-row"><span class="modal-key">Applicant types</span><span class="modal-val" style="font-size:11px;">${formatEligibility(opp.eligibleApplicants)}</span></div>
         </div>
       </div>
-
       ${desc ? `
         <div class="modal-section" style="margin-bottom:14px;">
           <div class="modal-section-title">Description</div>
@@ -962,7 +1003,6 @@ async function openModal(id) {
             ${escHtml(desc).replace(/\n/g,'<br>')}
           </div>
         </div>` : ''}
-
       <div class="modal-actions">
         <a class="btn-primary" href="https://grants.gov/search-results-detail/${id}" target="_blank" rel="noopener">
           View on Grants.gov →
@@ -997,10 +1037,10 @@ function closeModalDirect() {
 function formatEligibility(arr) {
   if (!arr || !arr.length) return '—';
   const labels = {
-    '00':'State govts', '01':'County govts', '02':'City/township govts',
-    '04':'Special districts', '05':'School districts', '06':'Public universities',
-    '07':'Tribal govts', '08':'Housing authorities', '22':'Nonprofits (501c3)',
-    '23':'Nonprofits', '25':'For-profit orgs', '99':'Unrestricted'
+    '00':'State govts','01':'County govts','02':'City/township govts',
+    '04':'Special districts','05':'School districts','06':'Public universities',
+    '07':'Tribal govts','08':'Housing authorities','22':'Nonprofits (501c3)',
+    '23':'Nonprofits','25':'For-profit orgs','99':'Unrestricted'
   };
   return arr.map(e => labels[e] || e).join(', ');
 }
@@ -1118,7 +1158,12 @@ function renderActiveTags() {
   const tags = [];
   if (state.keyword) tags.push(`keyword: "${state.keyword}"`);
   if (state.category) tags.push(`category: ${CAT_LABELS[state.category] || state.category}`);
-  const eligLabels = {'01|02|04|08':'Local government','00':'State govts','01':'County govts','02':'City govts','04':'Special districts','05':'School districts','06':'Public universities','07':'Tribal govts','08':'Housing authorities','22':'Nonprofits','99':'Unrestricted'};
+  const eligLabels = {
+    '01|02|04|08':'Local government','00':'State govts','01':'County govts',
+    '02':'City govts','04':'Special districts','05':'School districts',
+    '06':'Public universities','07':'Tribal govts','08':'Housing authorities',
+    '22':'Nonprofits','99':'Unrestricted'
+  };
   if (state.eligibility) tags.push('eligibility: ' + (eligLabels[state.eligibility] || state.eligibility));
   el.innerHTML = tags.map(t => `<span class="active-tag">${t}</span>`).join('') + ' ';
 }
@@ -1175,78 +1220,17 @@ document.addEventListener('keydown', e => {
 // ── NYS GRANTS ────────────────────────────────────────────────
 async function fetchNYSGrants() {
   try {
-    const res = await fetch("./nys-grants.json?_=" + Date.now());
+    const res = await fetch('./nys-grants.json?_=' + Date.now());
     if (!res.ok) return;
     const data = await res.json();
     state.nysGrants = data.grants || [];
     renderGrants();
     console.log(`Loaded ${state.nysGrants.length} NYS grants`);
   } catch (e) {
-    console.log("NYS grants not available:", e.message);
+    console.log('NYS grants not available:', e.message);
   }
 }
 
-// ── TAB SWITCHING ─────────────────────────────────────────────
-function switchTab(tab, el) {
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-
-  const main = document.querySelector('.main');
-
-  if (tab === 'browse') {
-    document.querySelector('.layout').style.display = 'flex';
-    document.querySelector('.sidebar').style.display = '';
-    main.innerHTML = `
-      <div class="toolbar">
-        <span id="active-tags"></span>
-        <div class="toolbar-right">
-          <span style="font-size:11px;color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;">
-            Source: <strong style="color:var(--ink-mid)">Grants.gov + NYS SFS</strong>
-          </span>
-        </div>
-      </div>
-      <div class="grants-grid" id="grants-grid">
-        <div class="loading-state">
-          <div class="loading-spinner"></div>
-          <div class="loading-label">Fetching from Grants.gov…</div>
-        </div>
-      </div>
-      <div class="pagination" id="pagination"></div>`;
-    document.getElementById('keyword-input').addEventListener('keydown', e => {
-      if (e.key === 'Enter') applyFilters();
-    });
-    state.page = 0;
-    fetchGrants();
-    fetchNYSGrants();
-
-  } else if (tab === 'pipeline') {
-    document.querySelector('.sidebar').style.display = 'none';
-    main.innerHTML = `
-      <div style="padding: 60px 20px; text-align: center; color: var(--ink-faint);">
-        <div style="font-size: 32px; margin-bottom: 12px;">📋</div>
-        <div style="font-size: 14px; color: var(--ink-mid); font-weight: 500; margin-bottom: 6px;">Pipeline</div>
-        <div style="font-size: 12px;">Grants you're actively tracking will appear here.</div>
-      </div>`;
-
-  } else if (tab === 'applied') {
-    document.querySelector('.sidebar').style.display = 'none';
-    main.innerHTML = `
-      <div style="padding: 60px 20px; text-align: center; color: var(--ink-faint);">
-        <div style="font-size: 32px; margin-bottom: 12px;">✉️</div>
-        <div style="font-size: 14px; color: var(--ink-mid); font-weight: 500; margin-bottom: 6px;">Applied</div>
-        <div style="font-size: 12px;">Grants you've submitted applications for will appear here.</div>
-      </div>`;
-
-  } else if (tab === 'reports') {
-    document.querySelector('.sidebar').style.display = 'none';
-    main.innerHTML = `
-      <div style="padding: 60px 20px; text-align: center; color: var(--ink-faint);">
-        <div style="font-size: 32px; margin-bottom: 12px;">📊</div>
-        <div style="font-size: 14px; color: var(--ink-mid); font-weight: 500; margin-bottom: 6px;">Reports</div>
-        <div style="font-size: 12px;">Grant activity reports and analytics will appear here.</div>
-      </div>`;
-  }
-}
 // ── INIT ──────────────────────────────────────────────────────
 fetchGrants();
 fetchNYSGrants();
