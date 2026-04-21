@@ -775,7 +775,7 @@ function renderDetail(g, opp) {
   const openDate=opp.postDate||g.openDate||'';
   const closeDate=opp.closeDate||g.closeDate||'';
   const cfda=opp.cfdaNumbers?.join(', ')||(g.alnist||[]).join(', ')||'—';
-  const desc=opp.synopsis?.synopsis||'';
+  const desc = opp.synopsis?.synopsis || opp.summary || opp.description || '';
   const cats=opp.fundingCategories?.map(c=>CAT[c]||c)||[];
   const ceiling=opp.awardCeiling?'$'+parseInt(opp.awardCeiling).toLocaleString():g.awardCeiling?'$'+parseInt(g.awardCeiling).toLocaleString():'—';
   const floor=opp.awardFloor?'$'+parseInt(opp.awardFloor).toLocaleString():'—';
