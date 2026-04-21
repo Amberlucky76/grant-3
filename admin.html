@@ -488,9 +488,10 @@ function addGrant() {
   if (!title) { showToast('⚠ Title is required'); return; }
 
   const grant = {
-    id: 'nys-' + Date.now(),
-    title,
-    agency: document.getElementById('f-agency').value.trim() || 'New York State',
+  id: 'nys-' + Date.now(),
+  manual: true,   
+  title,
+  agency: document.getElementById('f-agency').value.trim() || 'New York State',
     status: document.getElementById('f-status').value,
     award: document.getElementById('f-award').value.trim(),
     dueDate: document.getElementById('f-due').value.trim(),
