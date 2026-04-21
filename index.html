@@ -519,12 +519,39 @@
     <div class="brand-icon">G</div>
     Grants
   </div>
+  <nav class="nav-tabs">
+    <div class="nav-tab active" onclick="switchTab('browse', this)">Browse</div>
+    <div class="nav-tab" onclick="switchTab('pipeline', this)">Pipeline</div>
+    <div class="nav-tab" onclick="switchTab('applied', this)">Applied</div>
+    <div class="nav-tab" onclick="switchTab('reports', this)">Reports</div>
+  </nav>
   <input class="topbar-search" id="keyword-input" type="text" placeholder="Search grants… (e.g. housing, parks, transit)" value="">
   <div class="topbar-right">
     <span class="result-summary" id="result-summary">Loading…</span>
   </div>
 </header>
 
+/* ── NAV TABS ── */
+.nav-tabs {
+  display: flex;
+  gap: 0;
+  margin-left: 12px;
+}
+.nav-tab {
+  padding: 0 16px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s;
+  white-space: nowrap;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+.nav-tab:hover { color: var(--ink-mid); }
+.nav-tab.active { color: var(--ink); border-bottom-color: var(--ochre); font-weight: 500; }
 <!-- LAYOUT -->
 <div class="layout">
 
@@ -1159,6 +1186,67 @@ async function fetchNYSGrants() {
   }
 }
 
+// ── TAB SWITCHING ─────────────────────────────────────────────
+function switchTab(tab, el) {
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+
+  const main = document.querySelector('.main');
+
+  if (tab === 'browse') {
+    document.querySelector('.layout').style.display = 'flex';
+    document.querySelector('.sidebar').style.display = '';
+    main.innerHTML = `
+      <div class="toolbar">
+        <span id="active-tags"></span>
+        <div class="toolbar-right">
+          <span style="font-size:11px;color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;">
+            Source: <strong style="color:var(--ink-mid)">Grants.gov + NYS SFS</strong>
+          </span>
+        </div>
+      </div>
+      <div class="grants-grid" id="grants-grid">
+        <div class="loading-state">
+          <div class="loading-spinner"></div>
+          <div class="loading-label">Fetching from Grants.gov…</div>
+        </div>
+      </div>
+      <div class="pagination" id="pagination"></div>`;
+    document.getElementById('keyword-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') applyFilters();
+    });
+    state.page = 0;
+    fetchGrants();
+    fetchNYSGrants();
+
+  } else if (tab === 'pipeline') {
+    document.querySelector('.sidebar').style.display = 'none';
+    main.innerHTML = `
+      <div style="padding: 60px 20px; text-align: center; color: var(--ink-faint);">
+        <div style="font-size: 32px; margin-bottom: 12px;">📋</div>
+        <div style="font-size: 14px; color: var(--ink-mid); font-weight: 500; margin-bottom: 6px;">Pipeline</div>
+        <div style="font-size: 12px;">Grants you're actively tracking will appear here.</div>
+      </div>`;
+
+  } else if (tab === 'applied') {
+    document.querySelector('.sidebar').style.display = 'none';
+    main.innerHTML = `
+      <div style="padding: 60px 20px; text-align: center; color: var(--ink-faint);">
+        <div style="font-size: 32px; margin-bottom: 12px;">✉️</div>
+        <div style="font-size: 14px; color: var(--ink-mid); font-weight: 500; margin-bottom: 6px;">Applied</div>
+        <div style="font-size: 12px;">Grants you've submitted applications for will appear here.</div>
+      </div>`;
+
+  } else if (tab === 'reports') {
+    document.querySelector('.sidebar').style.display = 'none';
+    main.innerHTML = `
+      <div style="padding: 60px 20px; text-align: center; color: var(--ink-faint);">
+        <div style="font-size: 32px; margin-bottom: 12px;">📊</div>
+        <div style="font-size: 14px; color: var(--ink-mid); font-weight: 500; margin-bottom: 6px;">Reports</div>
+        <div style="font-size: 12px;">Grant activity reports and analytics will appear here.</div>
+      </div>`;
+  }
+}
 // ── INIT ──────────────────────────────────────────────────────
 fetchGrants();
 fetchNYSGrants();
