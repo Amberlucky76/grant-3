@@ -761,10 +761,9 @@ async function selectGrant(id, idx) {
       <span style="font-size:12px;font-family:'IBM Plex Mono',monospace;">Loading details…</span>
     </div>`;
   try {
-    const r=await fetch(`https://api.grants.gov/v1/api/fetchOpportunity?oppId=${id}`);
-    const d=await r.json();
-    renderDetail(g, d.data?.opportunityDetails||{});
-  } catch(e){ renderDetail(g,{}); }
+  const r = await fetch(`https://young-base-f33b.amberdlucky.workers.dev/opportunity?id=${id}`);
+  const opp = await r.json();
+  renderDetail(g, opp);
 }
 
 function renderDetail(g, opp) {
