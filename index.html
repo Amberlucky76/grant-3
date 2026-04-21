@@ -785,10 +785,11 @@ function renderGrants() {
   const hasNYS = state.nysGrants.length>0;
   const allManual = [...(state.jsonManualGrants||[]), ...state.manualGrants];
   const hasManual = allManual.length>0;
-  if (!hasFed && !hasNYS && !hasManual) {
+  if (!hasFed && !hasNYS && !hasManual && !state.loading) {
     grid.innerHTML=`<div class="empty-state"><div style="font-size:28px;">🔍</div><div style="font-size:13px;color:var(--text-mid);">No grants found.</div></div>`;
     return;
   }
+  if (!hasNYS && !hasManual && state.loading) return;
   let html = '';
 
   // Manually added grants section
@@ -986,7 +987,7 @@ function showError(msg){document.getElementById('grants-grid').innerHTML=`<div c
 
 // ── NYS ───────────────────────────────────────────────────────
 async function fetchNYSGrants(){
-  try{const r=await fetch('./nys-grants.json?_='+Date.now());if(!r.ok)return;const d=await r.json();const all=d.grants||[];state.nysGrants=all.filter(g=>!g.manual);state.jsonManualGrants=all.filter(g=>g.manual===true);renderGrants();}
+  try{const r=await fetch('./nys-grants.json?_='+Date.now());if(!r.ok)return;const d=await r.json();const all=d.grants||[];state.jsonManualGrants=all.filter(g=>g.manual===true);state.nysGrants=all.filter(g=>g.manual!==true);renderGrants();}
   catch(e){console.log('NYS grants not available:',e.message);}
 }
 
