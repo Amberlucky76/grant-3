@@ -482,6 +482,7 @@ let state = {
   statuses:['posted'], sort:'openDate|desc',
   page:0, totalHits:0, grants:[], nysGrants:[], saved:new Set(), loading:false,
   manualGrants: JSON.parse(localStorage.getItem('manualGrants')||'[]'),
+  jsonManualGrants: [],
 };
 let sp = {
   category:'', eligibility:'01|02|04|08', statuses:['posted'], sort:'openDate|desc',
@@ -782,7 +783,8 @@ function renderGrants() {
   const grid = document.getElementById('grants-grid');
   const hasFed = state.grants.length>0;
   const hasNYS = state.nysGrants.length>0;
-  const hasManual = state.manualGrants.length>0;
+  const allManual = [...(state.jsonManualGrants||[]), ...state.manualGrants];
+  const hasManual = allManual.length>0;
   if (!hasFed && !hasNYS && !hasManual) {
     grid.innerHTML=`<div class="empty-state"><div style="font-size:28px;">🔍</div><div style="font-size:13px;color:var(--text-mid);">No grants found.</div></div>`;
     return;
@@ -791,8 +793,8 @@ function renderGrants() {
 
   // Manually added grants section
   if (hasManual) {
-    html += `<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--border);margin-bottom:2px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);">📌 Manually Added Grants <span style="font-weight:400;color:var(--text-faint);">(${state.manualGrants.length} grant${state.manualGrants.length!==1?'s':''})</span></div>`;
-    html += state.manualGrants.map(g => renderManualCard(g)).join('');
+    html += `<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--border);margin-bottom:2px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);">📌 Manually Added Grants <span style="font-weight:400;color:var(--text-faint);">(${allManual.length} grant${allManual.length!==1?'s':''})</span></div>`;
+    html += allManual.map(g => renderManualCard(g)).join('');
   }
 
   // NYS grants section
@@ -984,7 +986,7 @@ function showError(msg){document.getElementById('grants-grid').innerHTML=`<div c
 
 // ── NYS ───────────────────────────────────────────────────────
 async function fetchNYSGrants(){
-  try{const r=await fetch('./nys-grants.json?_='+Date.now());if(!r.ok)return;const d=await r.json();state.nysGrants=d.grants||[];renderGrants();}
+  try{const r=await fetch('./nys-grants.json?_='+Date.now());if(!r.ok)return;const d=await r.json();const all=d.grants||[];state.nysGrants=all.filter(g=>!g.manual);state.jsonManualGrants=all.filter(g=>g.manual===true);renderGrants();}
   catch(e){console.log('NYS grants not available:',e.message);}
 }
 
