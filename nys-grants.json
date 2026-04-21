@@ -1,173 +1,1000 @@
-{
-  "grants": [
-    {
-      "id": "AGM-WFD26",
-      "agency": "AGM01",
-      "title": "Ag and Food Systems Workforce Development Grant",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
-      "dueDate": "04/28/2026 3:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "FPIG20",
-      "agency": "AGM01",
-      "title": "Round 20 Farmland Protection Implementation Grants",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit",
-      "dueDate": "06/01/2026 4:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "FPSC01",
-      "agency": "AGM01",
-      "title": "Farmland Protection Staff Capacity, Round 1",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit",
-      "dueDate": "06/26/2026 4:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "MWRR 2024",
-      "agency": "DEC01",
-      "title": "Municipal Waste Reduction and Rcycling. Prgrm. 24",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
-      "dueDate": "11/01/2027 3:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "EVT0000003",
-      "agency": "DMV01",
-      "title": "2027 Highway Traffic Safety Grant",
-      "status": "Advertised Only - Not in SFS",
-      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
-      "dueDate": "05/01/2026 11:59PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "DWFRFA2028",
-      "agency": "DOH01",
-      "title": "Drinking Water Fluoridation RFA",
-      "status": "Advertised Only - Not in SFS",
-      "eligibility": "For Profit, Governmental Entity, Not-For-Profit",
-      "dueDate": "09/28/2028 4:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "EEETT-A26",
-      "agency": "DOH01",
-      "title": "RFA#20760 Ending Epidemics Ed & Training Comp A",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit",
-      "dueDate": "05/12/2026 4:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "EEETT-B26",
-      "agency": "DOH01",
-      "title": "RFA#20760 Ending Epidemics Ed & Training Comp B",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit",
-      "dueDate": "05/12/2026 4:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "EEETT-C26",
-      "agency": "DOH01",
-      "title": "RFA#20760 Ending Epidemics Ed & Training Comp C",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit",
-      "dueDate": "05/12/2026 4:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "EEETT-D26",
-      "agency": "DOH01",
-      "title": "RFA#20760 Ending Epidemics Ed & Training Comp D",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit",
-      "dueDate": "05/12/2026 4:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "EEETT-E26",
-      "agency": "DOH01",
-      "title": "RFA#20760 Ending Epidemics Ed & Training Comp E",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
-      "dueDate": "05/12/2026 4:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "HECOE2025",
-      "agency": "DOH01",
-      "title": "RFA #20662 - HE Training Center of Expertise",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
-      "dueDate": "05/07/2026 4:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "NAV2026",
-      "agency": "DOH01",
-      "title": "RFA#20706: Consumer Assistance Navigator Program",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
-      "dueDate": "05/14/2026 4:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "NIA12027",
-      "agency": "DOH01",
-      "title": "RFA 20733 New Investigators in SCI",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit",
-      "dueDate": "06/10/2026 4:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "GCEW-EV",
-      "agency": "DOL01",
-      "title": "NYSDOL OJET GCEW-EV",
-      "status": "Available",
-      "eligibility": "For Profit, Governmental Entity, Not-For-Profit",
-      "dueDate": "06/05/2026 4:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "NNDS 2027",
-      "agency": "TDA01",
-      "title": "Nutrition Navigators Direct Services",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
-      "dueDate": "04/24/2026 2:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
-      "id": "nys-1776747450650",
-      "title": "NYS Plays",
-      "agency": "DASNY",
-      "status": "Available",
-      "dueDate": "June 15, 2026",
-      "description": "Recognizing that Playgrounds promote physical activity, exercise, and building\nfriendships – and that research shows outdoor play supports emotional well-being –\nGovernor Hochul announced the New York Places for Learning, Activity, and Youth\nSocialization (NY PLAYS) Initiative. This new competitive grant program will support the\ndesign, construction, and renovation of Playgrounds that are open to the public in\nCommunities across the State.",
-      "url": "https://www.dasny.org/PLAYS"
-    }
-  ]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Municipal Grants Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0f4f8;
+    --surface: #ffffff;
+    --surface-alt: #f7f9fc;
+    --border: #dce3ec;
+    --border-mid: #c4cfe0;
+    --blue: #1d4ed8;
+    --blue-dark: #1e3a8a;
+    --blue-mid: #3b82f6;
+    --blue-pale: #eff6ff;
+    --blue-light: #dbeafe;
+    --text: #0f172a;
+    --text-mid: #334155;
+    --text-muted: #64748b;
+    --text-faint: #94a3b8;
+    --green: #166534;
+    --green-bg: #dcfce7;
+    --green-border: #86efac;
+    --amber: #92400e;
+    --amber-bg: #fef3c7;
+    --amber-border: #fcd34d;
+    --red: #991b1b;
+    --red-bg: #fee2e2;
+    --red-border: #fca5a5;
+    --nys: #1e40af;
+    --nys-bg: #dbeafe;
+    --manual: #5b21b6;
+    --manual-bg: #ede9fe;
+    --manual-border: #c4b5fd;
+    --radius: 6px;
+    --radius-lg: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); font-size: 13px; min-height: 100vh; }
+
+  /* ── TOPBAR ── */
+  .topbar { background: var(--blue-dark); padding: 0 20px; display: flex; align-items: center; height: 46px; position: sticky; top: 0; z-index: 100; }
+  .brand { display: flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; color: #fff; flex-shrink: 0; margin-right: 6px; }
+  .brand-icon { width: 26px; height: 26px; background: var(--blue-mid); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; font-weight: 700; }
+  .nav-tabs { display: flex; margin-right: 16px; }
+  .nav-tab { padding: 0 14px; height: 46px; display: flex; align-items: center; font-size: 13px; color: rgba(255,255,255,0.6); cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.15s; white-space: nowrap; user-select: none; }
+  .nav-tab:hover { color: rgba(255,255,255,0.85); }
+  .nav-tab.active { color: #fff; border-bottom-color: var(--blue-mid); font-weight: 500; }
+  .topbar-search { flex: 1; max-width: 400px; height: 32px; border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius); background: rgba(255,255,255,0.1); padding: 0 12px; font-size: 13px; font-family: 'Inter', sans-serif; color: #fff; outline: none; transition: border-color 0.15s, background 0.15s; }
+  .topbar-search:focus { border-color: var(--blue-mid); background: rgba(255,255,255,0.15); }
+  .topbar-search::placeholder { color: rgba(255,255,255,0.45); }
+  .topbar-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .result-summary { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.55); }
+  .result-summary strong { color: rgba(255,255,255,0.85); }
+
+  /* ── LAYOUT ── */
+  .layout { display: flex; min-height: calc(100vh - 46px); }
+  .sidebar { width: 216px; flex-shrink: 0; background: var(--surface); border-right: 1px solid var(--border); padding: 16px; overflow-y: auto; position: sticky; top: 46px; height: calc(100vh - 46px); }
+  .filter-group { margin-bottom: 20px; }
+  .filter-group h4 { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-faint); font-family: 'JetBrains Mono', monospace; margin-bottom: 8px; }
+  .filter-item { display: flex; align-items: center; gap: 7px; padding: 3px 0; cursor: pointer; }
+  .filter-item input[type=checkbox] { accent-color: var(--blue); cursor: pointer; flex-shrink: 0; }
+  .filter-item label { font-size: 12px; color: var(--text-mid); cursor: pointer; flex: 1; }
+  .select-filter { width: 100%; height: 30px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-alt); padding: 0 24px 0 8px; font-size: 12px; font-family: 'Inter', sans-serif; color: var(--text); appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2364748b'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 8px center; cursor: pointer; outline: none; margin-top: 2px; }
+  .select-filter:focus { border-color: var(--blue-mid); }
+  .apply-filters-btn { width: 100%; padding: 7px; background: var(--blue); color: #fff; border: none; border-radius: var(--radius); font-size: 12px; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; margin-top: 8px; transition: background 0.15s; }
+  .apply-filters-btn:hover { background: var(--blue-dark); }
+
+  /* ── MAIN ── */
+  .main { flex: 1; padding: 18px 20px; min-width: 0; }
+  .toolbar { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+  .active-tag { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; background: var(--blue-pale); border: 1px solid var(--blue-light); border-radius: 4px; font-size: 11px; color: var(--blue-dark); font-family: 'JetBrains Mono', monospace; }
+  .toolbar-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+  .grants-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(288px, 1fr)); gap: 12px; }
+
+  /* ── SECTION DIVIDERS ── */
+  .section-header { grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; padding: 8px 0 4px; margin-bottom: 2px; }
+  .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); white-space: nowrap; }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+  .section-count { font-size: 11px; color: var(--text-faint); font-family: 'JetBrains Mono', monospace; }
+  .section-link { font-size: 11px; color: var(--blue); text-decoration: none; }
+  .section-link:hover { text-decoration: underline; }
+
+  /* ── CARDS ── */
+  .grant-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; transition: border-color 0.15s, box-shadow 0.15s; cursor: pointer; }
+  .grant-card:hover { border-color: var(--blue-mid); box-shadow: 0 2px 8px rgba(29,78,216,0.08); }
+  .grant-card.manual-card { border-left: 3px solid var(--manual); }
+  .grant-card.manual-card:hover { border-color: var(--manual); box-shadow: 0 2px 8px rgba(91,33,182,0.1); }
+  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 6px; }
+  .tag { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 500; letter-spacing: 0.3px; text-transform: uppercase; white-space: nowrap; }
+  .tag-federal { background: var(--blue-dark); color: #fff; }
+  .tag-nys { background: var(--nys); color: #fff; }
+  .tag-manual { background: var(--manual); color: #fff; }
+  .tag-posted { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .tag-forecasted { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+  .tag-closed { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+  .card-heart { color: var(--border-mid); cursor: pointer; font-size: 16px; line-height: 1; flex-shrink: 0; transition: color 0.1s; border: none; background: none; padding: 0; }
+  .card-heart:hover { color: var(--blue-mid); }
+  .card-heart.saved { color: var(--blue); }
+  .card-title { font-size: 13.5px; font-weight: 500; line-height: 1.4; color: var(--text); }
+  .card-agency { font-size: 11px; color: var(--text-faint); }
+  .card-mid { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .card-category { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 10.5px; border: 1px solid var(--border); background: var(--surface-alt); color: var(--text-muted); }
+  .deadline-row { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-muted); }
+  .deadline-row.urgent { color: var(--red); font-weight: 500; }
+  .deadline-row.rolling { color: var(--green); }
+  .card-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 2px; padding-top: 8px; border-top: 1px solid var(--border); }
+  .card-id { font-size: 10px; color: var(--text-faint); font-family: 'JetBrains Mono', monospace; }
+  .card-id-row { display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--text-faint); font-family: 'JetBrains Mono', monospace; }
+  .copy-id-btn { font-size: 10px; padding: 2px 6px; border-radius: 3px; border: 1px solid var(--border); background: var(--surface-alt); color: var(--text-faint); cursor: pointer; font-family: 'JetBrains Mono', monospace; transition: all 0.12s; }
+  .copy-id-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .view-btn { padding: 4px 12px; border-radius: var(--radius); font-size: 12px; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; background: var(--surface-alt); border: 1px solid var(--border); color: var(--text-mid); text-decoration: none; transition: all 0.12s; display: inline-flex; align-items: center; gap: 4px; }
+  .view-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .view-btn.nys { background: var(--nys); color: #fff; border-color: var(--nys); }
+  .view-btn.nys:hover { background: #1e3a8a; border-color: #1e3a8a; }
+  .edit-btn { padding: 4px 10px; border-radius: var(--radius); font-size: 11px; font-family: 'Inter', sans-serif; cursor: pointer; background: var(--manual-bg); border: 1px solid var(--manual-border); color: var(--manual); transition: all 0.12s; display: inline-flex; align-items: center; gap: 3px; }
+  .edit-btn:hover { background: var(--manual); color: #fff; border-color: var(--manual); }
+
+  /* ── SPLIT VIEW ── */
+  .split-body { display: flex; height: calc(100vh - 46px); overflow: hidden; }
+  .split-sidebar { width: 216px; flex-shrink: 0; background: var(--surface); border-right: 1px solid var(--border); padding: 16px; overflow-y: auto; height: 100%; }
+  .split-list { width: 340px; flex-shrink: 0; background: var(--surface); border-right: 1px solid var(--border); overflow-y: auto; height: 100%; display: flex; flex-direction: column; }
+  .split-list-header { padding: 10px 14px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--surface); z-index: 2; }
+  .split-list-count { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-faint); }
+  .split-list-count strong { color: var(--text-mid); }
+  .split-list-items { flex: 1; }
+  .split-item { padding: 11px 14px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.1s; display: flex; align-items: flex-start; gap: 10px; }
+  .split-item:hover { background: var(--surface-alt); }
+  .split-item.active { background: var(--blue-pale); border-left: 3px solid var(--blue); padding-left: 11px; }
+  .split-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+  .split-dot.open { background: var(--blue); }
+  .split-dot.rolling { background: var(--green); }
+  .split-dot.closed { background: var(--text-faint); }
+  .split-item-body { flex: 1; min-width: 0; }
+  .split-item-title { font-size: 12px; font-weight: 500; color: var(--text); line-height: 1.4; margin-bottom: 3px; }
+  .split-item-meta { font-size: 11px; color: var(--text-faint); }
+  .split-item-award { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; color: var(--text-mid); flex-shrink: 0; white-space: nowrap; }
+  .split-load-more { padding: 12px; text-align: center; border-top: 1px solid var(--border); }
+  .split-load-more button { padding: 6px 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-alt); color: var(--text-mid); font-size: 12px; font-family: 'Inter', sans-serif; cursor: pointer; }
+  .split-load-more button:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+  /* ── DETAIL PANEL ── */
+  .split-detail { flex: 1; overflow-y: auto; height: 100%; padding: 24px 28px; background: var(--bg); }
+  .detail-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--text-faint); gap: 10px; text-align: center; }
+  .detail-empty-icon { font-size: 32px; }
+  .detail-empty-text { font-size: 13px; color: var(--text-muted); }
+  .detail-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .detail-tag { padding: 3px 10px; border-radius: 20px; font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 500; letter-spacing: 0.3px; text-transform: uppercase; border: 1px solid var(--border); background: var(--surface); color: var(--text-mid); }
+  .detail-tag.federal { background: var(--blue-dark); color: #fff; border-color: var(--blue-dark); }
+  .detail-title { font-size: 22px; font-weight: 600; line-height: 1.25; color: var(--text); margin-bottom: 5px; }
+  .detail-subtitle { font-size: 12px; color: var(--text-faint); font-family: 'JetBrains Mono', monospace; margin-bottom: 18px; }
+  .detail-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+  .btn-primary { padding: 8px 18px; background: var(--blue); color: #fff; border: none; border-radius: var(--radius); font-size: 13px; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: background 0.12s; }
+  .btn-primary:hover { background: var(--blue-dark); }
+  .btn-action { padding: 7px 14px; background: var(--surface); color: var(--text-mid); border: 1px solid var(--border); border-radius: var(--radius); font-size: 12px; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.12s; display: inline-flex; align-items: center; gap: 5px; text-decoration: none; }
+  .btn-action:hover { background: var(--surface-alt); border-color: var(--border-mid); }
+  .timeline-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+  .timeline-pill { padding: 5px 12px; border-radius: 5px; font-size: 11px; font-family: 'JetBrains Mono', monospace; border: 1px solid var(--border); background: var(--surface); color: var(--text-mid); white-space: nowrap; }
+  .timeline-pill.highlight { background: var(--blue); color: #fff; border-color: var(--blue); font-weight: 500; }
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  .detail-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px 16px; }
+  .detail-section-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .detail-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 12px; gap: 12px; }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-key { color: var(--text-faint); flex-shrink: 0; }
+  .detail-val { color: var(--text); font-weight: 500; text-align: right; }
+  .detail-description { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px 16px; margin-bottom: 16px; }
+  .detail-description p { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+  .placeholder-line { height: 10px; background: var(--border); border-radius: 3px; margin-bottom: 8px; opacity: 0.6; }
+
+  /* ── STATES ── */
+  .loading-state, .error-state, .empty-state { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; text-align: center; color: var(--text-faint); gap: 10px; }
+  .loading-spinner { width: 26px; height: 26px; border: 2.5px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-label { font-size: 12px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+  .split-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; gap: 10px; flex: 1; }
+  .error-msg { font-size: 13px; color: var(--text-mid); max-width: 400px; line-height: 1.5; }
+  .retry-btn { padding: 6px 16px; border-radius: var(--radius); background: var(--blue); color: #fff; border: none; cursor: pointer; font-size: 12px; font-family: 'Inter', sans-serif; }
+
+  /* ── PAGINATION ── */
+  .pagination { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 24px; padding-bottom: 24px; }
+  .page-btn { height: 30px; min-width: 30px; padding: 0 8px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); font-size: 12px; cursor: pointer; font-family: 'JetBrains Mono', monospace; color: var(--text-mid); transition: all 0.12s; display: flex; align-items: center; justify-content: center; }
+  .page-btn:hover:not(:disabled):not(.active) { background: var(--surface-alt); border-color: var(--border-mid); }
+  .page-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .page-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  /* ── PLACEHOLDER TABS ── */
+  .tab-placeholder { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 20px; text-align: center; color: var(--text-faint); gap: 10px; min-height: calc(100vh - 46px); }
+  .tab-placeholder-icon { font-size: 32px; margin-bottom: 4px; }
+  .tab-placeholder-title { font-size: 16px; color: var(--text-mid); font-weight: 500; }
+  .tab-placeholder-sub { font-size: 12px; color: var(--text-faint); max-width: 320px; line-height: 1.6; }
+
+  /* ── MODAL ── */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.5); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--surface); border-radius: var(--radius-lg); max-width: 640px; width: 100%; max-height: 82vh; overflow-y: auto; padding: 24px; position: relative; box-shadow: 0 8px 32px rgba(15,23,42,0.2); border: 1px solid var(--border); }
+  .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 18px; color: var(--text-faint); cursor: pointer; line-height: 1; padding: 4px; }
+  .modal-close:hover { color: var(--text); }
+  .modal-tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+  .modal-title { font-size: 19px; font-weight: 600; line-height: 1.3; color: var(--text); margin-bottom: 4px; }
+  .modal-agency { font-size: 12px; color: var(--text-faint); font-family: 'JetBrains Mono', monospace; margin-bottom: 14px; }
+  .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .modal-section { background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; }
+  .modal-section-title { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; font-family: 'JetBrains Mono', monospace; color: var(--text-faint); margin-bottom: 8px; }
+  .modal-row { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid var(--border); font-size: 12px; gap: 8px; }
+  .modal-row:last-child { border-bottom: none; }
+  .modal-key { color: var(--text-faint); }
+  .modal-val { color: var(--text); font-weight: 500; text-align: right; }
+  .modal-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .btn-outline { padding: 7px 14px; background: transparent; color: var(--text-mid); border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.12s; }
+  .btn-outline:hover { background: var(--surface-alt); border-color: var(--border-mid); }
+
+  /* ── ADD GRANT MODAL ── */
+  .add-modal { background: var(--surface); border-radius: var(--radius-lg); max-width: 560px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 24px; position: relative; box-shadow: 0 8px 32px rgba(15,23,42,0.2); border: 1px solid var(--border); }
+  .add-modal h2 { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .add-modal-sub { font-size: 12px; color: var(--text-faint); margin-bottom: 20px; }
+  .form-row { margin-bottom: 14px; }
+  .form-row label { display: block; font-size: 11px; font-weight: 500; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-input { width: 100%; height: 34px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-alt); padding: 0 10px; font-size: 13px; font-family: 'Inter', sans-serif; color: var(--text); outline: none; transition: border-color 0.15s; }
+  .form-input:focus { border-color: var(--blue-mid); }
+  .form-textarea { width: 100%; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-alt); padding: 8px 10px; font-size: 13px; font-family: 'Inter', sans-serif; color: var(--text); outline: none; transition: border-color 0.15s; resize: vertical; min-height: 72px; }
+  .form-textarea:focus { border-color: var(--blue-mid); }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .form-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .btn-cancel { padding: 8px 16px; background: transparent; color: var(--text-mid); border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: 'Inter', sans-serif; cursor: pointer; }
+  .btn-cancel:hover { background: var(--surface-alt); }
+  .btn-save { padding: 8px 20px; background: var(--manual); color: #fff; border: none; border-radius: var(--radius); font-size: 13px; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; }
+  .btn-save:hover { background: #4c1d95; }
+  .add-grant-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--manual-bg); border: 1px solid var(--manual-border); border-radius: var(--radius); font-size: 12px; font-family: 'Inter', sans-serif; font-weight: 500; color: var(--manual); cursor: pointer; transition: all 0.12s; }
+  .add-grant-btn:hover { background: var(--manual); color: #fff; border-color: var(--manual); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand"><div class="brand-icon">G</div>Grants</div>
+  <nav class="nav-tabs">
+    <div class="nav-tab active" onclick="switchTab('browse',this)">Browse</div>
+    <div class="nav-tab" onclick="switchTab('split',this)">Split view</div>
+    <div class="nav-tab" onclick="switchTab('pipeline',this)">Pipeline</div>
+    <div class="nav-tab" onclick="switchTab('applied',this)">Applied</div>
+    <div class="nav-tab" onclick="switchTab('reports',this)">Reports</div>
+  </nav>
+  <input class="topbar-search" id="keyword-input" type="text" placeholder="Search grants… (e.g. housing, parks, transit)">
+  <div class="topbar-right">
+    <span class="result-summary" id="result-summary">Loading…</span>
+  </div>
+</header>
+
+<!-- ══ BROWSE TAB ══ -->
+<div id="tab-browse">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="filter-group">
+        <h4>Category</h4>
+        <select class="select-filter" id="filter-category">
+          <option value="">All categories</option>
+          <option value="AG">Agriculture</option><option value="AR">Arts</option>
+          <option value="BC">Business &amp; Commerce</option><option value="CD">Community Development</option>
+          <option value="CP">Consumer Protection</option><option value="DPR">Disaster Prevention</option>
+          <option value="ED">Education</option><option value="ELT">Employment</option>
+          <option value="EN">Energy</option><option value="ENV">Environment</option>
+          <option value="FN">Food &amp; Nutrition</option><option value="HL">Health</option>
+          <option value="HO">Housing</option><option value="HU">Humanities</option>
+          <option value="IIJ">Information Technology</option><option value="IS">Income Security</option>
+          <option value="LJL">Law &amp; Justice</option><option value="NR">Natural Resources</option>
+          <option value="OZ">Opportunity Zones</option><option value="RD">Regional Development</option>
+          <option value="ST">Science &amp; Technology</option><option value="T">Transportation</option>
+          <option value="ACA">Affordable Care Act</option><option value="RA">Recovery Act</option>
+          <option value="O">Other</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <h4>Status</h4>
+        <div class="filter-item"><input type="checkbox" id="s-posted" checked><label for="s-posted">Posted / Open</label></div>
+        <div class="filter-item"><input type="checkbox" id="s-forecasted"><label for="s-forecasted">Forecasted</label></div>
+        <div class="filter-item"><input type="checkbox" id="s-closed"><label for="s-closed">Closed</label></div>
+      </div>
+      <div class="filter-group">
+        <h4>Eligibility</h4>
+        <select class="select-filter" id="filter-eligibility">
+          <option value="01|02|04|08" selected>Local government (all)</option>
+          <option value="">Any / unrestricted</option>
+          <option value="00">State governments</option><option value="01">County governments</option>
+          <option value="02">City or township governments</option><option value="04">Special district governments</option>
+          <option value="05">Independent school districts</option><option value="06">Public &amp; state universities</option>
+          <option value="07">Native American tribal govts</option><option value="08">Public housing authorities</option>
+          <option value="22">Nonprofits (501c3)</option><option value="99">Unrestricted</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <h4>Sort</h4>
+        <select class="select-filter" id="filter-sort">
+          <option value="openDate|desc">Newest first</option>
+          <option value="closeDate|asc">Deadline soonest</option>
+          <option value="closeDate|desc">Deadline latest</option>
+          <option value="openDate|asc">Oldest first</option>
+        </select>
+      </div>
+      <button class="apply-filters-btn" onclick="applyFilters()">Apply filters</button>
+    </aside>
+    <main class="main">
+      <div class="toolbar">
+        <span id="active-tags"></span>
+      </div>
+      <div class="grants-grid" id="grants-grid">
+        <div class="loading-state"><div class="loading-spinner"></div><div class="loading-label">Fetching from Grants.gov…</div></div>
+      </div>
+      <div class="pagination" id="pagination"></div>
+    </main>
+  </div>
+</div>
+
+<!-- ══ SPLIT VIEW TAB ══ -->
+<div id="tab-split" style="display:none;">
+  <div class="split-body">
+    <aside class="split-sidebar">
+      <div class="filter-group">
+        <h4>Category</h4>
+        <select class="select-filter" id="sp-filter-category">
+          <option value="">All categories</option>
+          <option value="AG">Agriculture</option><option value="AR">Arts</option>
+          <option value="BC">Business &amp; Commerce</option><option value="CD">Community Development</option>
+          <option value="CP">Consumer Protection</option><option value="DPR">Disaster Prevention</option>
+          <option value="ED">Education</option><option value="ELT">Employment</option>
+          <option value="EN">Energy</option><option value="ENV">Environment</option>
+          <option value="FN">Food &amp; Nutrition</option><option value="HL">Health</option>
+          <option value="HO">Housing</option><option value="HU">Humanities</option>
+          <option value="IIJ">Information Technology</option><option value="IS">Income Security</option>
+          <option value="LJL">Law &amp; Justice</option><option value="NR">Natural Resources</option>
+          <option value="OZ">Opportunity Zones</option><option value="RD">Regional Development</option>
+          <option value="ST">Science &amp; Technology</option><option value="T">Transportation</option>
+          <option value="ACA">Affordable Care Act</option><option value="RA">Recovery Act</option>
+          <option value="O">Other</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <h4>Status</h4>
+        <div class="filter-item"><input type="checkbox" id="sp-posted" checked><label for="sp-posted">Posted / Open</label></div>
+        <div class="filter-item"><input type="checkbox" id="sp-forecasted"><label for="sp-forecasted">Forecasted</label></div>
+        <div class="filter-item"><input type="checkbox" id="sp-closed"><label for="sp-closed">Closed</label></div>
+      </div>
+      <div class="filter-group">
+        <h4>Eligibility</h4>
+        <select class="select-filter" id="sp-filter-eligibility">
+          <option value="01|02|04|08" selected>Local government (all)</option>
+          <option value="">Any / unrestricted</option>
+          <option value="00">State governments</option><option value="01">County governments</option>
+          <option value="02">City or township governments</option><option value="04">Special district governments</option>
+          <option value="05">Independent school districts</option><option value="06">Public &amp; state universities</option>
+          <option value="07">Native American tribal govts</option><option value="08">Public housing authorities</option>
+          <option value="22">Nonprofits (501c3)</option><option value="99">Unrestricted</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <h4>Sort</h4>
+        <select class="select-filter" id="sp-filter-sort">
+          <option value="openDate|desc">Newest first</option>
+          <option value="closeDate|asc">Deadline soonest</option>
+          <option value="closeDate|desc">Deadline latest</option>
+          <option value="openDate|asc">Oldest first</option>
+        </select>
+      </div>
+      <button class="apply-filters-btn" onclick="applySplitFilters()">Apply filters</button>
+    </aside>
+    <div class="split-list" id="split-list">
+      <div class="split-list-header">
+        <span class="split-list-count" id="split-count">Loading…</span>
+      </div>
+      <div class="split-list-items" id="split-items">
+        <div class="split-loading"><div class="loading-spinner"></div><div class="loading-label">Fetching grants…</div></div>
+      </div>
+      <div class="split-load-more" id="split-more" style="display:none;">
+        <button onclick="loadMoreSplit()">Load more</button>
+      </div>
+    </div>
+    <div class="split-detail" id="split-detail">
+      <div class="detail-empty">
+        <div class="detail-empty-icon">←</div>
+        <div class="detail-empty-text">Select a grant to see details</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PIPELINE TAB ══ -->
+<div id="tab-pipeline" style="display:none;">
+  <div class="tab-placeholder">
+    <div class="tab-placeholder-icon">📋</div>
+    <div class="tab-placeholder-title">Pipeline</div>
+    <div class="tab-placeholder-sub">Grants you're actively tracking will appear here.</div>
+  </div>
+</div>
+
+<!-- ══ APPLIED TAB ══ -->
+<div id="tab-applied" style="display:none;">
+  <div class="tab-placeholder">
+    <div class="tab-placeholder-icon">✉️</div>
+    <div class="tab-placeholder-title">Applied</div>
+    <div class="tab-placeholder-sub">Grants you've submitted applications for will appear here.</div>
+  </div>
+</div>
+
+<!-- ══ REPORTS TAB ══ -->
+<div id="tab-reports" style="display:none;">
+  <div class="tab-placeholder">
+    <div class="tab-placeholder-icon">📊</div>
+    <div class="tab-placeholder-title">Reports</div>
+    <div class="tab-placeholder-sub">Grant activity reports and analytics will appear here.</div>
+  </div>
+</div>
+
+<!-- GRANT DETAIL MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal"><button class="modal-close" onclick="closeModalDirect()">×</button><div id="modal-content"></div></div>
+</div>
+
+<!-- ADD / EDIT GRANT MODAL -->
+<div class="modal-overlay" id="add-overlay" onclick="closeAddModal(event)">
+  <div class="add-modal">
+    <button class="modal-close" onclick="closeAddModalDirect()">×</button>
+    <h2 id="add-modal-heading">Add grant manually</h2>
+    <p class="add-modal-sub">These grants will appear in their own section alongside federal and NYS grants.</p>
+    <input type="hidden" id="edit-grant-id">
+    <div class="form-row">
+      <label>Grant title *</label>
+      <input class="form-input" id="f-title" type="text" placeholder="e.g. Community Development Block Grant">
+    </div>
+    <div class="form-row-2">
+      <div class="form-row" style="margin-bottom:0">
+        <label>Agency / funder</label>
+        <input class="form-input" id="f-agency" type="text" placeholder="e.g. HUD, Empire State Dev.">
+      </div>
+      <div class="form-row" style="margin-bottom:0">
+        <label>Grant ID / number</label>
+        <input class="form-input" id="f-id" type="text" placeholder="e.g. B-24-MC-36-0001">
+      </div>
+    </div>
+    <div class="form-row-2">
+      <div class="form-row" style="margin-bottom:0">
+        <label>Deadline</label>
+        <input class="form-input" id="f-deadline" type="text" placeholder="MM/DD/YYYY or Rolling">
+      </div>
+      <div class="form-row" style="margin-bottom:0">
+        <label>Award amount</label>
+        <input class="form-input" id="f-award" type="text" placeholder="e.g. $250,000">
+      </div>
+    </div>
+    <div class="form-row">
+      <label>Status</label>
+      <select class="form-input" id="f-status" style="appearance:none;cursor:pointer;">
+        <option value="open">Open</option>
+        <option value="forecasted">Forecasted</option>
+        <option value="closed">Closed</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>Application URL</label>
+      <input class="form-input" id="f-url" type="text" placeholder="https://…">
+    </div>
+    <div class="form-row">
+      <label>Notes</label>
+      <textarea class="form-textarea" id="f-notes" placeholder="Internal notes, contacts, match requirements…"></textarea>
+    </div>
+    <div class="form-actions">
+      <button class="btn-cancel" onclick="closeAddModalDirect()">Cancel</button>
+      <button class="btn-save" onclick="saveManualGrant()">Save grant</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const GRANTS_API = 'https://young-base-f33b.amberdlucky.workers.dev';
+const PAGE_SIZE = 12;
+const SPLIT_SIZE = 30;
+
+let state = {
+  keyword:'', category:'', eligibility:'01|02|04|08',
+  statuses:['posted'], sort:'openDate|desc',
+  page:0, totalHits:0, grants:[], nysGrants:[], saved:new Set(), loading:false,
+  manualGrants: JSON.parse(localStorage.getItem('manualGrants')||'[]'),
+  jsonManualGrants: [],
+};
+let sp = {
+  category:'', eligibility:'01|02|04|08', statuses:['posted'], sort:'openDate|desc',
+  page:0, totalHits:0, grants:[], loading:false, selectedId:null, loaded:false,
+};
+
+const CAT = {
+  AG:'Agriculture',AR:'Arts',BC:'Business & Commerce',CD:'Community Development',
+  CP:'Consumer Protection',DPR:'Disaster Prevention',ED:'Education',ELT:'Employment',
+  EN:'Energy',ENV:'Environment',FN:'Food & Nutrition',HL:'Health',HO:'Housing',
+  HU:'Humanities',IIJ:'Information Technology',IS:'Income Security',LJL:'Law & Justice',
+  NR:'Natural Resources',OZ:'Opportunity Zones',RD:'Regional Development',
+  ST:'Science & Technology',T:'Transportation',ACA:'Affordable Care Act',RA:'Recovery Act',O:'Other'
+};
+
+// ── TABS ─────────────────────────────────────────────────────
+function switchTab(tab, el) {
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  ['browse','split','pipeline','applied','reports'].forEach(t =>
+    document.getElementById('tab-'+t).style.display = t===tab ? '' : 'none'
+  );
+  document.getElementById('keyword-input').style.display = tab==='browse' ? '' : 'none';
+  document.getElementById('result-summary').style.display = tab==='browse' ? '' : 'none';
+  if (tab==='split' && !sp.loaded) { sp.loaded=true; fetchSplit(); }
 }
+
+// ── NON-LOCAL FILTER ─────────────────────────────────────────
+const NON_LOCAL = ["DOS","NASA","NIH","NSF","AFOSR","ONR","ARO","DARPA","DOD","AF","NAVY","ARMY","DTRA","DIA","NRO","AFRL","NIST","NOAA","DOE-SC","NCI","NHLBI","NIMH","NIAID","NEI","NIA","NICHD","NIDDK","NIGMS"];
+function filterLocal(grants) {
+  return grants.filter(g => {
+    const c=(g.agencyCode||'').toUpperCase(), r=c.split('-')[0];
+    return !NON_LOCAL.some(a=>c.startsWith(a)||r===a);
+  });
+}
+
+// ── BROWSE FETCH ──────────────────────────────────────────────
+async function fetchGrants() {
+  if (state.loading) return;
+  state.loading = true; showLoading();
+  const [sb,sd] = state.sort.split('|');
+  const body = { rows:PAGE_SIZE, startRecordNum:state.page*PAGE_SIZE, oppStatuses:state.statuses.join('|')||'posted', sortBy:`${sb}|${sd}` };
+  if (state.keyword) body.keyword = state.keyword;
+  if (state.category) body.fundingCategories = state.category;
+  if (state.eligibility) body.eligibilities = state.eligibility;
+  try {
+    const r = await fetch(GRANTS_API, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const d = await r.json();
+    if (d.errorcode !== 0) throw new Error(d.msg||'API error');
+    let g = d.data.oppHits || [];
+    if (state.eligibility==='01|02|04|08') g = filterLocal(g);
+    state.grants=g; state.totalHits=d.data.hitCount||0; state.loading=false;
+    renderGrants(); renderPagination(); renderSummary(); renderActiveTags();
+  } catch(e) { state.loading=false; showError(e.message); }
+}
+
+function applyFilters() {
+  state.keyword = document.getElementById('keyword-input').value.trim();
+  state.category = document.getElementById('filter-category').value;
+  state.eligibility = document.getElementById('filter-eligibility').value;
+  state.sort = document.getElementById('filter-sort').value;
+  state.statuses = [];
+  if (document.getElementById('s-posted').checked) state.statuses.push('posted');
+  if (document.getElementById('s-forecasted').checked) state.statuses.push('forecasted');
+  if (document.getElementById('s-closed').checked) state.statuses.push('closed');
+  if (!state.statuses.length) state.statuses = ['posted'];
+  state.page=0; fetchGrants();
+}
+
+// ── SPLIT FETCH ───────────────────────────────────────────────
+async function fetchSplit(append) {
+  if (sp.loading) return;
+  sp.loading = true;
+  if (!append) {
+    document.getElementById('split-items').innerHTML = `<div class="split-loading"><div class="loading-spinner"></div><div class="loading-label">Fetching grants…</div></div>`;
+    document.getElementById('split-count').textContent = 'Loading…';
+    document.getElementById('split-more').style.display = 'none';
+  }
+  const [sb,sd] = sp.sort.split('|');
+  const body = { rows:SPLIT_SIZE, startRecordNum:sp.page*SPLIT_SIZE, oppStatuses:sp.statuses.join('|')||'posted', sortBy:`${sb}|${sd}` };
+  if (sp.category) body.fundingCategories = sp.category;
+  if (sp.eligibility) body.eligibilities = sp.eligibility;
+  try {
+    const r = await fetch(GRANTS_API, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const d = await r.json();
+    if (d.errorcode !== 0) throw new Error(d.msg||'API error');
+    let g = d.data.oppHits || [];
+    if (sp.eligibility==='01|02|04|08') g = filterLocal(g);
+    sp.grants = append ? [...sp.grants,...g] : g;
+    sp.totalHits = d.data.hitCount||0; sp.loading=false;
+    renderSplitList();
+  } catch(e) {
+    sp.loading=false;
+    document.getElementById('split-items').innerHTML = `<div class="split-loading"><div style="font-size:24px;">⚠️</div><div style="font-size:12px;color:var(--text-mid);">Could not load.<br><small>${esc(e.message)}</small></div><button class="retry-btn" onclick="fetchSplit()">Retry</button></div>`;
+  }
+}
+
+function applySplitFilters() {
+  sp.category = document.getElementById('sp-filter-category').value;
+  sp.eligibility = document.getElementById('sp-filter-eligibility').value;
+  sp.sort = document.getElementById('sp-filter-sort').value;
+  sp.statuses = [];
+  if (document.getElementById('sp-posted').checked) sp.statuses.push('posted');
+  if (document.getElementById('sp-forecasted').checked) sp.statuses.push('forecasted');
+  if (document.getElementById('sp-closed').checked) sp.statuses.push('closed');
+  if (!sp.statuses.length) sp.statuses = ['posted'];
+  sp.page=0; sp.selectedId=null; fetchSplit();
+}
+
+function loadMoreSplit() { sp.page++; fetchSplit(true); }
+
+function renderSplitList() {
+  document.getElementById('split-count').innerHTML = `<strong>${sp.totalHits.toLocaleString()}</strong> results`;
+  const c = document.getElementById('split-items');
+  if (!sp.grants.length) { c.innerHTML=`<div class="split-loading" style="color:var(--text-faint);"><div style="font-size:24px;">🔍</div><div>No grants found.</div></div>`; return; }
+  c.innerHTML = sp.grants.map((g,i) => {
+    const days = g.closeDate ? daysUntil(g.closeDate) : null;
+    const dot = !g.closeDate ? 'rolling' : days!==null&&days<0 ? 'closed' : 'open';
+    let meta = (g.agencyCode||'FED').split('-')[0];
+    if (!g.closeDate) meta += ' · rolling';
+    else if (days!==null&&days>=0) meta += ` · ${days}d`;
+    else meta += ' · closed';
+    const active = sp.selectedId===g.id ? ' active' : '';
+    const award = fmtAward(g);
+    return `<div class="split-item${active}" onclick="selectGrant('${esc(String(g.id))}',${i})">
+      <div class="split-dot ${dot}"></div>
+      <div class="split-item-body">
+        <div class="split-item-title">${esc((g.title||'').slice(0,55))}${(g.title||'').length>55?'…':''}</div>
+        <div class="split-item-meta">${esc(meta)}</div>
+      </div>
+      ${award?`<div class="split-item-award">${award}</div>`:''}
+    </div>`;
+  }).join('');
+  document.getElementById('split-more').style.display = sp.grants.length < sp.totalHits ? '' : 'none';
+  if (!sp.selectedId && sp.grants.length) selectGrant(sp.grants[0].id, 0);
+}
+
+async function selectGrant(id, idx) {
+  sp.selectedId = id;
+  document.querySelectorAll('.split-item').forEach((el,i) => el.classList.toggle('active', i===idx));
+  const g = sp.grants[idx] || sp.grants.find(x=>x.id===id) || {id};
+  const panel = document.getElementById('split-detail');
+  panel.innerHTML = `
+    <div class="detail-tags"><span class="detail-tag federal">${esc((g.agencyCode||'FEDERAL').split('-')[0])}</span><span class="detail-tag">${esc(g.oppStatus||'posted')}</span></div>
+    <div class="detail-title">${esc(g.title||'Grant Details')}</div>
+    <div class="detail-subtitle">${esc(g.agencyName||'')} · ID ${esc(String(g.number||g.id))}</div>
+    <div class="detail-actions">
+      <a class="btn-primary" href="https://grants.gov/search-results-detail/${esc(String(id))}" target="_blank">Start application →</a>
+      <button class="btn-action" onclick="toggleSplitSave('${esc(String(id))}',this)">♡ Save to shortlist</button>
+      <a class="btn-action" href="https://grants.gov/search-results-detail/${esc(String(id))}" target="_blank">↗ Share</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:20px 0;color:var(--text-faint);">
+      <div class="loading-spinner" style="width:16px;height:16px;border-width:2px;"></div>
+      <span style="font-size:12px;font-family:'JetBrains Mono',monospace;">Loading details…</span>
+    </div>`;
+  try {
+    const r = await fetch(`https://api.grants.gov/v1/api/fetchOpportunity?oppId=${id}`);
+    const d = await r.json();
+    renderDetail(g, d.data?.opportunityDetails||{});
+  } catch(e) { renderDetail(g, {}); }
+}
+
+function renderDetail(g, opp) {
+  const panel = document.getElementById('split-detail');
+  const title = opp.opportunityTitle||g.title||'Grant Details';
+  const agency = opp.agencyName||g.agencyName||'';
+  const num = opp.opportunityNumber||g.number||g.id;
+  const status = opp.opportunityStatus||g.oppStatus||'posted';
+  const openDate = opp.postDate||g.openDate||'';
+  const closeDate = opp.closeDate||g.closeDate||'';
+  const cfda = opp.cfdaNumbers?.join(', ')||(g.alnist||[]).join(', ')||'—';
+  const desc = opp.synopsis?.synopsis||'';
+  const cats = opp.fundingCategories?.map(c=>CAT[c]||c)||[];
+  const ceiling = opp.awardCeiling ? '$'+parseInt(opp.awardCeiling).toLocaleString() : g.awardCeiling ? '$'+parseInt(g.awardCeiling).toLocaleString() : '—';
+  const floor = opp.awardFloor ? '$'+parseInt(opp.awardFloor).toLocaleString() : '—';
+  const expected = opp.expectedNumberOfAwards||'—';
+  const period = opp.performanceLength ? opp.performanceLength+' months' : '—';
+  const match = opp.costSharingOrMatchingRequirement==='Y'?'Required':opp.costSharingOrMatchingRequirement==='N'?'Not required':'—';
+  const elig = fmtElig(opp.eligibleApplicants);
+  const days = closeDate ? daysUntil(closeDate) : null;
+  const isSaved = state.saved.has(String(g.id));
+  const tagHtml = [
+    `<span class="detail-tag federal">${esc((opp.agencyCode||g.agencyCode||'FEDERAL').split('-')[0])}</span>`,
+    cats.map(c=>`<span class="detail-tag">${esc(c)}</span>`).join(''),
+    match==='Required'?'<span class="detail-tag">Match required</span>':'',
+    !closeDate?'<span class="detail-tag">Rolling review</span>':'',
+  ].join('');
+  const t2Cls = days!==null&&days>=0&&days<=30 ? 'highlight' : '';
+  const t2Txt = !closeDate ? 'Rolling' : days<0 ? `Closed ${closeDate}` : `Apply · closes ${closeDate}`;
+  const descHtml = desc
+    ? `<p>${esc(desc).replace(/\n/g,'<br>')}</p>`
+    : `<div><div class="placeholder-line" style="width:95%"></div><div class="placeholder-line" style="width:88%"></div><div class="placeholder-line" style="width:60%"></div></div><p style="font-size:11px;color:var(--text-faint);margin-top:10px;"><a href="https://grants.gov/search-results-detail/${esc(String(g.id))}" target="_blank" style="color:var(--blue);">Read full description on Grants.gov →</a></p>`;
+  panel.innerHTML = `
+    <div class="detail-tags">${tagHtml}</div>
+    <div class="detail-title">${esc(title)}</div>
+    <div class="detail-subtitle">${esc(agency)}${cfda!=='—'?' · CFDA '+cfda:''} · ID ${esc(String(num))}</div>
+    <div class="detail-actions">
+      <a class="btn-primary" href="https://grants.gov/search-results-detail/${esc(String(g.id))}" target="_blank">Start application →</a>
+      <button class="btn-action" id="sp-save-btn" onclick="toggleSplitSave('${esc(String(g.id))}',this)">${isSaved?'♥ Saved':'♡ Save to shortlist'}</button>
+      <a class="btn-action" href="https://grants.gov/search-results-detail/${esc(String(g.id))}" target="_blank">↗ Share with team</a>
+    </div>
+    <div class="timeline-row">
+      ${openDate?`<span class="timeline-pill">Posted · ${esc(openDate)}</span>`:''}
+      <span class="timeline-pill ${t2Cls}">${esc(t2Txt)}</span>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-section">
+        <div class="detail-section-title">At a glance</div>
+        <div class="detail-row"><span class="detail-key">Award ceiling</span><span class="detail-val">${ceiling}</span></div>
+        <div class="detail-row"><span class="detail-key">Award floor</span><span class="detail-val">${floor}</span></div>
+        <div class="detail-row"><span class="detail-key">Expected awards</span><span class="detail-val">${expected}</span></div>
+        <div class="detail-row"><span class="detail-key">Match required</span><span class="detail-val">${match}</span></div>
+        <div class="detail-row"><span class="detail-key">Period of performance</span><span class="detail-val">${period}</span></div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">Eligibility</div>
+        <div class="detail-row"><span class="detail-key">Applicant type</span><span class="detail-val" style="font-size:11px;">${elig}</span></div>
+        <div class="detail-row"><span class="detail-key">CFDA / ALN</span><span class="detail-val">${cfda}</span></div>
+        <div class="detail-row"><span class="detail-key">Status</span><span class="detail-val">${esc(status)}</span></div>
+      </div>
+    </div>
+    <div class="detail-description">
+      <div class="detail-section-title">Summary</div>
+      ${descHtml}
+    </div>`;
+}
+
+function toggleSplitSave(id, btn) {
+  const sid = String(id);
+  if (state.saved.has(sid)) { state.saved.delete(sid); btn.textContent='♡ Save to shortlist'; }
+  else { state.saved.add(sid); btn.textContent='♥ Saved'; }
+}
+
+// ── MANUAL GRANTS ─────────────────────────────────────────────
+function openAddModal(editId) {
+  const overlay = document.getElementById('add-overlay');
+  overlay.classList.add('open');
+  if (editId) {
+    const g = state.manualGrants.find(x=>x.id===editId);
+    if (!g) return;
+    document.getElementById('add-modal-heading').textContent = 'Edit grant';
+    document.getElementById('edit-grant-id').value = editId;
+    document.getElementById('f-title').value = g.title||'';
+    document.getElementById('f-agency').value = g.agency||'';
+    document.getElementById('f-id').value = g.grantId||'';
+    document.getElementById('f-deadline').value = g.deadline||'';
+    document.getElementById('f-award').value = g.award||'';
+    document.getElementById('f-status').value = g.status||'open';
+    document.getElementById('f-url').value = g.url||'';
+    document.getElementById('f-notes').value = g.notes||'';
+  } else {
+    document.getElementById('add-modal-heading').textContent = 'Add grant manually';
+    document.getElementById('edit-grant-id').value = '';
+    ['f-title','f-agency','f-id','f-deadline','f-award','f-url','f-notes'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('f-status').value = 'open';
+  }
+}
+
+function closeAddModal(e) { if (e.target===document.getElementById('add-overlay')) closeAddModalDirect(); }
+function closeAddModalDirect() { document.getElementById('add-overlay').classList.remove('open'); }
+
+function saveManualGrant() {
+  const title = document.getElementById('f-title').value.trim();
+  if (!title) { document.getElementById('f-title').focus(); return; }
+  const editId = document.getElementById('edit-grant-id').value;
+  const grant = {
+    id: editId || ('m-' + Date.now()),
+    title, agency: document.getElementById('f-agency').value.trim(),
+    grantId: document.getElementById('f-id').value.trim(),
+    deadline: document.getElementById('f-deadline').value.trim(),
+    award: document.getElementById('f-award').value.trim(),
+    status: document.getElementById('f-status').value,
+    url: document.getElementById('f-url').value.trim(),
+    notes: document.getElementById('f-notes').value.trim(),
+    addedAt: editId ? (state.manualGrants.find(x=>x.id===editId)||{}).addedAt || Date.now() : Date.now(),
+  };
+  if (editId) {
+    state.manualGrants = state.manualGrants.map(x=>x.id===editId?grant:x);
+  } else {
+    state.manualGrants.push(grant);
+  }
+  localStorage.setItem('manualGrants', JSON.stringify(state.manualGrants));
+  closeAddModalDirect();
+  renderGrants();
+}
+
+function deleteManualGrant(id) {
+  if (!confirm('Remove this grant?')) return;
+  state.manualGrants = state.manualGrants.filter(x=>x.id!==id);
+  localStorage.setItem('manualGrants', JSON.stringify(state.manualGrants));
+  renderGrants();
+}
+
+// ── BROWSE RENDER ─────────────────────────────────────────────
+function renderGrants() {
+  const grid = document.getElementById('grants-grid');
+  const hasFed = state.grants.length>0;
+  const hasNYS = state.nysGrants.length>0;
+  const allManual = [...(state.jsonManualGrants||[]), ...state.manualGrants];
+  const hasManual = allManual.length>0;
+  if (!hasFed && !hasNYS && !hasManual) {
+    grid.innerHTML=`<div class="empty-state"><div style="font-size:28px;">🔍</div><div style="font-size:13px;color:var(--text-mid);">No grants found.</div></div>`;
+    return;
+  }
+  let html = '';
+
+  // Manually added grants section
+  if (hasManual) {
+    html += `<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--border);margin-bottom:2px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);">📌 Manually Added Grants <span style="font-weight:400;color:var(--text-faint);">(${allManual.length} grant${allManual.length!==1?'s':''})</span></div>`;
+    html += allManual.map(g => renderManualCard(g)).join('');
+  }
+
+  // NYS grants section
+  if (hasNYS) {
+    html += `<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--border);${hasManual?'margin-top:8px;':''}margin-bottom:2px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);">📍 New York State Grants <span style="font-weight:400;color:var(--text-faint);">(${state.nysGrants.length} opportunities)</span> <a href="https://grantsmanagement.ny.gov/search-funding-sfs" target="_blank" style="font-weight:400;color:var(--nys);text-decoration:underline;margin-left:8px;">Browse all on NYS SFS ↗</a></div>`;
+    html += state.nysGrants.map(g => renderNYSCard(g)).join('');
+  }
+
+  // Federal grants section
+  if (hasFed) {
+    html += `<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--border);${(hasManual||hasNYS)?'margin-top:8px;':''}margin-bottom:2px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);">🇺🇸 Federal Grants <span style="font-weight:400;color:var(--text-faint);">(Grants.gov)</span></div>`;
+    html += state.grants.map(g => renderCard(g)).join('');
+  }
+
+  grid.innerHTML = html;
+}
+
+function renderManualCard(g) {
+  const saved = state.saved.has(g.id);
+  const statusMap = {open:'tag-posted',forecasted:'tag-forecasted',closed:'tag-closed'};
+  const sc = statusMap[g.status]||'tag-posted';
+  const statusLabel = g.status==='open'?'Open':g.status==='forecasted'?'Forecasted':'Closed';
+  let dl = '';
+  if (g.deadline && g.deadline.toLowerCase()!=='rolling') {
+    const d = daysUntil(g.deadline);
+    if (d !== null) {
+      const cls = d<0?'':d<=14?'urgent':'';
+      dl = `<span class="deadline-row ${cls}">⏱ ${d<0?'Closed '+g.deadline:d===0?'Closes today':d===1?'Closes tomorrow':'Closes in '+d+' days · '+g.deadline}</span>`;
+    } else {
+      dl = `<span class="deadline-row">⏱ ${esc(g.deadline)}</span>`;
+    }
+  } else if (g.deadline) {
+    dl = `<span class="deadline-row rolling">⟳ Rolling / no fixed deadline</span>`;
+  }
+  const viewHref = g.url || '#';
+  return `<div class="grant-card manual-card">
+    <div class="card-top">
+      <div style="display:flex;gap:5px;flex-wrap:wrap;">
+        <span class="tag tag-manual">Manual</span>
+        <span class="tag ${sc}">${esc(statusLabel)}</span>
+      </div>
+      <button class="card-heart ${saved?'saved':''}" onclick="event.stopPropagation();toggleSave('${esc(g.id)}',this)">${saved?'♥':'♡'}</button>
+    </div>
+    <div class="card-title">${esc(g.title)}</div>
+    <div class="card-agency">${esc(g.agency||'—')}</div>
+    <div class="card-mid">${g.award?`<span class="card-category">${esc(g.award)}</span>`:'<span></span>'}</div>
+    ${dl}
+    ${g.notes?`<div style="font-size:11px;color:var(--text-faint);line-height:1.4;border-top:1px solid var(--border);padding-top:6px;margin-top:2px;">${esc(g.notes.slice(0,90))}${g.notes.length>90?'…':''}</div>`:''}
+    <div class="card-bottom">
+      <div class="card-id-row">
+        ${g.grantId?`<span>${esc(g.grantId)}</span>`:'<span></span>'}
+      </div>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <button class="edit-btn" onclick="event.stopPropagation();openAddModal('${esc(g.id)}')">Edit</button>
+        <button class="edit-btn" style="background:var(--red-bg);border-color:var(--red-border);color:var(--red);" onclick="event.stopPropagation();deleteManualGrant('${esc(g.id)}')">Delete</button>
+        ${g.url?`<a class="view-btn" href="${esc(g.url)}" target="_blank" onclick="event.stopPropagation()">View ↗</a>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderCard(g) {
+  const saved = state.saved.has(g.id);
+  const sc = g.oppStatus==='posted'?'tag-posted':g.oppStatus==='forecasted'?'tag-forecasted':'tag-closed';
+  let dl = '';
+  if (!g.closeDate) dl = `<span class="deadline-row rolling">⟳ Rolling / no fixed deadline</span>`;
+  else { const d=daysUntil(g.closeDate); const cls=d<0?'':d<=14?'urgent':''; dl=`<span class="deadline-row ${cls}">⏱ ${d<0?'Closed '+g.closeDate:d===0?'Closes today':d===1?'Closes tomorrow':'Closes in '+d+' days · '+g.closeDate}</span>`; }
+  return `<div class="grant-card" onclick="openModal('${esc(String(g.id))}')">
+    <div class="card-top"><div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag tag-federal">${esc((g.agencyCode||'FEDERAL').split('-')[0])}</span><span class="tag ${sc}">${esc(g.oppStatus||'')}</span></div>
+    <button class="card-heart ${saved?'saved':''}" onclick="event.stopPropagation();toggleSave('${esc(String(g.id))}',this)">${saved?'♥':'♡'}</button></div>
+    <div class="card-title">${esc(g.title||'Untitled')}</div>
+    <div class="card-agency">${esc((g.agencyName||g.agencyCode||'').slice(0,60))}</div>
+    <div class="card-mid">${g.fundingCategories?`<span class="card-category">${esc(CAT[g.fundingCategories]||g.fundingCategories)}</span>`:'<span></span>'}</div>
+    ${dl}
+    <div class="card-bottom"><div class="card-id">ID · ${esc(String(g.number||g.id))}</div>
+    <a class="view-btn" href="https://grants.gov/search-results-detail/${esc(String(g.id))}" target="_blank" onclick="event.stopPropagation()">View →</a></div>
+  </div>`;
+}
+
+function renderNYSCard(g) {
+  const saved = state.saved.has('nys-'+g.id);
+  const statusLower = (g.status||'').toLowerCase();
+  const sc = statusLower.includes('available')||statusLower.includes('open') ? 'tag-posted' : 'tag-closed';
+  let dl = '';
+  if (g.dueDate) dl = `<span class="deadline-row urgent">⏱ Due: ${esc(g.dueDate)}</span>`;
+  else if (g.award) dl = `<span class="deadline-row rolling">◈ ${esc(g.award)}</span>`;
+  const hasId = g.id && !String(g.id).startsWith('nys-');
+  const viewHref = g.url || 'https://grantsmanagement.ny.gov/search-funding-sfs';
+  return `<div class="grant-card">
+    <div class="card-top"><div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag tag-nys">NYS</span><span class="tag ${sc}">${esc(g.status||'Available')}</span></div>
+    <button class="card-heart ${saved?'saved':''}" onclick="event.stopPropagation();toggleSave('nys-${esc(String(g.id))}',this)">${saved?'♥':'♡'}</button></div>
+    <div class="card-title">${esc(g.title)}</div>
+    <div class="card-agency">${esc(g.agency||'New York State')}</div>
+    <div class="card-mid">${g.eligibility?`<span class="card-category" style="font-size:10px;">${esc(g.eligibility.slice(0,40))}</span>`:'<span></span>'}</div>
+    ${dl}
+    <div class="card-bottom">
+      ${hasId?`<div class="card-id-row"><span>ID · ${esc(String(g.id))}</span><button class="copy-id-btn" onclick="event.stopPropagation();copyId('${esc(String(g.id))}',this)">copy</button></div>`:'<div></div>'}
+      <a class="view-btn nys" href="${esc(viewHref)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">View ↗</a>
+    </div>
+  </div>`;
+}
+
+// ── MODAL ─────────────────────────────────────────────────────
+async function openModal(id) {
+  document.getElementById('modal-overlay').classList.add('open');
+  const mc = document.getElementById('modal-content');
+  mc.innerHTML = `<div style="display:flex;align-items:center;gap:10px;padding:40px 0;justify-content:center;"><div class="loading-spinner"></div></div>`;
+  try {
+    const r = await fetch(`https://api.grants.gov/v1/api/fetchOpportunity?oppId=${id}`);
+    const d = await r.json(); const opp = d.data?.opportunityDetails||{};
+    const g = state.grants.find(x=>String(x.id)===String(id))||{};
+    const title=opp.opportunityTitle||g.title||'Grant Details';
+    const agency=opp.agencyName||g.agencyName||'';
+    const num=opp.opportunityNumber||g.number||id;
+    const status=opp.opportunityStatus||g.oppStatus||'';
+    const openDate=opp.postDate||g.openDate||'';
+    const closeDate=opp.closeDate||g.closeDate||'Rolling';
+    const cfda=opp.cfdaNumbers?.join(', ')||(g.alnist||[]).join(', ')||'—';
+    const desc=opp.synopsis?.synopsis||'';
+    const cats=opp.fundingCategories?.map(c=>CAT[c]||c).join(', ')||'';
+    const sc=status==='posted'?'tag-posted':status==='forecasted'?'tag-forecasted':'tag-closed';
+    mc.innerHTML=`
+      <div class="modal-tag-row"><span class="tag tag-federal">${esc((opp.agencyCode||g.agencyCode||'FEDERAL').split('-')[0])}</span><span class="tag ${sc}">${esc(status)}</span>${cats?`<span class="tag" style="background:var(--surface-alt);color:var(--text-mid);border:1px solid var(--border);">${esc(cats)}</span>`:''}</div>
+      <div class="modal-title">${esc(title)}</div>
+      <div class="modal-agency">${esc(agency)} · ID ${esc(String(num))}</div>
+      <div class="modal-grid">
+        <div class="modal-section"><div class="modal-section-title">At a glance</div>
+          <div class="modal-row"><span class="modal-key">Status</span><span class="modal-val">${esc(status)||'—'}</span></div>
+          <div class="modal-row"><span class="modal-key">Posted</span><span class="modal-val">${esc(openDate)||'—'}</span></div>
+          <div class="modal-row"><span class="modal-key">Closes</span><span class="modal-val">${esc(closeDate)||'Rolling'}</span></div>
+          <div class="modal-row"><span class="modal-key">ALN / CFDA</span><span class="modal-val">${esc(cfda)}</span></div>
+        </div>
+        <div class="modal-section"><div class="modal-section-title">Eligibility</div>
+          <div class="modal-row"><span class="modal-key">Applicant types</span><span class="modal-val" style="font-size:11px;">${esc(fmtElig(opp.eligibleApplicants))}</span></div>
+        </div>
+      </div>
+      ${desc?`<div class="modal-section" style="margin-bottom:14px;"><div class="modal-section-title">Description</div><div style="font-size:12px;color:var(--text-mid);line-height:1.6;margin-top:6px;max-height:160px;overflow-y:auto;">${esc(desc).replace(/\n/g,'<br>')}</div></div>`:''}
+      <div class="modal-actions">
+        <a class="btn-primary" href="https://grants.gov/search-results-detail/${esc(String(id))}" target="_blank">View on Grants.gov →</a>
+        <button class="btn-outline" onclick="toggleSaveModal('${esc(String(id))}')">${state.saved.has(String(id))?'♥ Saved':'♡ Save to shortlist'}</button>
+      </div>`;
+  } catch(e) {
+    const g=state.grants.find(x=>String(x.id)===String(id))||{};
+    mc.innerHTML=`<div class="modal-title">${esc(g.title||'Grant Details')}</div><div class="modal-agency">${esc(g.agencyName||'')} · ID ${g.number||id}</div><div style="margin:16px 0;padding:12px;background:var(--surface-alt);border-radius:6px;font-size:12px;color:var(--text-faint);">Could not load full details.</div><div class="modal-actions"><a class="btn-primary" href="https://grants.gov/search-results-detail/${esc(String(id))}" target="_blank">View on Grants.gov →</a></div>`;
+  }
+}
+function closeModal(e) { if (e.target===document.getElementById('modal-overlay')) closeModalDirect(); }
+function closeModalDirect() { document.getElementById('modal-overlay').classList.remove('open'); }
+function toggleSaveModal(id) {
+  const sid=String(id);
+  if (state.saved.has(sid)) state.saved.delete(sid); else state.saved.add(sid);
+  const b=document.querySelector('.modal-actions .btn-outline');
+  if (b) b.textContent=state.saved.has(sid)?'♥ Saved':'♡ Save to shortlist';
+}
+
+// ── HELPERS ───────────────────────────────────────────────────
+function daysUntil(s) { if(!s)return null; const[m,d,y]=s.split('/'); if(!y)return null; const c=new Date(y,m-1,d),n=new Date(); n.setHours(0,0,0,0); return Math.round((c-n)/86400000); }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function toggleSave(id,btn) { const sid=String(id); if(state.saved.has(sid)){state.saved.delete(sid);btn.classList.remove('saved');btn.innerHTML='♡';}else{state.saved.add(sid);btn.classList.add('saved');btn.innerHTML='♥';} }
+function copyId(id,btn) { navigator.clipboard.writeText(id).then(()=>{const o=btn.textContent;btn.textContent='✓';btn.style.background='var(--green)';btn.style.color='white';setTimeout(()=>{btn.textContent=o;btn.style.background='';btn.style.color='';},2000);}).catch(()=>prompt('Copy:',id)); }
+function fmtAward(g) { if(!g.awardCeiling)return''; const n=parseInt(g.awardCeiling); if(n>=1000000)return'$'+(n/1000000).toFixed(n%1000000===0?0:1)+'M'; if(n>=1000)return'$'+Math.round(n/1000)+'k'; return'$'+n; }
+function fmtElig(arr) { if(!arr||!arr.length)return'—'; const L={'00':'State govts','01':'County govts','02':'City/township govts','04':'Special districts','05':'School districts','06':'Public universities','07':'Tribal govts','08':'Housing authorities','22':'Nonprofits (501c3)','99':'Unrestricted'}; return arr.map(e=>L[e]||e).join(', '); }
+
+// ── PAGINATION ────────────────────────────────────────────────
+function renderPagination() {
+  const tot=Math.ceil(state.totalHits/PAGE_SIZE),cur=state.page;
+  const el=document.getElementById('pagination');
+  if(tot<=1){el.innerHTML='';return;}
+  let b=`<button class="page-btn" onclick="goPage(${cur-1})" ${cur===0?'disabled':''}>‹</button>`;
+  const pages=[];
+  if(tot<=7){for(let i=0;i<tot;i++)pages.push(i);}
+  else{pages.push(0);if(cur>2)pages.push('…');for(let i=Math.max(1,cur-1);i<=Math.min(tot-2,cur+1);i++)pages.push(i);if(cur<tot-3)pages.push('…');pages.push(tot-1);}
+  pages.forEach(p=>{if(p==='…')b+=`<span class="page-btn" style="pointer-events:none;opacity:0.4;">…</span>`;else b+=`<button class="page-btn ${p===cur?'active':''}" onclick="goPage(${p})">${p+1}</button>`;});
+  b+=`<button class="page-btn" onclick="goPage(${cur+1})" ${cur>=tot-1?'disabled':''}>›</button>`;
+  el.innerHTML=b;
+}
+function goPage(p){state.page=p;window.scrollTo(0,0);fetchGrants();}
+function renderSummary(){const el=document.getElementById('result-summary');const s=state.page*PAGE_SIZE+1,e=Math.min((state.page+1)*PAGE_SIZE,state.totalHits);el.innerHTML=`<strong>${state.totalHits.toLocaleString()}</strong> grants · ${s}–${e}`;}
+function renderActiveTags(){
+  const el=document.getElementById('active-tags');const tags=[];
+  if(state.keyword)tags.push(`keyword: "${state.keyword}"`);
+  if(state.category)tags.push(`category: ${CAT[state.category]||state.category}`);
+  const EL={'01|02|04|08':'Local government','00':'State govts','01':'County govts','02':'City govts','04':'Special districts','05':'School districts','06':'Public universities','07':'Tribal govts','08':'Housing authorities','22':'Nonprofits','99':'Unrestricted'};
+  if(state.eligibility)tags.push('eligibility: '+(EL[state.eligibility]||state.eligibility));
+  el.innerHTML=tags.map(t=>`<span class="active-tag">${t}</span>`).join('')+' ';
+}
+function showLoading(){document.getElementById('grants-grid').innerHTML=`<div class="loading-state"><div class="loading-spinner"></div><div class="loading-label">Fetching from Grants.gov…</div></div>`;document.getElementById('pagination').innerHTML='';document.getElementById('result-summary').innerHTML='Loading…';}
+function showError(msg){document.getElementById('grants-grid').innerHTML=`<div class="error-state"><div style="font-size:24px;">⚠️</div><div class="error-msg">Could not connect to Grants.gov API.<br><small>${esc(msg)}</small></div><button class="retry-btn" onclick="fetchGrants()">Retry</button></div>`;document.getElementById('result-summary').textContent='Error';}
+
+// ── NYS ───────────────────────────────────────────────────────
+async function fetchNYSGrants(){
+  try{const r=await fetch('./nys-grants.json?_='+Date.now());if(!r.ok)return;const d=await r.json();const all=d.grants||[];state.nysGrants=all.filter(g=>!g.manual);state.jsonManualGrants=all.filter(g=>g.manual===true);renderGrants();}
+  catch(e){console.log('NYS grants not available:',e.message);}
+}
+
+document.getElementById('keyword-input').addEventListener('keydown',e=>{if(e.key==='Enter')applyFilters();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModalDirect();closeAddModalDirect();}});
+
+fetchGrants();
+fetchNYSGrants();
+</script>
+</body>
+</html>
