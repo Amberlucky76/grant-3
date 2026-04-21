@@ -25,364 +25,151 @@
     --shadow: 0 1px 3px rgba(26,22,16,0.12), 0 4px 12px rgba(26,22,16,0.06);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'IBM Plex Sans', sans-serif;
-    background: var(--cream-dark);
-    color: var(--ink);
-    font-size: 13px;
-    min-height: 100vh;
-  }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--cream-dark); color: var(--ink); font-size: 13px; min-height: 100vh; }
 
   /* ── TOPBAR ── */
-  .topbar {
-    background: var(--cream);
-    border-bottom: 1.5px solid var(--cream-border);
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    height: 44px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .brand {
-    display: flex; align-items: center; gap: 8px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 500; font-size: 13px; color: var(--ink);
-    flex-shrink: 0; margin-right: 4px;
-  }
-  .brand-icon {
-    width: 24px; height: 24px; background: var(--ink); border-radius: 4px;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--cream); font-size: 12px; font-weight: 700;
-  }
+  .topbar { background: var(--cream); border-bottom: 1.5px solid var(--cream-border); padding: 0 20px; display: flex; align-items: center; height: 44px; position: sticky; top: 0; z-index: 100; }
+  .brand { display: flex; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 13px; color: var(--ink); flex-shrink: 0; margin-right: 4px; }
+  .brand-icon { width: 24px; height: 24px; background: var(--ink); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--cream); font-size: 12px; font-weight: 700; }
   .nav-tabs { display: flex; margin-right: 16px; }
-  .nav-tab {
-    padding: 0 14px; height: 44px; display: flex; align-items: center;
-    font-size: 12.5px; color: var(--ink-faint); cursor: pointer;
-    border-bottom: 2px solid transparent; transition: color 0.15s;
-    white-space: nowrap; user-select: none;
-  }
+  .nav-tab { padding: 0 14px; height: 44px; display: flex; align-items: center; font-size: 12.5px; color: var(--ink-faint); cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.15s; white-space: nowrap; user-select: none; }
   .nav-tab:hover { color: var(--ink-mid); }
   .nav-tab.active { color: var(--ink); border-bottom-color: var(--ochre); font-weight: 500; }
-  .topbar-search {
-    flex: 1; max-width: 420px; height: 30px;
-    border: 1.5px solid var(--cream-border); border-radius: var(--radius);
-    background: var(--white); padding: 0 12px; font-size: 12.5px;
-    font-family: 'IBM Plex Sans', sans-serif; color: var(--ink);
-    outline: none; transition: border-color 0.15s;
-  }
+  .topbar-search { flex: 1; max-width: 420px; height: 30px; border: 1.5px solid var(--cream-border); border-radius: var(--radius); background: var(--white); padding: 0 12px; font-size: 12.5px; font-family: 'IBM Plex Sans', sans-serif; color: var(--ink); outline: none; transition: border-color 0.15s; }
   .topbar-search:focus { border-color: var(--ochre); }
   .topbar-search::placeholder { color: var(--ink-faint); }
   .topbar-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
   .result-summary { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-faint); }
   .result-summary strong { color: var(--ink-mid); }
 
-  /* ── SHARED SIDEBAR STYLES ── */
+  /* ── SHARED SIDEBAR ── */
   .layout { display: flex; min-height: calc(100vh - 44px); }
-  .sidebar {
-    width: 210px; flex-shrink: 0; background: var(--cream);
-    border-right: 1.5px solid var(--cream-border); padding: 16px;
-    overflow-y: auto; position: sticky; top: 44px; height: calc(100vh - 44px);
-  }
+  .sidebar { width: 210px; flex-shrink: 0; background: var(--cream); border-right: 1.5px solid var(--cream-border); padding: 16px; overflow-y: auto; position: sticky; top: 44px; height: calc(100vh - 44px); }
   .filter-group { margin-bottom: 20px; }
-  .filter-group h4 {
-    font-size: 10px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.9px; color: var(--ink-light);
-    font-family: 'IBM Plex Mono', monospace; margin-bottom: 8px;
-  }
+  .filter-group h4 { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.9px; color: var(--ink-light); font-family: 'IBM Plex Mono', monospace; margin-bottom: 8px; }
   .filter-item { display: flex; align-items: center; gap: 7px; padding: 3px 0; cursor: pointer; }
   .filter-item input[type=checkbox] { accent-color: var(--ochre); cursor: pointer; flex-shrink: 0; }
   .filter-item label { font-size: 12px; color: var(--ink-mid); cursor: pointer; flex: 1; line-height: 1.3; }
-  .select-filter {
-    width: 100%; height: 28px; border: 1px solid var(--cream-border);
-    border-radius: var(--radius); background: var(--white);
-    padding: 0 24px 0 8px; font-size: 12px; font-family: 'IBM Plex Sans', sans-serif;
-    color: var(--ink); appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b5f4e'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 8px center;
-    cursor: pointer; outline: none; margin-top: 2px;
-  }
+  .select-filter { width: 100%; height: 28px; border: 1px solid var(--cream-border); border-radius: var(--radius); background: var(--white); padding: 0 24px 0 8px; font-size: 12px; font-family: 'IBM Plex Sans', sans-serif; color: var(--ink); appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b5f4e'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 8px center; cursor: pointer; outline: none; margin-top: 2px; }
   .select-filter:focus { border-color: var(--ochre); }
-  .apply-filters-btn {
-    width: 100%; padding: 7px; background: var(--ochre); color: var(--white);
-    border: none; border-radius: var(--radius); font-size: 12px;
-    font-family: 'IBM Plex Sans', sans-serif; font-weight: 500;
-    cursor: pointer; margin-top: 8px; transition: background 0.15s;
-  }
+  .apply-filters-btn { width: 100%; padding: 7px; background: var(--ochre); color: var(--white); border: none; border-radius: var(--radius); font-size: 12px; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; cursor: pointer; margin-top: 8px; transition: background 0.15s; }
   .apply-filters-btn:hover { background: #9a7009; }
 
   /* ── BROWSE MAIN ── */
   .main { flex: 1; padding: 16px 18px; min-width: 0; }
   .toolbar { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-  .active-tag {
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 3px 8px 3px 10px; background: var(--ochre-pale);
-    border: 1px solid var(--ochre-light); border-radius: 4px;
-    font-size: 11px; color: var(--ink-mid); font-family: 'IBM Plex Mono', monospace;
-  }
+  .active-tag { display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px 3px 10px; background: var(--ochre-pale); border: 1px solid var(--ochre-light); border-radius: 4px; font-size: 11px; color: var(--ink-mid); font-family: 'IBM Plex Mono', monospace; }
   .toolbar-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
   .grants-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-  .grant-card {
-    background: var(--white); border: 1.5px solid var(--cream-border); border-radius: 8px;
-    padding: 14px; display: flex; flex-direction: column; gap: 7px;
-    transition: box-shadow 0.15s, border-color 0.15s; cursor: pointer;
-  }
+
+  /* ── CARDS ── */
+  .grant-card { background: var(--white); border: 1.5px solid var(--cream-border); border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 7px; transition: box-shadow 0.15s, border-color 0.15s; cursor: pointer; }
   .grant-card:hover { box-shadow: var(--shadow); border-color: var(--ochre-light); }
   .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 6px; }
-  .tag {
-    display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px;
-    font-size: 9px; font-family: 'IBM Plex Mono', monospace; font-weight: 600;
-    letter-spacing: 0.6px; text-transform: uppercase; white-space: nowrap;
-  }
+  .tag { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 9px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase; white-space: nowrap; }
   .tag-federal { background: #1a1610; color: #f5f0e8; }
+  .tag-nys { background: var(--nys-blue); color: #f5f0e8; }
   .tag-posted { background: #d4edda; color: #2d6a4f; border: 1px solid #a8d5ba; }
   .tag-forecasted { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
   .tag-closed { background: #f0e0e0; color: #5c2020; border: 1px solid #d4a0a0; }
-  .card-heart {
-    color: var(--cream-border); cursor: pointer; font-size: 17px; line-height: 1;
-    flex-shrink: 0; transition: color 0.1s; border: none; background: none; padding: 0;
-  }
+  .card-heart { color: var(--cream-border); cursor: pointer; font-size: 17px; line-height: 1; flex-shrink: 0; transition: color 0.1s; border: none; background: none; padding: 0; }
   .card-heart:hover { color: var(--ochre-light); }
   .card-heart.saved { color: var(--ochre); }
   .card-title { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; line-height: 1.35; color: var(--ink); }
   .card-agency { font-size: 11px; color: var(--ink-faint); }
   .card-mid { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  .card-category {
-    display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10.5px;
-    border: 1px solid var(--cream-border); background: var(--cream-dark);
-    color: var(--ink-mid); font-family: 'IBM Plex Mono', monospace;
-  }
+  .card-category { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10.5px; border: 1px solid var(--cream-border); background: var(--cream-dark); color: var(--ink-mid); font-family: 'IBM Plex Mono', monospace; }
   .deadline-row { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--ink-light); }
   .deadline-row.urgent { color: var(--red); font-weight: 500; }
   .deadline-row.rolling { color: var(--green); }
-  .card-bottom {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-top: 2px; padding-top: 8px; border-top: 1px dotted var(--cream-border);
-  }
+  .card-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 2px; padding-top: 8px; border-top: 1px dotted var(--cream-border); }
   .card-id { font-size: 10px; color: var(--ink-faint); font-family: 'IBM Plex Mono', monospace; }
-  .view-btn {
-    padding: 4px 12px; border-radius: 4px; font-size: 11.5px;
-    font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; cursor: pointer;
-    background: var(--cream-dark); border: 1px solid var(--cream-border);
-    color: var(--ink-mid); text-decoration: none; transition: all 0.12s;
-    display: inline-flex; align-items: center; gap: 4px;
-  }
+  .card-id-row { display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--ink-faint); font-family: 'IBM Plex Mono', monospace; }
+  .copy-id-btn { font-size: 9.5px; padding: 1px 6px; border-radius: 3px; border: 1px solid var(--cream-border); background: var(--cream-dark); color: var(--ink-faint); cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 0.12s; white-space: nowrap; }
+  .copy-id-btn:hover { background: var(--ochre); color: white; border-color: var(--ochre); }
+  .view-btn { padding: 4px 12px; border-radius: 4px; font-size: 11.5px; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; cursor: pointer; background: var(--cream-dark); border: 1px solid var(--cream-border); color: var(--ink-mid); text-decoration: none; transition: all 0.12s; display: inline-flex; align-items: center; gap: 4px; }
   .view-btn:hover { background: var(--ochre); color: var(--white); border-color: var(--ochre); }
-  .nys-id-strip {
-    display: flex; align-items: center; justify-content: space-between;
-    background: var(--cream-dark); border: 1px solid var(--cream-border);
-    border-radius: 4px; padding: 5px 8px; margin-top: 2px; gap: 8px;
-  }
-  .nys-id-label { font-size: 9px; font-family: 'IBM Plex Mono', monospace; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 2px; }
-  .nys-id-value { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; color: var(--ink); }
-  .copy-btn {
-    padding: 4px 10px; border-radius: 4px; font-size: 10.5px;
-    font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; cursor: pointer;
-    background: var(--cream-dark); border: 1px solid var(--cream-border);
-    color: var(--ink-mid); transition: all 0.12s; flex-shrink: 0; white-space: nowrap;
-  }
-  .copy-btn:hover { background: var(--ochre); color: var(--white); border-color: var(--ochre); }
-  .nys-search-btn {
-    padding: 4px 12px; border-radius: 4px; font-size: 10.5px;
-    font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; cursor: pointer;
-    background: var(--nys-blue); border: 1px solid var(--nys-blue); color: #fff;
-    text-decoration: none; transition: all 0.12s;
-    display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;
-  }
-  .nys-search-btn:hover { background: #0f3259; border-color: #0f3259; }
+  .view-btn.nys { background: var(--nys-blue); color: white; border-color: var(--nys-blue); }
+  .view-btn.nys:hover { background: #0f3259; border-color: #0f3259; }
 
   /* ── SPLIT VIEW ── */
-  .split-body {
-    display: flex;
-    height: calc(100vh - 44px);
-    overflow: hidden;
-  }
-  .split-sidebar {
-    width: 210px; flex-shrink: 0; background: var(--cream);
-    border-right: 1.5px solid var(--cream-border); padding: 16px;
-    overflow-y: auto; height: 100%;
-  }
-  .split-list {
-    width: 340px; flex-shrink: 0; background: var(--white);
-    border-right: 1.5px solid var(--cream-border);
-    overflow-y: auto; height: 100%; display: flex; flex-direction: column;
-  }
-  .split-list-header {
-    padding: 10px 14px; border-bottom: 1px solid var(--cream-border);
-    display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; background: var(--white); z-index: 2;
-  }
+  .split-body { display: flex; height: calc(100vh - 44px); overflow: hidden; }
+  .split-sidebar { width: 210px; flex-shrink: 0; background: var(--cream); border-right: 1.5px solid var(--cream-border); padding: 16px; overflow-y: auto; height: 100%; }
+  .split-list { width: 340px; flex-shrink: 0; background: var(--white); border-right: 1.5px solid var(--cream-border); overflow-y: auto; height: 100%; display: flex; flex-direction: column; }
+  .split-list-header { padding: 10px 14px; border-bottom: 1px solid var(--cream-border); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--white); z-index: 2; }
   .split-list-count { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-faint); }
   .split-list-count strong { color: var(--ink-mid); }
   .split-list-items { flex: 1; }
-  .split-item {
-    padding: 12px 14px; border-bottom: 1px dashed var(--cream-border);
-    cursor: pointer; transition: background 0.12s;
-    display: flex; align-items: flex-start; gap: 10px;
-  }
+  .split-item { padding: 12px 14px; border-bottom: 1px dashed var(--cream-border); cursor: pointer; transition: background 0.12s; display: flex; align-items: flex-start; gap: 10px; }
   .split-item:hover { background: var(--cream-dark); }
   .split-item.active { background: var(--ochre-pale); border-left: 3px solid var(--ochre); padding-left: 11px; }
-  .split-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    flex-shrink: 0; margin-top: 5px;
-  }
+  .split-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
   .split-dot.open { background: var(--ochre); }
   .split-dot.rolling { background: var(--green); }
   .split-dot.closed { background: var(--ink-faint); }
   .split-item-body { flex: 1; min-width: 0; }
-  .split-item-title {
-    font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500;
-    color: var(--ink); line-height: 1.4; margin-bottom: 3px;
-  }
+  .split-item-title { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; color: var(--ink); line-height: 1.4; margin-bottom: 3px; }
   .split-item-meta { font-size: 11px; color: var(--ink-faint); }
-  .split-item-award {
-    font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500;
-    color: var(--ink-mid); flex-shrink: 0; white-space: nowrap;
-  }
-  .split-load-more {
-    padding: 12px; text-align: center; border-top: 1px solid var(--cream-border);
-  }
-  .split-load-more button {
-    padding: 6px 16px; border: 1px solid var(--cream-border); border-radius: var(--radius);
-    background: var(--cream-dark); color: var(--ink-mid); font-size: 12px;
-    font-family: 'IBM Plex Sans', sans-serif; cursor: pointer;
-  }
+  .split-item-award { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; color: var(--ink-mid); flex-shrink: 0; white-space: nowrap; }
+  .split-load-more { padding: 12px; text-align: center; border-top: 1px solid var(--cream-border); }
+  .split-load-more button { padding: 6px 16px; border: 1px solid var(--cream-border); border-radius: var(--radius); background: var(--cream-dark); color: var(--ink-mid); font-size: 12px; font-family: 'IBM Plex Sans', sans-serif; cursor: pointer; }
   .split-load-more button:hover { background: var(--ochre); color: var(--white); border-color: var(--ochre); }
 
   /* ── DETAIL PANEL ── */
   .split-detail { flex: 1; overflow-y: auto; height: 100%; padding: 24px 28px; background: var(--cream); }
-  .detail-empty {
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; height: 100%; color: var(--ink-faint);
-    gap: 10px; text-align: center;
-  }
+  .detail-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--ink-faint); gap: 10px; text-align: center; }
   .detail-empty-icon { font-size: 36px; }
   .detail-empty-text { font-size: 13px; color: var(--ink-light); }
   .detail-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
-  .detail-tag {
-    padding: 3px 10px; border-radius: 20px; font-size: 10px;
-    font-family: 'IBM Plex Mono', monospace; font-weight: 600;
-    letter-spacing: 0.5px; text-transform: uppercase;
-    border: 1.5px solid var(--cream-border); background: var(--white); color: var(--ink-mid);
-  }
+  .detail-tag { padding: 3px 10px; border-radius: 20px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; border: 1.5px solid var(--cream-border); background: var(--white); color: var(--ink-mid); }
   .detail-tag.federal { background: var(--ink); color: var(--cream); border-color: var(--ink); }
-  .detail-title {
-    font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700;
-    line-height: 1.25; color: var(--ink); margin-bottom: 6px;
-  }
-  .detail-subtitle {
-    font-size: 12px; color: var(--ink-faint);
-    font-family: 'IBM Plex Mono', monospace; margin-bottom: 18px;
-  }
+  .detail-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; line-height: 1.25; color: var(--ink); margin-bottom: 6px; }
+  .detail-subtitle { font-size: 12px; color: var(--ink-faint); font-family: 'IBM Plex Mono', monospace; margin-bottom: 18px; }
   .detail-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
-  .btn-primary {
-    padding: 8px 18px; background: var(--ochre); color: var(--white); border: none;
-    border-radius: var(--radius); font-size: 12.5px; font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 500; cursor: pointer; text-decoration: none;
-    display: inline-flex; align-items: center; gap: 5px; transition: background 0.12s;
-  }
+  .btn-primary { padding: 8px 18px; background: var(--ochre); color: var(--white); border: none; border-radius: var(--radius); font-size: 12.5px; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: background 0.12s; }
   .btn-primary:hover { background: #9a7009; }
-  .btn-action {
-    padding: 7px 14px; background: transparent; color: var(--ink-mid);
-    border: 1.5px solid var(--cream-border); border-radius: var(--radius);
-    font-size: 12px; font-family: 'IBM Plex Sans', sans-serif; cursor: pointer;
-    transition: all 0.12s; display: inline-flex; align-items: center; gap: 5px;
-    text-decoration: none;
-  }
+  .btn-action { padding: 7px 14px; background: transparent; color: var(--ink-mid); border: 1.5px solid var(--cream-border); border-radius: var(--radius); font-size: 12px; font-family: 'IBM Plex Sans', sans-serif; cursor: pointer; transition: all 0.12s; display: inline-flex; align-items: center; gap: 5px; text-decoration: none; }
   .btn-action:hover { background: var(--cream-dark); border-color: var(--ink-faint); }
   .timeline-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
-  .timeline-pill {
-    padding: 5px 12px; border-radius: 4px; font-size: 11px;
-    font-family: 'IBM Plex Mono', monospace;
-    border: 1.5px solid var(--cream-border); background: var(--white);
-    color: var(--ink-mid); white-space: nowrap;
-  }
+  .timeline-pill { padding: 5px 12px; border-radius: 4px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; border: 1.5px solid var(--cream-border); background: var(--white); color: var(--ink-mid); white-space: nowrap; }
   .timeline-pill.highlight { background: var(--ochre); color: var(--white); border-color: var(--ochre); font-weight: 500; }
   .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
-  .detail-section {
-    background: var(--white); border: 1px solid var(--cream-border);
-    border-radius: 8px; padding: 14px 16px;
-  }
-  .detail-section-title {
-    font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600;
-    color: var(--ink); margin-bottom: 12px; padding-bottom: 8px;
-    border-bottom: 1px dotted var(--cream-border);
-  }
-  .detail-row {
-    display: flex; justify-content: space-between; padding: 5px 0;
-    border-bottom: 1px dotted var(--cream-border); font-size: 12px; gap: 12px;
-  }
+  .detail-section { background: var(--white); border: 1px solid var(--cream-border); border-radius: 8px; padding: 14px 16px; }
+  .detail-section-title { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px dotted var(--cream-border); }
+  .detail-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dotted var(--cream-border); font-size: 12px; gap: 12px; }
   .detail-row:last-child { border-bottom: none; }
   .detail-key { color: var(--ink-faint); flex-shrink: 0; }
   .detail-val { color: var(--ink); font-weight: 500; text-align: right; }
-  .detail-description {
-    background: var(--white); border: 1px solid var(--cream-border);
-    border-radius: 8px; padding: 14px 16px; margin-bottom: 16px;
-  }
+  .detail-description { background: var(--white); border: 1px solid var(--cream-border); border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; }
   .detail-description p { font-size: 12.5px; color: var(--ink-mid); line-height: 1.7; }
-  .placeholder-line {
-    height: 10px; background: var(--cream-border); border-radius: 3px;
-    margin-bottom: 8px; opacity: 0.5;
-  }
+  .placeholder-line { height: 10px; background: var(--cream-border); border-radius: 3px; margin-bottom: 8px; opacity: 0.5; }
 
   /* ── STATES ── */
-  .loading-state, .error-state, .empty-state {
-    grid-column: 1 / -1; display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 60px 20px; text-align: center; color: var(--ink-faint); gap: 10px;
-  }
-  .loading-spinner {
-    width: 28px; height: 28px; border: 3px solid var(--cream-border);
-    border-top-color: var(--ochre); border-radius: 50%; animation: spin 0.8s linear infinite;
-  }
+  .loading-state, .error-state, .empty-state { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; text-align: center; color: var(--ink-faint); gap: 10px; }
+  .loading-spinner { width: 28px; height: 28px; border: 3px solid var(--cream-border); border-top-color: var(--ochre); border-radius: 50%; animation: spin 0.8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .loading-label { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-light); }
-  .split-loading {
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; padding: 60px 20px; gap: 10px; flex: 1;
-  }
+  .split-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; gap: 10px; flex: 1; }
   .error-msg { font-size: 13px; color: var(--ink-mid); max-width: 400px; line-height: 1.5; }
-  .retry-btn {
-    padding: 6px 16px; border-radius: var(--radius); background: var(--ochre);
-    color: var(--white); border: none; cursor: pointer;
-    font-size: 12px; font-family: 'IBM Plex Sans', sans-serif;
-  }
+  .retry-btn { padding: 6px 16px; border-radius: var(--radius); background: var(--ochre); color: var(--white); border: none; cursor: pointer; font-size: 12px; font-family: 'IBM Plex Sans', sans-serif; }
 
   /* ── PAGINATION ── */
   .pagination { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 24px; padding-bottom: 24px; }
-  .page-btn {
-    height: 30px; min-width: 30px; padding: 0 8px;
-    border: 1.5px solid var(--cream-border); border-radius: 5px;
-    background: var(--white); font-size: 12px; cursor: pointer;
-    font-family: 'IBM Plex Mono', monospace; color: var(--ink-mid);
-    transition: all 0.12s; display: flex; align-items: center; justify-content: center;
-  }
+  .page-btn { height: 30px; min-width: 30px; padding: 0 8px; border: 1.5px solid var(--cream-border); border-radius: 5px; background: var(--white); font-size: 12px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; color: var(--ink-mid); transition: all 0.12s; display: flex; align-items: center; justify-content: center; }
   .page-btn:hover:not(:disabled):not(.active) { background: var(--cream-dark); }
   .page-btn.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
   .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
   /* ── PLACEHOLDER TABS ── */
-  .tab-placeholder {
-    flex: 1; display: flex; flex-direction: column; align-items: center;
-    justify-content: center; padding: 80px 20px; text-align: center;
-    color: var(--ink-faint); gap: 10px; min-height: calc(100vh - 44px);
-  }
+  .tab-placeholder { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 20px; text-align: center; color: var(--ink-faint); gap: 10px; min-height: calc(100vh - 44px); }
   .tab-placeholder-icon { font-size: 36px; margin-bottom: 4px; }
   .tab-placeholder-title { font-size: 15px; color: var(--ink-mid); font-weight: 500; font-family: 'Playfair Display', serif; }
   .tab-placeholder-sub { font-size: 12px; color: var(--ink-faint); max-width: 320px; line-height: 1.6; }
 
   /* ── MODAL ── */
-  .modal-overlay {
-    display: none; position: fixed; inset: 0; background: rgba(26,22,16,0.55);
-    z-index: 200; align-items: center; justify-content: center; padding: 20px;
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,22,16,0.55); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
   .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--white); border-radius: 10px; max-width: 640px; width: 100%;
-    max-height: 80vh; overflow-y: auto; padding: 24px; position: relative;
-    box-shadow: 0 8px 40px rgba(26,22,16,0.25);
-  }
+  .modal { background: var(--white); border-radius: 10px; max-width: 640px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 24px; position: relative; box-shadow: 0 8px 40px rgba(26,22,16,0.25); }
   .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; color: var(--ink-faint); cursor: pointer; line-height: 1; padding: 4px; }
   .modal-close:hover { color: var(--ink); }
   .modal-tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
@@ -402,7 +189,6 @@
 </head>
 <body>
 
-<!-- TOPBAR -->
 <header class="topbar">
   <div class="brand"><div class="brand-icon">G</div>Grants</div>
   <nav class="nav-tabs">
@@ -474,9 +260,7 @@
       <div class="toolbar">
         <span id="active-tags"></span>
         <div class="toolbar-right">
-          <span style="font-size:11px;color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;">
-            Source: <strong style="color:var(--ink-mid)">Grants.gov + NYS SFS</strong>
-          </span>
+          <span style="font-size:11px;color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;">Source: <strong style="color:var(--ink-mid)">Grants.gov + NYS SFS</strong></span>
         </div>
       </div>
       <div class="grants-grid" id="grants-grid">
@@ -539,7 +323,6 @@
       </div>
       <button class="apply-filters-btn" onclick="applySplitFilters()">Apply filters</button>
     </aside>
-
     <div class="split-list" id="split-list">
       <div class="split-list-header">
         <span class="split-list-count" id="split-count">Loading…</span>
@@ -551,7 +334,6 @@
         <button onclick="loadMoreSplit()">Load more</button>
       </div>
     </div>
-
     <div class="split-detail" id="split-detail">
       <div class="detail-empty">
         <div class="detail-empty-icon">←</div>
@@ -566,7 +348,7 @@
   <div class="tab-placeholder">
     <div class="tab-placeholder-icon">📋</div>
     <div class="tab-placeholder-title">Pipeline</div>
-    <div class="tab-placeholder-sub">Grants you're actively tracking will appear here. Save grants from Browse to add them to your pipeline.</div>
+    <div class="tab-placeholder-sub">Grants you're actively tracking will appear here.</div>
   </div>
 </div>
 
@@ -638,96 +420,96 @@ function filterLocal(grants) {
   });
 }
 
-// ── BROWSE ────────────────────────────────────────────────────
+// ── BROWSE FETCH ──────────────────────────────────────────────
 async function fetchGrants() {
   if (state.loading) return;
-  state.loading=true; showLoading();
-  const [sb,sd]=state.sort.split('|');
-  const body={rows:PAGE_SIZE,startRecordNum:state.page*PAGE_SIZE,oppStatuses:state.statuses.join('|')||'posted',sortBy:`${sb}|${sd}`};
-  if(state.keyword) body.keyword=state.keyword;
-  if(state.category) body.fundingCategories=state.category;
-  if(state.eligibility) body.eligibilities=state.eligibility;
+  state.loading = true; showLoading();
+  const [sb,sd] = state.sort.split('|');
+  const body = { rows:PAGE_SIZE, startRecordNum:state.page*PAGE_SIZE, oppStatuses:state.statuses.join('|')||'posted', sortBy:`${sb}|${sd}` };
+  if (state.keyword) body.keyword = state.keyword;
+  if (state.category) body.fundingCategories = state.category;
+  if (state.eligibility) body.eligibilities = state.eligibility;
   try {
-    const r=await fetch(GRANTS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-    if(!r.ok) throw new Error(`HTTP ${r.status}`);
-    const d=await r.json();
-    if(d.errorcode!==0) throw new Error(d.msg||'API error');
-    let g=d.data.oppHits||[];
-    if(state.eligibility==='01|02|04|08') g=filterLocal(g);
+    const r = await fetch(GRANTS_API, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const d = await r.json();
+    if (d.errorcode !== 0) throw new Error(d.msg||'API error');
+    let g = d.data.oppHits || [];
+    if (state.eligibility==='01|02|04|08') g = filterLocal(g);
     state.grants=g; state.totalHits=d.data.hitCount||0; state.loading=false;
     renderGrants(); renderPagination(); renderSummary(); renderActiveTags();
-  } catch(e){ state.loading=false; showError(e.message); }
+  } catch(e) { state.loading=false; showError(e.message); }
 }
 
 function applyFilters() {
-  state.keyword=document.getElementById('keyword-input').value.trim();
-  state.category=document.getElementById('filter-category').value;
-  state.eligibility=document.getElementById('filter-eligibility').value;
-  state.sort=document.getElementById('filter-sort').value;
-  state.statuses=[];
-  if(document.getElementById('s-posted').checked) state.statuses.push('posted');
-  if(document.getElementById('s-forecasted').checked) state.statuses.push('forecasted');
-  if(document.getElementById('s-closed').checked) state.statuses.push('closed');
-  if(!state.statuses.length) state.statuses=['posted'];
+  state.keyword = document.getElementById('keyword-input').value.trim();
+  state.category = document.getElementById('filter-category').value;
+  state.eligibility = document.getElementById('filter-eligibility').value;
+  state.sort = document.getElementById('filter-sort').value;
+  state.statuses = [];
+  if (document.getElementById('s-posted').checked) state.statuses.push('posted');
+  if (document.getElementById('s-forecasted').checked) state.statuses.push('forecasted');
+  if (document.getElementById('s-closed').checked) state.statuses.push('closed');
+  if (!state.statuses.length) state.statuses = ['posted'];
   state.page=0; fetchGrants();
 }
 
-// ── SPLIT ─────────────────────────────────────────────────────
+// ── SPLIT FETCH ───────────────────────────────────────────────
 async function fetchSplit(append) {
-  if(sp.loading) return;
-  sp.loading=true;
-  if(!append){
-    document.getElementById('split-items').innerHTML=`<div class="split-loading"><div class="loading-spinner"></div><div class="loading-label">Fetching grants…</div></div>`;
-    document.getElementById('split-count').textContent='Loading…';
-    document.getElementById('split-more').style.display='none';
+  if (sp.loading) return;
+  sp.loading = true;
+  if (!append) {
+    document.getElementById('split-items').innerHTML = `<div class="split-loading"><div class="loading-spinner"></div><div class="loading-label">Fetching grants…</div></div>`;
+    document.getElementById('split-count').textContent = 'Loading…';
+    document.getElementById('split-more').style.display = 'none';
   }
-  const [sb,sd]=sp.sort.split('|');
-  const body={rows:SPLIT_SIZE,startRecordNum:sp.page*SPLIT_SIZE,oppStatuses:sp.statuses.join('|')||'posted',sortBy:`${sb}|${sd}`};
-  if(sp.category) body.fundingCategories=sp.category;
-  if(sp.eligibility) body.eligibilities=sp.eligibility;
+  const [sb,sd] = sp.sort.split('|');
+  const body = { rows:SPLIT_SIZE, startRecordNum:sp.page*SPLIT_SIZE, oppStatuses:sp.statuses.join('|')||'posted', sortBy:`${sb}|${sd}` };
+  if (sp.category) body.fundingCategories = sp.category;
+  if (sp.eligibility) body.eligibilities = sp.eligibility;
   try {
-    const r=await fetch(GRANTS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-    if(!r.ok) throw new Error(`HTTP ${r.status}`);
-    const d=await r.json();
-    if(d.errorcode!==0) throw new Error(d.msg||'API error');
-    let g=d.data.oppHits||[];
-    if(sp.eligibility==='01|02|04|08') g=filterLocal(g);
-    sp.grants=append?[...sp.grants,...g]:g;
-    sp.totalHits=d.data.hitCount||0; sp.loading=false;
+    const r = await fetch(GRANTS_API, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const d = await r.json();
+    if (d.errorcode !== 0) throw new Error(d.msg||'API error');
+    let g = d.data.oppHits || [];
+    if (sp.eligibility==='01|02|04|08') g = filterLocal(g);
+    sp.grants = append ? [...sp.grants,...g] : g;
+    sp.totalHits = d.data.hitCount||0; sp.loading=false;
     renderSplitList();
-  } catch(e){
+  } catch(e) {
     sp.loading=false;
-    document.getElementById('split-items').innerHTML=`<div class="split-loading"><div style="font-size:24px;">⚠️</div><div style="font-size:12px;color:var(--ink-mid);">Could not load.<br><small>${esc(e.message)}</small></div><button class="retry-btn" onclick="fetchSplit()">Retry</button></div>`;
+    document.getElementById('split-items').innerHTML = `<div class="split-loading"><div style="font-size:24px;">⚠️</div><div style="font-size:12px;color:var(--ink-mid);">Could not load.<br><small>${esc(e.message)}</small></div><button class="retry-btn" onclick="fetchSplit()">Retry</button></div>`;
   }
 }
 
-function applySplitFilters(){
-  sp.category=document.getElementById('sp-filter-category').value;
-  sp.eligibility=document.getElementById('sp-filter-eligibility').value;
-  sp.sort=document.getElementById('sp-filter-sort').value;
-  sp.statuses=[];
-  if(document.getElementById('sp-posted').checked) sp.statuses.push('posted');
-  if(document.getElementById('sp-forecasted').checked) sp.statuses.push('forecasted');
-  if(document.getElementById('sp-closed').checked) sp.statuses.push('closed');
-  if(!sp.statuses.length) sp.statuses=['posted'];
+function applySplitFilters() {
+  sp.category = document.getElementById('sp-filter-category').value;
+  sp.eligibility = document.getElementById('sp-filter-eligibility').value;
+  sp.sort = document.getElementById('sp-filter-sort').value;
+  sp.statuses = [];
+  if (document.getElementById('sp-posted').checked) sp.statuses.push('posted');
+  if (document.getElementById('sp-forecasted').checked) sp.statuses.push('forecasted');
+  if (document.getElementById('sp-closed').checked) sp.statuses.push('closed');
+  if (!sp.statuses.length) sp.statuses = ['posted'];
   sp.page=0; sp.selectedId=null; fetchSplit();
 }
 
-function loadMoreSplit(){ sp.page++; fetchSplit(true); }
+function loadMoreSplit() { sp.page++; fetchSplit(true); }
 
-function renderSplitList(){
-  document.getElementById('split-count').innerHTML=`<strong>${sp.totalHits.toLocaleString()}</strong> results`;
-  const c=document.getElementById('split-items');
-  if(!sp.grants.length){ c.innerHTML=`<div class="split-loading" style="color:var(--ink-faint);"><div style="font-size:24px;">🔍</div><div>No grants found.</div></div>`; return; }
-  c.innerHTML=sp.grants.map((g,i)=>{
-    const days=g.closeDate?daysUntil(g.closeDate):null;
-    const dot=!g.closeDate?'rolling':days!==null&&days<0?'closed':'open';
-    let meta=(g.agencyCode||'FED').split('-')[0];
-    if(!g.closeDate) meta+=' · rolling';
-    else if(days!==null&&days>=0) meta+=` · ${days}d`;
-    else meta+=' · closed';
-    const active=sp.selectedId===g.id?' active':'';
-    const award=fmtAward(g);
+function renderSplitList() {
+  document.getElementById('split-count').innerHTML = `<strong>${sp.totalHits.toLocaleString()}</strong> results`;
+  const c = document.getElementById('split-items');
+  if (!sp.grants.length) { c.innerHTML=`<div class="split-loading" style="color:var(--ink-faint);"><div style="font-size:24px;">🔍</div><div>No grants found.</div></div>`; return; }
+  c.innerHTML = sp.grants.map((g,i) => {
+    const days = g.closeDate ? daysUntil(g.closeDate) : null;
+    const dot = !g.closeDate ? 'rolling' : days!==null&&days<0 ? 'closed' : 'open';
+    let meta = (g.agencyCode||'FED').split('-')[0];
+    if (!g.closeDate) meta += ' · rolling';
+    else if (days!==null&&days>=0) meta += ` · ${days}d`;
+    else meta += ' · closed';
+    const active = sp.selectedId===g.id ? ' active' : '';
+    const award = fmtAward(g);
     return `<div class="split-item${active}" onclick="selectGrant('${esc(String(g.id))}',${i})">
       <div class="split-dot ${dot}"></div>
       <div class="split-item-body">
@@ -737,17 +519,16 @@ function renderSplitList(){
       ${award?`<div class="split-item-award">${award}</div>`:''}
     </div>`;
   }).join('');
-  document.getElementById('split-more').style.display=sp.grants.length<sp.totalHits?'':'none';
-  if(!sp.selectedId&&sp.grants.length) selectGrant(sp.grants[0].id, 0);
+  document.getElementById('split-more').style.display = sp.grants.length < sp.totalHits ? '' : 'none';
+  if (!sp.selectedId && sp.grants.length) selectGrant(sp.grants[0].id, 0);
 }
 
 async function selectGrant(id, idx) {
-  sp.selectedId=id;
-  document.querySelectorAll('.split-item').forEach((el,i)=>el.classList.toggle('active',i===idx));
-  const g=sp.grants[idx]||sp.grants.find(x=>x.id===id)||{id};
-  // show skeleton
-  const panel=document.getElementById('split-detail');
-  panel.innerHTML=`
+  sp.selectedId = id;
+  document.querySelectorAll('.split-item').forEach((el,i) => el.classList.toggle('active', i===idx));
+  const g = sp.grants[idx] || sp.grants.find(x=>x.id===id) || {id};
+  const panel = document.getElementById('split-detail');
+  panel.innerHTML = `
     <div class="detail-tags"><span class="detail-tag federal">${esc((g.agencyCode||'FEDERAL').split('-')[0])}</span><span class="detail-tag">${esc(g.oppStatus||'posted')}</span></div>
     <div class="detail-title">${esc(g.title||'Grant Details')}</div>
     <div class="detail-subtitle">${esc(g.agencyName||'')} · ID ${esc(String(g.number||g.id))}</div>
@@ -761,54 +542,49 @@ async function selectGrant(id, idx) {
       <span style="font-size:12px;font-family:'IBM Plex Mono',monospace;">Loading details…</span>
     </div>`;
   try {
-    const r=await fetch(`https://api.grants.gov/v1/api/fetchOpportunity?oppId=${id}`);
-    const d=await r.json();
+    const r = await fetch(`https://api.grants.gov/v1/api/fetchOpportunity?oppId=${id}`);
+    const d = await r.json();
     renderDetail(g, d.data?.opportunityDetails||{});
-  } catch(e){ renderDetail(g,{}); }
+  } catch(e) { renderDetail(g, {}); }
 }
 
 function renderDetail(g, opp) {
-  const panel=document.getElementById('split-detail');
-  const title=opp.opportunityTitle||g.title||'Grant Details';
-  const agency=opp.agencyName||g.agencyName||'';
-  const num=opp.opportunityNumber||g.number||g.id;
-  const status=opp.opportunityStatus||g.oppStatus||'posted';
-  const openDate=opp.postDate||g.openDate||'';
-  const closeDate=opp.closeDate||g.closeDate||'';
-  const cfda=opp.cfdaNumbers?.join(', ')||(g.alnist||[]).join(', ')||'—';
-  const desc=opp.synopsis?.synopsis||'';
-  const cats=opp.fundingCategories?.map(c=>CAT[c]||c)||[];
-  const ceiling=opp.awardCeiling?'$'+parseInt(opp.awardCeiling).toLocaleString():g.awardCeiling?'$'+parseInt(g.awardCeiling).toLocaleString():'—';
-  const floor=opp.awardFloor?'$'+parseInt(opp.awardFloor).toLocaleString():'—';
-  const expected=opp.expectedNumberOfAwards||'—';
-  const period=opp.performanceLength?opp.performanceLength+' months':'—';
-  const match=opp.costSharingOrMatchingRequirement==='Y'?'Required':opp.costSharingOrMatchingRequirement==='N'?'Not required':'—';
-  const elig=fmtElig(opp.eligibleApplicants);
-  const days=closeDate?daysUntil(closeDate):null;
-  const isSaved=state.saved.has(String(g.id));
-
-  const tagHtml=[
+  const panel = document.getElementById('split-detail');
+  const title = opp.opportunityTitle||g.title||'Grant Details';
+  const agency = opp.agencyName||g.agencyName||'';
+  const num = opp.opportunityNumber||g.number||g.id;
+  const status = opp.opportunityStatus||g.oppStatus||'posted';
+  const openDate = opp.postDate||g.openDate||'';
+  const closeDate = opp.closeDate||g.closeDate||'';
+  const cfda = opp.cfdaNumbers?.join(', ')||(g.alnist||[]).join(', ')||'—';
+  const desc = opp.synopsis?.synopsis||'';
+  const cats = opp.fundingCategories?.map(c=>CAT[c]||c)||[];
+  const ceiling = opp.awardCeiling ? '$'+parseInt(opp.awardCeiling).toLocaleString() : g.awardCeiling ? '$'+parseInt(g.awardCeiling).toLocaleString() : '—';
+  const floor = opp.awardFloor ? '$'+parseInt(opp.awardFloor).toLocaleString() : '—';
+  const expected = opp.expectedNumberOfAwards||'—';
+  const period = opp.performanceLength ? opp.performanceLength+' months' : '—';
+  const match = opp.costSharingOrMatchingRequirement==='Y'?'Required':opp.costSharingOrMatchingRequirement==='N'?'Not required':'—';
+  const elig = fmtElig(opp.eligibleApplicants);
+  const days = closeDate ? daysUntil(closeDate) : null;
+  const isSaved = state.saved.has(String(g.id));
+  const tagHtml = [
     `<span class="detail-tag federal">${esc((opp.agencyCode||g.agencyCode||'FEDERAL').split('-')[0])}</span>`,
     cats.map(c=>`<span class="detail-tag">${esc(c)}</span>`).join(''),
     match==='Required'?'<span class="detail-tag">Match required</span>':'',
     !closeDate?'<span class="detail-tag">Rolling review</span>':'',
   ].join('');
-
-  const t1Cls=openDate?'':''; 
-  const t2Cls=days!==null&&days>=0&&days<=30?'highlight':'';
-  const t2Txt=!closeDate?'Rolling':days<0?`Closed ${closeDate}`:`Apply · closes ${closeDate}`;
-
-  const descHtml=desc
-    ?`<p>${esc(desc).replace(/\n/g,'<br>')}</p>`
-    :`<div><div class="placeholder-line" style="width:95%"></div><div class="placeholder-line" style="width:88%"></div><div class="placeholder-line" style="width:60%"></div></div><p style="font-size:11px;color:var(--ink-faint);margin-top:10px;">[Full description on Grants.gov]</p>`;
-
-  panel.innerHTML=`
+  const t2Cls = days!==null&&days>=0&&days<=30 ? 'highlight' : '';
+  const t2Txt = !closeDate ? 'Rolling' : days<0 ? `Closed ${closeDate}` : `Apply · closes ${closeDate}`;
+  const descHtml = desc
+    ? `<p>${esc(desc).replace(/\n/g,'<br>')}</p>`
+    : `<div><div class="placeholder-line" style="width:95%"></div><div class="placeholder-line" style="width:88%"></div><div class="placeholder-line" style="width:60%"></div></div><p style="font-size:11px;color:var(--ink-faint);margin-top:10px;"><a href="https://grants.gov/search-results-detail/${esc(String(g.id))}" target="_blank" style="color:var(--ochre);">Read full description on Grants.gov →</a></p>`;
+  panel.innerHTML = `
     <div class="detail-tags">${tagHtml}</div>
     <div class="detail-title">${esc(title)}</div>
     <div class="detail-subtitle">${esc(agency)}${cfda!=='—'?' · CFDA '+cfda:''} · ID ${esc(String(num))}</div>
     <div class="detail-actions">
       <a class="btn-primary" href="https://grants.gov/search-results-detail/${esc(String(g.id))}" target="_blank">Start application →</a>
-      <button class="btn-action" id="sp-save-${esc(String(g.id))}" onclick="toggleSplitSave('${esc(String(g.id))}',this)">${isSaved?'♥ Saved':'♡ Save to shortlist'}</button>
+      <button class="btn-action" id="sp-save-btn" onclick="toggleSplitSave('${esc(String(g.id))}',this)">${isSaved?'♥ Saved':'♡ Save to shortlist'}</button>
       <a class="btn-action" href="https://grants.gov/search-results-detail/${esc(String(g.id))}" target="_blank">↗ Share with team</a>
     </div>
     <div class="timeline-row">
@@ -837,35 +613,35 @@ function renderDetail(g, opp) {
     </div>`;
 }
 
-function toggleSplitSave(id,btn){
-  const sid=String(id);
-  if(state.saved.has(sid)){state.saved.delete(sid);btn.textContent='♡ Save to shortlist';}
-  else{state.saved.add(sid);btn.textContent='♥ Saved';}
+function toggleSplitSave(id, btn) {
+  const sid = String(id);
+  if (state.saved.has(sid)) { state.saved.delete(sid); btn.textContent='♡ Save to shortlist'; }
+  else { state.saved.add(sid); btn.textContent='♥ Saved'; }
 }
 
 // ── BROWSE RENDER ─────────────────────────────────────────────
-function renderGrants(){
-  const grid=document.getElementById('grants-grid');
-  const hasNYS=state.nysGrants.length>0, hasFed=state.grants.length>0;
-  if(!hasFed&&!hasNYS){grid.innerHTML=`<div class="empty-state"><div style="font-size:32px;">🔍</div><div style="font-size:13px;color:var(--ink-mid);">No grants found.</div></div>`;return;}
-  let html='';
-  if(hasNYS){
-    html+=`<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--cream-border);margin-bottom:2px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink-light);">📍 New York State Grants <span style="font-weight:400;color:var(--ink-faint);">(${state.nysGrants.length})</span> <a href="https://grantsmanagement.ny.gov/search-funding-sfs" target="_blank" style="font-weight:400;color:var(--nys-blue);text-decoration:underline;margin-left:8px;">Browse all ↗</a></div>`;
-    html+=state.nysGrants.map(g=>renderNYSCard(g)).join('');
-    html+=`<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--cream-border);margin:8px 0 2px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink-light);">🇺🇸 Federal Grants</div>`;
+function renderGrants() {
+  const grid = document.getElementById('grants-grid');
+  const hasNYS = state.nysGrants.length>0, hasFed = state.grants.length>0;
+  if (!hasFed && !hasNYS) { grid.innerHTML=`<div class="empty-state"><div style="font-size:32px;">🔍</div><div style="font-size:13px;color:var(--ink-mid);">No grants found.</div></div>`; return; }
+  let html = '';
+  if (hasNYS) {
+    html += `<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--cream-border);margin-bottom:2px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink-light);">📍 New York State Grants <span style="font-weight:400;color:var(--ink-faint);">(${state.nysGrants.length} opportunities)</span> <a href="https://grantsmanagement.ny.gov/search-funding-sfs" target="_blank" style="font-weight:400;color:var(--nys-blue);text-decoration:underline;margin-left:8px;">Browse all on NYS SFS ↗</a></div>`;
+    html += state.nysGrants.map(g => renderNYSCard(g)).join('');
+    html += `<div style="grid-column:1/-1;padding:6px 0 4px;border-bottom:1.5px solid var(--cream-border);margin:8px 0 2px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink-light);">🇺🇸 Federal Grants (Grants.gov)</div>`;
   }
-  if(hasFed) html+=state.grants.map(g=>renderCard(g)).join('');
-  grid.innerHTML=html;
+  if (hasFed) html += state.grants.map(g => renderCard(g)).join('');
+  grid.innerHTML = html;
 }
 
-function renderCard(g){
-  const saved=state.saved.has(g.id);
-  const sc=g.oppStatus==='posted'?'tag-posted':g.oppStatus==='forecasted'?'tag-forecasted':'tag-closed';
-  let dl='';
-  if(!g.closeDate) dl=`<span class="deadline-row rolling">⟳ Rolling</span>`;
-  else{const d=daysUntil(g.closeDate);const cls=d<0?'':d<=14?'urgent':'';dl=`<span class="deadline-row ${cls}">⏱ ${d<0?'Closed '+g.closeDate:d===0?'Closes today':d===1?'Closes tomorrow':'Closes in '+d+' days · '+g.closeDate}</span>`;}
+function renderCard(g) {
+  const saved = state.saved.has(g.id);
+  const sc = g.oppStatus==='posted'?'tag-posted':g.oppStatus==='forecasted'?'tag-forecasted':'tag-closed';
+  let dl = '';
+  if (!g.closeDate) dl = `<span class="deadline-row rolling">⟳ Rolling / no fixed deadline</span>`;
+  else { const d=daysUntil(g.closeDate); const cls=d<0?'':d<=14?'urgent':''; dl=`<span class="deadline-row ${cls}">⏱ ${d<0?'Closed '+g.closeDate:d===0?'Closes today':d===1?'Closes tomorrow':'Closes in '+d+' days · '+g.closeDate}</span>`; }
   return `<div class="grant-card" onclick="openModal('${esc(String(g.id))}')">
-    <div class="card-top"><div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag tag-federal">${esc((g.agencyCode||'FED').split('-')[0])}</span><span class="tag ${sc}">${esc(g.oppStatus||'')}</span></div>
+    <div class="card-top"><div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag tag-federal">${esc((g.agencyCode||'FEDERAL').split('-')[0])}</span><span class="tag ${sc}">${esc(g.oppStatus||'')}</span></div>
     <button class="card-heart ${saved?'saved':''}" onclick="event.stopPropagation();toggleSave('${esc(String(g.id))}',this)">${saved?'♥':'♡'}</button></div>
     <div class="card-title">${esc(g.title||'Untitled')}</div>
     <div class="card-agency">${esc((g.agencyName||g.agencyCode||'').slice(0,60))}</div>
@@ -876,31 +652,38 @@ function renderCard(g){
   </div>`;
 }
 
-function renderNYSCard(g){
-  const saved=state.saved.has('nys-'+g.id);
-  const sc=(g.status||'').toLowerCase().includes('available')?'tag-posted':'tag-closed';
+function renderNYSCard(g) {
+  const saved = state.saved.has('nys-'+g.id);
+  const statusLower = (g.status||'').toLowerCase();
+  const sc = statusLower.includes('available')||statusLower.includes('open') ? 'tag-posted' : 'tag-closed';
+  let dl = '';
+  if (g.dueDate) dl = `<span class="deadline-row urgent">⏱ Due: ${esc(g.dueDate)}</span>`;
+  else if (g.award) dl = `<span class="deadline-row rolling">◈ ${esc(g.award)}</span>`;
+  const hasId = g.id && !String(g.id).startsWith('nys-');
+  const viewHref = g.url || 'https://grantsmanagement.ny.gov/search-funding-sfs';
   return `<div class="grant-card">
-    <div class="card-top"><div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag" style="background:var(--nys-blue);color:#f5f0e8;">NYS</span><span class="tag ${sc}">${esc(g.status||'Available')}</span></div>
+    <div class="card-top"><div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag tag-nys">NYS</span><span class="tag ${sc}">${esc(g.status||'Available')}</span></div>
     <button class="card-heart ${saved?'saved':''}" onclick="event.stopPropagation();toggleSave('nys-${esc(String(g.id))}',this)">${saved?'♥':'♡'}</button></div>
     <div class="card-title">${esc(g.title)}</div>
     <div class="card-agency">${esc(g.agency||'New York State')}</div>
     <div class="card-mid">${g.eligibility?`<span class="card-category" style="font-size:10px;">${esc(g.eligibility.slice(0,40))}</span>`:'<span></span>'}</div>
-    ${g.dueDate?`<span class="deadline-row urgent">⏱ Due: ${esc(g.dueDate)}</span>`:''}
-    <div class="nys-id-strip"><div><div class="nys-id-label">Event ID</div><div class="nys-id-value">${esc(g.id)}</div></div>
-    <button class="copy-btn" onclick="event.stopPropagation();copyId('${esc(String(g.id))}',this)">📋 Copy</button></div>
-    <div class="card-bottom"><div></div><a class="nys-search-btn" href="https://grantsmanagement.ny.gov/search-funding-sfs" target="_blank" onclick="event.stopPropagation()">Search NYS ↗</a></div>
+    ${dl}
+    <div class="card-bottom">
+      ${hasId?`<div class="card-id-row"><span>ID · ${esc(String(g.id))}</span><button class="copy-id-btn" onclick="event.stopPropagation();copyId('${esc(String(g.id))}',this)">copy</button></div>`:'<div></div>'}
+      <a class="view-btn nys" href="${esc(viewHref)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">View ↗</a>
+    </div>
   </div>`;
 }
 
 // ── MODAL ─────────────────────────────────────────────────────
-async function openModal(id){
+async function openModal(id) {
   document.getElementById('modal-overlay').classList.add('open');
-  const mc=document.getElementById('modal-content');
-  mc.innerHTML=`<div style="display:flex;align-items:center;gap:10px;padding:40px 0;justify-content:center;"><div class="loading-spinner"></div></div>`;
-  try{
-    const r=await fetch(`https://api.grants.gov/v1/api/fetchOpportunity?oppId=${id}`);
-    const d=await r.json(); const opp=d.data?.opportunityDetails||{};
-    const g=state.grants.find(x=>String(x.id)===String(id))||{};
+  const mc = document.getElementById('modal-content');
+  mc.innerHTML = `<div style="display:flex;align-items:center;gap:10px;padding:40px 0;justify-content:center;"><div class="loading-spinner"></div></div>`;
+  try {
+    const r = await fetch(`https://api.grants.gov/v1/api/fetchOpportunity?oppId=${id}`);
+    const d = await r.json(); const opp = d.data?.opportunityDetails||{};
+    const g = state.grants.find(x=>String(x.id)===String(id))||{};
     const title=opp.opportunityTitle||g.title||'Grant Details';
     const agency=opp.agencyName||g.agencyName||'';
     const num=opp.opportunityNumber||g.number||id;
@@ -912,7 +695,7 @@ async function openModal(id){
     const cats=opp.fundingCategories?.map(c=>CAT[c]||c).join(', ')||'';
     const sc=status==='posted'?'tag-posted':status==='forecasted'?'tag-forecasted':'tag-closed';
     mc.innerHTML=`
-      <div class="modal-tag-row"><span class="tag tag-federal">${esc((opp.agencyCode||g.agencyCode||'FED').split('-')[0])}</span><span class="tag ${sc}">${esc(status)}</span>${cats?`<span class="tag" style="background:var(--cream-dark);color:var(--ink-mid);border:1px solid var(--cream-border);">${esc(cats)}</span>`:''}</div>
+      <div class="modal-tag-row"><span class="tag tag-federal">${esc((opp.agencyCode||g.agencyCode||'FEDERAL').split('-')[0])}</span><span class="tag ${sc}">${esc(status)}</span>${cats?`<span class="tag" style="background:var(--cream-dark);color:var(--ink-mid);border:1px solid var(--cream-border);">${esc(cats)}</span>`:''}</div>
       <div class="modal-title">${esc(title)}</div>
       <div class="modal-agency">${esc(agency)} · ID ${esc(String(num))}</div>
       <div class="modal-grid">
@@ -931,30 +714,30 @@ async function openModal(id){
         <a class="btn-primary" href="https://grants.gov/search-results-detail/${esc(String(id))}" target="_blank">View on Grants.gov →</a>
         <button class="btn-outline" onclick="toggleSaveModal('${esc(String(id))}')">${state.saved.has(String(id))?'♥ Saved':'♡ Save to shortlist'}</button>
       </div>`;
-  }catch(e){
+  } catch(e) {
     const g=state.grants.find(x=>String(x.id)===String(id))||{};
     mc.innerHTML=`<div class="modal-title">${esc(g.title||'Grant Details')}</div><div class="modal-agency">${esc(g.agencyName||'')} · ID ${g.number||id}</div><div style="margin:16px 0;padding:12px;background:var(--cream);border-radius:6px;font-size:12px;color:var(--ink-faint);">Could not load full details.</div><div class="modal-actions"><a class="btn-primary" href="https://grants.gov/search-results-detail/${esc(String(id))}" target="_blank">View on Grants.gov →</a></div>`;
   }
 }
-function closeModal(e){if(e.target===document.getElementById('modal-overlay'))closeModalDirect();}
-function closeModalDirect(){document.getElementById('modal-overlay').classList.remove('open');}
-function toggleSaveModal(id){
+function closeModal(e) { if (e.target===document.getElementById('modal-overlay')) closeModalDirect(); }
+function closeModalDirect() { document.getElementById('modal-overlay').classList.remove('open'); }
+function toggleSaveModal(id) {
   const sid=String(id);
-  if(state.saved.has(sid))state.saved.delete(sid);else state.saved.add(sid);
+  if (state.saved.has(sid)) state.saved.delete(sid); else state.saved.add(sid);
   const b=document.querySelector('.modal-actions .btn-outline');
-  if(b)b.textContent=state.saved.has(sid)?'♥ Saved':'♡ Save to shortlist';
+  if (b) b.textContent=state.saved.has(sid)?'♥ Saved':'♡ Save to shortlist';
 }
 
 // ── HELPERS ───────────────────────────────────────────────────
-function daysUntil(s){if(!s)return null;const[m,d,y]=s.split('/');const c=new Date(y,m-1,d);const n=new Date();n.setHours(0,0,0,0);return Math.round((c-n)/86400000);}
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function toggleSave(id,btn){const sid=String(id);if(state.saved.has(sid)){state.saved.delete(sid);btn.classList.remove('saved');btn.innerHTML='♡';}else{state.saved.add(sid);btn.classList.add('saved');btn.innerHTML='♥';}}
-function copyId(id,btn){navigator.clipboard.writeText(id).then(()=>{const o=btn.innerHTML;btn.innerHTML='✓ Copied!';btn.style.background='var(--green)';btn.style.color='white';btn.style.borderColor='var(--green)';setTimeout(()=>{btn.innerHTML=o;btn.style.background='';btn.style.color='';btn.style.borderColor='';},2000);}).catch(()=>prompt('Copy:',id));}
-function fmtAward(g){if(!g.awardCeiling)return'';const n=parseInt(g.awardCeiling);if(n>=1000000)return'$'+(n/1000000).toFixed(n%1000000===0?0:1)+'M';if(n>=1000)return'$'+Math.round(n/1000)+'k';return'$'+n;}
-function fmtElig(arr){if(!arr||!arr.length)return'—';const L={'00':'State govts','01':'County govts','02':'City/township govts','04':'Special districts','05':'School districts','06':'Public universities','07':'Tribal govts','08':'Housing authorities','22':'Nonprofits (501c3)','99':'Unrestricted'};return arr.map(e=>L[e]||e).join(', ');}
+function daysUntil(s) { if(!s)return null; const[m,d,y]=s.split('/'); const c=new Date(y,m-1,d),n=new Date(); n.setHours(0,0,0,0); return Math.round((c-n)/86400000); }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function toggleSave(id,btn) { const sid=String(id); if(state.saved.has(sid)){state.saved.delete(sid);btn.classList.remove('saved');btn.innerHTML='♡';}else{state.saved.add(sid);btn.classList.add('saved');btn.innerHTML='♥';} }
+function copyId(id,btn) { navigator.clipboard.writeText(id).then(()=>{const o=btn.textContent;btn.textContent='✓';btn.style.background='var(--green)';btn.style.color='white';btn.style.borderColor='var(--green)';setTimeout(()=>{btn.textContent=o;btn.style.background='';btn.style.color='';btn.style.borderColor='';},2000);}).catch(()=>prompt('Copy:',id)); }
+function fmtAward(g) { if(!g.awardCeiling)return''; const n=parseInt(g.awardCeiling); if(n>=1000000)return'$'+(n/1000000).toFixed(n%1000000===0?0:1)+'M'; if(n>=1000)return'$'+Math.round(n/1000)+'k'; return'$'+n; }
+function fmtElig(arr) { if(!arr||!arr.length)return'—'; const L={'00':'State govts','01':'County govts','02':'City/township govts','04':'Special districts','05':'School districts','06':'Public universities','07':'Tribal govts','08':'Housing authorities','22':'Nonprofits (501c3)','99':'Unrestricted'}; return arr.map(e=>L[e]||e).join(', '); }
 
 // ── PAGINATION ────────────────────────────────────────────────
-function renderPagination(){
+function renderPagination() {
   const tot=Math.ceil(state.totalHits/PAGE_SIZE),cur=state.page;
   const el=document.getElementById('pagination');
   if(tot<=1){el.innerHTML='';return;}
