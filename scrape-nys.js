@@ -99,7 +99,21 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
   console.log(`Found ${grants.length} governmental grants`);
   grants.forEach(g => console.log(` - [${g.id}] ${g.title} | ${g.eligibility}`));
 
-  const output = { grants, fetched: new Date().toISOString(), count: grants.length };
-  fs.writeFileSync(path.join(process.cwd(), 'nys-grants.json'), JSON.stringify(output, null, 2));
-  console.log('Saved.');
-})();
+let manualGrants = [];
+const outputPath = path.join(process.cwd(), 'nys-grants.json');
+if (fs.existsSync(outputPath)) {
+  try {
+    const existing = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+    // Keep only entries flagged as manual (scraper entries will be replaced)
+    manualGrants = (existing.grants || []).filter(g => g.manual === true);
+    console.log(`Preserving ${manualGrants.length} manual entries`);
+  } catch(e) {
+    console.log('Could not read existing file:', e.message);
+  }
+}
+
+// Merge: scraped grants first, manual ones appended after
+const allGrants = [...grants, ...manualGrants];
+const output = { grants: allGrants, fetched: new Date().toISOString(), count: allGrants.length };
+fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
+console.log('Saved.');
