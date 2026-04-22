@@ -170,6 +170,12 @@ async function scrapeEFC() {
           dueDate.toLowerCase().includes('application period is currently closed')) {
         console.log('  EFC SKIP closed: ' + title); continue;
       }
+      // Skip programs for individuals/homeowners, not direct municipal grants
+      const titleLower = title.toLowerCase();
+      if (titleLower.includes('septic') || titleLower.includes('vessel') && desc.toLowerCase().includes('marina')) {
+        // Keep vessel (marinas are eligible) but skip septic (individual homeowners)
+        if (titleLower.includes('septic')) { console.log('  EFC SKIP individual: ' + title); continue; }
+      }
 
       const dueLower = dueDate.toLowerCase();
       const efcStatus = (dueLower.includes('closed') || dueLower.includes('not available') || dueLower.includes('not accepting')) ? 'Closed' : 'Available';
