@@ -76,7 +76,10 @@ async function checkGrantStatus(browserPage, url) {
         text.includes('awards have been made') ||
         text.includes('awards were announced'));
 
-      return { status: isClosed ? 'Closed' : 'Available', dueDate };
+      // Return 'Open' (not 'Available') when explicitly confirmed open,
+      // so caller can distinguish "confirmed open" from "couldn't tell"
+      const status = isClosed ? 'Closed' : (isExplicitlyOpen ? 'Open' : 'Available');
+      return { status, dueDate };
     });
 
     console.log('  [' + url.split('/').pop() + '] status=' + result.status + (result.dueDate ? ' due=' + result.dueDate : ''));
@@ -393,16 +396,19 @@ async function scrapeDASNY(page) {
     statusMap[g.id] = result;
     if (result.status === 'Closed') console.log('  CLOSED: [' + g.source + '] ' + g.title);
   }
-  const parksChecked = parksDeduped.map(g => ({
-    ...g,
-    status: (statusMap[g.id] || {}).status || g.status,
-    dueDate: (statusMap[g.id] || {}).dueDate || g.dueDate,
-  }));
-  const hcrChecked = hcrDeduped.map(g => ({
-    ...g,
-    status: (statusMap[g.id] || {}).status || g.status,
-    dueDate: (statusMap[g.id] || {}).dueDate || g.dueDate,
-  }));
+  const parksChecked = parksDeduped.map(g => {
+    const checked = statusMap[g.id] || {};
+    // Only override a known-closed status if Puppeteer explicitly found it open
+    const raw = g.status === 'Closed' && checked.status !== 'Open'
+      ? 'Closed' : checked.status || g.status;
+    return { ...g, status: raw === 'Open' ? 'Available' : raw, dueDate: checked.dueDate || g.dueDate };
+  });
+  const hcrChecked = hcrDeduped.map(g => {
+    const checked = statusMap[g.id] || {};
+    const raw = g.status === 'Closed' && checked.status !== 'Open'
+      ? 'Closed' : checked.status || g.status;
+    return { ...g, status: raw === 'Open' ? 'Available' : raw, dueDate: checked.dueDate || g.dueDate };
+  });
 
   await browser.close();
 
