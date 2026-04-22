@@ -1,22 +1,12 @@
 {
   "grants": [
     {
-      "id": "efc-water-infrastructure-improveme",
-      "title": "Water Infrastructure Improvement and Intermunicipal Grants",
-      "agency": "NYS Environmental Facilities Corporation",
-      "status": "Closed",
-      "dueDate": "The application period is currently closed.",
-      "description": "Competitive grants that empower municipalities to undertake water quality projects crucial to safeguarding public health, protecting the environment, bolstering climate readiness, and promoting economic development.",
-      "link": "https://efc.ny.gov/wiia",
-      "source": "EFC"
-    },
-    {
       "id": "efc-green-resiliency-grants-and-gr",
       "title": "Green Resiliency Grants and Green Innovation Grant Program",
       "agency": "NYS Environmental Facilities Corporation",
       "status": "Available",
       "dueDate": "$75 million is available, applications due by 4 p.m. on June 12.",
-      "description": "Grants for implementing green infrastructure projects including stormwater management, water efficiency, and energy efficiency.&nbsp;",
+      "description": "Grants for implementing green infrastructure projects including stormwater management, water efficiency, and energy efficiency.",
       "link": "https://efc.ny.gov/grg",
       "source": "EFC"
     },
@@ -36,7 +26,7 @@
       "agency": "NYS Environmental Facilities Corporation",
       "status": "Available",
       "dueDate": "Ongoing",
-      "description": "Reimbursement grants to marinas for the installation, renovation &amp; replacement of pumpout stations.",
+      "description": "Reimbursement grants to marinas for the installation, renovation & replacement of pumpout stations.",
       "link": "https://efc.ny.gov/clean-vessel",
       "source": "EFC"
     },
@@ -213,10 +203,10 @@
       "source": "DASNY"
     }
   ],
-  "fetched": "2026-04-22T16:51:20.259Z",
-  "count": 23,
+  "fetched": "2026-04-22T16:57:57.414Z",
+  "count": 22,
   "sources": {
-    "efc": 5,
+    "efc": 4,
     "parks": 13,
     "hcr": 4,
     "dasny": 1
