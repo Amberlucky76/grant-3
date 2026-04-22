@@ -38,7 +38,6 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
       if (ths.length > 2) {
         return Array.from(ths).map(th => th.innerText.trim());
       }
-      // Also check td rows that look like headers
       const tds = row.querySelectorAll('td');
       if (tds.length > 2) {
         const texts = Array.from(tds).map(td => td.innerText.trim());
@@ -53,7 +52,6 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
     const results = [];
     const seen = new Set();
 
-    // Find the header row first to know column positions
     let colEventId = 0, colAgency = 1, colTitle = 2, colStatus = 3, colEligibility = 4, colDueDate = 7;
 
     for (const row of document.querySelectorAll('tr')) {
@@ -62,7 +60,6 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
 
       const texts = cells.map(c => c.innerText.trim().replace(/\s+/g, ' ').split('\n')[0]);
 
-      // Detect header row and skip it
       if (texts[0].toLowerCase().includes('event id') || texts[2]?.toLowerCase().includes('grant opportunity')) continue;
 
       const id = texts[colEventId];
@@ -72,40 +69,35 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
       const eligibility = texts[colEligibility] || '';
       const dueDate = texts[colDueDate] || texts[6] || '';
 
-      // Validate: real Event IDs are short alphanumeric codes
       if (!id || id.length > 25 || !/^[A-Z]/.test(id)) continue;
       if (!title || title.length < 4 || title.length > 150) continue;
       if (seen.has(title)) continue;
       seen.add(title);
 
-      // Only include if eligible for governmental entities
       const eligLower = eligibility.toLowerCase();
       if (eligLower && !eligLower.includes('governmental') && !eligLower.includes('government')) {
         console.log(`SKIPPED (eligibility): [${id}] ${title} | elig: ${eligibility}`);
         continue;
       }
 
-if (anchor) {
-  console.log(`ANCHOR for [${id}]: href=${anchor.getAttribute('href')} onclick=${anchor.getAttribute('onclick')}`);
-}
+      // Extract the grant-specific link
+      const anchor = cells[colTitle]?.querySelector('a');
+      let link = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL';
 
-      
-if (anchor) {
-  const href = anchor.getAttribute('href');
-  const onclick = anchor.getAttribute('onclick') || '';
+      if (anchor) {
+        console.log(`ANCHOR for [${id}]: href=${anchor.getAttribute('href')} onclick=${anchor.getAttribute('onclick')}`);
+        const href = anchor.getAttribute('href');
+        const onclick = anchor.getAttribute('onclick') || '';
 
-  if (href && href !== '#' && href !== 'javascript:void(0)') {
-    // Plain href link
-    link = href.startsWith('http') ? href : 'https://esupplier.sfs.ny.gov' + href;
-  } else if (onclick) {
-    // PeopleSoft onclick — extract the URL or event ID from the function call
-    // e.g. onclick="submitAction_win0(document.win0,'NY_SUPPUB_AUC_ID=FPIG20')"
-    const match = onclick.match(/AUC_ID[=']([^'&"]+)/);
-    if (match) {
-      link = `https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL?AUC_ID=${match[1]}&Action=U`;
-    }
-  }
-}
+        if (href && href !== '#' && href !== 'javascript:void(0)') {
+          link = href.startsWith('http') ? href : 'https://esupplier.sfs.ny.gov' + href;
+        } else if (onclick) {
+          const match = onclick.match(/AUC_ID[=']([^'&"]+)/);
+          if (match) {
+            link = `https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL?AUC_ID=${match[1]}&Action=U`;
+          }
+        }
+      }
 
       console.log(`KEEPING: [${id}] ${title} | elig: ${eligibility}`);
       results.push({ id, agency, title, status, eligibility, dueDate, link, source: 'NYS' });
@@ -118,21 +110,20 @@ if (anchor) {
   console.log(`Found ${grants.length} governmental grants`);
   grants.forEach(g => console.log(` - [${g.id}] ${g.title} | ${g.eligibility}`));
 
-let manualGrants = [];
-const outputPath = path.join(process.cwd(), 'nys-grants.json');
-if (fs.existsSync(outputPath)) {
-  try {
-    const existing = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
-    // Keep only entries flagged as manual (scraper entries will be replaced)
-    manualGrants = (existing.grants || []).filter(g => g.manual === true);
-    console.log(`Preserving ${manualGrants.length} manual entries`);
-  } catch(e) {
-    console.log('Could not read existing file:', e.message);
+  let manualGrants = [];
+  const outputPath = path.join(process.cwd(), 'nys-grants.json');
+  if (fs.existsSync(outputPath)) {
+    try {
+      const existing = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+      manualGrants = (existing.grants || []).filter(g => g.manual === true);
+      console.log(`Preserving ${manualGrants.length} manual entries`);
+    } catch(e) {
+      console.log('Could not read existing file:', e.message);
+    }
   }
-}
 
-// Merge: scraped grants first, manual ones appended after
-const allGrants = [...grants, ...manualGrants];
-const output = { grants: allGrants, fetched: new Date().toISOString(), count: allGrants.length };
-fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
-console.log('Saved.');
+  const allGrants = [...grants, ...manualGrants];
+  const output = { grants: allGrants, fetched: new Date().toISOString(), count: allGrants.length };
+  fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
+  console.log('Saved.');
+})();
