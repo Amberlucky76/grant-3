@@ -180,54 +180,34 @@ async function scrapeEFC() {
 }
 
 // ── NYS PARKS ────────────────────────────────────────────────
+// Hardcoded to known open programs — Parks pages require heavy JS rendering
+// and their closed language varies too much for reliable keyword detection.
+// Status is still verified via Puppeteer on each run.
 async function scrapeParks() {
   console.log('Scraping NYS Parks...');
-  try {
-    const html = await fetchHtml('https://parks.ny.gov/grants');
-    console.log('  Parks html length: ' + html.length);
+  const known = [
+    { title: 'Environmental Protection Fund', link: 'https://parks.ny.gov/grants/environmental-protection-fund' },
+    { title: 'Municipal Parks and Recreation Grant', link: 'https://parks.ny.gov/grants/municipal-parks-recreation-grant' },
+    { title: 'Recreational Trails Program', link: 'https://parks.ny.gov/grants/recreational-trails-program' },
+    { title: 'African American Heritage Grant', link: 'https://parks.ny.gov/grants/african-american-heritage-grant' },
+    { title: 'LWCF Outdoor Recreation Legacy Partnership Program', link: 'https://parks.ny.gov/grants/lwcf-outdoor-recreation-legacy-partnership-program' },
+    { title: 'Boating Infrastructure Grant Program', link: 'https://parks.ny.gov/grants/boating-infrastructure-grant-program' },
+    { title: 'Maritime Heritage Subgrant Program', link: 'https://parks.ny.gov/grants/maritime-heritage-subgrant-program' },
+    { title: 'ZBGA Capital Grant Program', link: 'https://parks.ny.gov/grants/zbga-capital-grant-program' },
+    { title: 'ZBGA Operational Support Grant Program', link: 'https://parks.ny.gov/grants/zoos-botanical-gardens-aquaria-operational-support-grant-program' },
+    { title: 'Snowmobile Trail Grant Program', link: 'https://parks.ny.gov/activities/snowmobiling/snowmobile-grant-program' },
+    { title: 'NY PLAYS Initiative', link: 'https://www.dasny.org/PLAYS' },
+  ];
 
-    const grants = [];
-    const seen = new Set();
-
-    // Grant links are in the sidebar nav: href="/grants/program-name"
-    const linkRe = /<a[^>]+href="(\/grants\/[^"#?]+)"[^>]*>([\s\S]*?)<\/a>/gi;
-    let m;
-    while ((m = linkRe.exec(html)) !== null) {
-      const href = m[1];
-      const title = stripHtml(m[2]);
-      if (isJunk(title) || seen.has(href)) continue;
-      seen.add(href);
-      // Check surrounding HTML for closed/unavailable indicators
-      const surroundingText = html.substring(Math.max(0, m.index - 200), m.index + 200).toLowerCase();
-      const parksStatus = (surroundingText.includes('closed') || surroundingText.includes('not available') || surroundingText.includes('not currently')) ? 'Closed' : 'Available';
-      grants.push({
-        id: 'parks-' + href.replace('/grants/', '').replace(/[^a-z0-9]/g, '-').slice(0, 40),
-        title, agency: 'NYS Office of Parks, Recreation & Historic Preservation',
-        status: parksStatus, dueDate: '',
-        link: 'https://parks.ny.gov' + href,
-        source: 'NYS Parks',
-      });
-    }
-
-    // DASNY-hosted parks grants (NY BRICKS, NY SWIMS)
-    const dasnyRe = /<a[^>]+href="(https:\/\/www\.dasny\.org\/[^"#?]+)"[^>]*>([\s\S]*?)<\/a>/gi;
-    while ((m = dasnyRe.exec(html)) !== null) {
-      const title = stripHtml(m[2]);
-      if (isJunk(title) || seen.has(m[1])) continue;
-      seen.add(m[1]);
-      grants.push({
-        id: 'parks-dasny-' + title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30),
-        title, agency: 'NYS Parks / DASNY',
-        status: 'Available', dueDate: '',
-        link: m[1], source: 'NYS Parks',
-      });
-    }
-
-    return grants; // status checked later via browser
-  } catch(e) {
-    console.log('  Parks error: ' + e.message);
-    return [];
-  }
+  return known.map(k => ({
+    id: 'parks-' + k.title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 40),
+    title: k.title,
+    agency: 'NYS Office of Parks, Recreation & Historic Preservation',
+    status: 'Available',
+    dueDate: '',
+    link: k.link,
+    source: 'NYS Parks',
+  }));
 }
 
 // ── HCR ──────────────────────────────────────────────────────
