@@ -137,7 +137,7 @@
       "status": "Available",
       "eligibility": "Governmental Entity, Not-For-Profit",
       "dueDate": "06/10/2026 4:00PM EDT",
-      "link": "https://dol.ny.gov/funding-opportunities",
+      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
       "source": "NYS"
     },
     {
@@ -147,7 +147,7 @@
       "status": "Available",
       "eligibility": "For Profit, Governmental Entity, Not-For-Profit",
       "dueDate": "06/05/2026 4:00PM EDT",
-      "link": "https://www.justicecenter.ny.gov/procurement-opportunities",
+      "link": "https://dol.ny.gov/funding-opportunities",
       "source": "NYS"
     },
     {
@@ -157,10 +157,10 @@
       "status": "Available",
       "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
       "dueDate": "04/24/2026 2:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
+      "link": "https://otda.ny.gov/contracts/2026/NNDS/",
       "source": "NYS"
     }
   ],
-  "fetched": "2026-04-22T16:03:05.177Z",
+  "fetched": "2026-04-22T16:14:09.524Z",
   "count": 16
 }
