@@ -1,11 +1,224 @@
 {
-  "grants": [],
-  "fetched": "2026-04-22T16:46:33.811Z",
-  "count": 0,
+  "grants": [
+    {
+      "id": "efc-water-infrastructure-improveme",
+      "title": "Water Infrastructure Improvement and Intermunicipal Grants",
+      "agency": "NYS Environmental Facilities Corporation",
+      "status": "Closed",
+      "dueDate": "The application period is currently closed.",
+      "description": "Competitive grants that empower municipalities to undertake water quality projects crucial to safeguarding public health, protecting the environment, bolstering climate readiness, and promoting economic development.",
+      "link": "https://efc.ny.gov/wiia",
+      "source": "EFC"
+    },
+    {
+      "id": "efc-green-resiliency-grants-and-gr",
+      "title": "Green Resiliency Grants and Green Innovation Grant Program",
+      "agency": "NYS Environmental Facilities Corporation",
+      "status": "Available",
+      "dueDate": "$75 million is available, applications due by 4 p.m. on June 12.",
+      "description": "Grants for implementing green infrastructure projects including stormwater management, water efficiency, and energy efficiency.&nbsp;",
+      "link": "https://efc.ny.gov/grg",
+      "source": "EFC"
+    },
+    {
+      "id": "efc-wastewater-infrastructure-engi",
+      "title": "Wastewater Infrastructure Engineering Planning Grants",
+      "agency": "NYS Environmental Facilities Corporation",
+      "status": "Available",
+      "dueDate": "$3 million is available, applications due by 4 p.m. on June 12.",
+      "description": "Planning grants help communities prepare to apply for grants and financing through the CWSRF. Planning grants help fund the development of an engineering report, which is required in the EFC financing application process. EPGs help municipalities advance fiscally sound and well-designed projects to ",
+      "link": "https://efc.ny.gov/epg",
+      "source": "EFC"
+    },
+    {
+      "id": "efc-clean-vessel-assistance-progra",
+      "title": "Clean Vessel Assistance Program",
+      "agency": "NYS Environmental Facilities Corporation",
+      "status": "Available",
+      "dueDate": "Ongoing",
+      "description": "Reimbursement grants to marinas for the installation, renovation &amp; replacement of pumpout stations.",
+      "link": "https://efc.ny.gov/clean-vessel",
+      "source": "EFC"
+    },
+    {
+      "id": "efc-septic-system-replacement-prog",
+      "title": "Septic System Replacement Program",
+      "agency": "NYS Environmental Facilities Corporation",
+      "status": "Available",
+      "dueDate": "Homeowners and small businesses should reach out to their local program contact.",
+      "description": "Funding to counties to help homeowners and small businesses replace cesspools and septic systems.",
+      "link": "https://efc.ny.gov/septic-replacement",
+      "source": "EFC"
+    },
+    {
+      "id": "parks-african-american-heritage-grant",
+      "title": "African American Heritage Grant",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://parks.ny.gov/grants/african-american-heritage-grant",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-boating-infrastructure-grant-program",
+      "title": "Boating Infrastructure Grant Program",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://parks.ny.gov/grants/boating-infrastructure-grant-program",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-environmental-protection-fund",
+      "title": "Environmental Protection Fund",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://parks.ny.gov/grants/environmental-protection-fund",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-lwcf-outdoor-recreation-legacy-partnersh",
+      "title": "LWCF Outdoor Recreation Legacy Partnership Program",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://parks.ny.gov/grants/lwcf-outdoor-recreation-legacy-partnership-program",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-legislative-initiatives",
+      "title": "Legislative Initiatives",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://parks.ny.gov/grants/legislative-initiatives",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-maritime-heritage-subgrant-program",
+      "title": "Maritime Heritage Subgrant Program",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://parks.ny.gov/grants/maritime-heritage-subgrant-program",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-municipal-parks-recreation-grant",
+      "title": "Municipal Parks and Recreation Grant",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://parks.ny.gov/grants/municipal-parks-recreation-grant",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-recreational-trails-program",
+      "title": "Recreational Trails Program",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://parks.ny.gov/grants/recreational-trails-program",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-zbga-capital-grant-program",
+      "title": "ZBGA Capital Grant Program",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://parks.ny.gov/grants/zbga-capital-grant-program",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-zoos-botanical-gardens-aquaria-operation",
+      "title": "ZBGA Operational Support Grant Program",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://parks.ny.gov/grants/zoos-botanical-gardens-aquaria-operational-support-grant-program",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-dasny-ny-bricks-initiative",
+      "title": "NY BRICKS Initiative",
+      "agency": "NYS Parks / DASNY",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://www.dasny.org/BRICKS",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-dasny-ny-swims-initiative",
+      "title": "NY SWIMS Initiative",
+      "agency": "NYS Parks / DASNY",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://www.dasny.org/SWIMSRound2",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-dasny-new-york-places-for-learning--",
+      "title": "New York Places for Learning, Activity, and Youth Socialization (NY PLAYS) Initiative",
+      "agency": "NYS Parks / DASNY",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://www.dasny.org/PLAYS",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "hcr-community-development-block-gr",
+      "title": "Community Development Block Grant",
+      "agency": "NYS Homes & Community Renewal",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://hcr.ny.gov/community-development-block-grant",
+      "source": "HCR"
+    },
+    {
+      "id": "hcr-leading-in-lead-prevention-pil",
+      "title": "Leading in Lead Prevention Pilot Program",
+      "agency": "NYS Homes & Community Renewal",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://hcr.ny.gov/leading-lead-prevention-pilot-program",
+      "source": "HCR"
+    },
+    {
+      "id": "hcr-targeted-home-improvement-prog",
+      "title": "Targeted Home Improvement Program",
+      "agency": "NYS Homes & Community Renewal",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://hcr.ny.gov/T-HIP",
+      "source": "HCR"
+    },
+    {
+      "id": "hcr-vacant-rental-program",
+      "title": "Vacant Rental Program",
+      "agency": "NYS Homes & Community Renewal",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://hcr.ny.gov/vrp",
+      "source": "HCR"
+    },
+    {
+      "id": "dasny-new-york-places-for-learning--",
+      "title": "New York Places for Learning, Activity and Youth Socialization \n(NY PLAYS)",
+      "agency": "DASNY",
+      "status": "Available",
+      "dueDate": "May 4, 2026",
+      "link": "https://www.dasny.org/sites/default/files/inline-files/NY%20PLAYS%20RFA.pdf",
+      "source": "DASNY"
+    }
+  ],
+  "fetched": "2026-04-22T16:51:20.259Z",
+  "count": 23,
   "sources": {
-    "efc": 0,
-    "parks": 0,
-    "hcr": 0,
-    "dasny": 0
+    "efc": 5,
+    "parks": 13,
+    "hcr": 4,
+    "dasny": 1
   }
 }
