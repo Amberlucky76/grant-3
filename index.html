@@ -888,7 +888,8 @@ function renderCard(g) {
 function renderAgencyCard(g) {
   const saved = state.saved.has('agency-'+g.id);
   const statusLower = (g.status||'').toLowerCase();
-  const sc = statusLower.includes('closed') ? 'tag-closed' : 'tag-posted';
+  const isClosed = statusLower.includes('closed') || statusLower.includes('unavailable');
+  const sc = isClosed ? 'tag-closed' : 'tag-posted';
   const sourceColors = {
     'EFC':'background:#0f5132;color:#fff;',
     'NYS Parks':'background:#14532d;color:#fff;',
@@ -902,11 +903,11 @@ function renderAgencyCard(g) {
   } else if (g.dueDate) {
     dl = `<span class="deadline-row">⏱ ${esc(g.dueDate.slice(0,60))}</span>`;
   }
-  return `<div class="grant-card">
+  return `<div class="grant-card" style="${isClosed?'opacity:0.55;':''}">
     <div class="card-top">
       <div style="display:flex;gap:5px;flex-wrap:wrap;">
         <span class="tag" style="${sourceStyle}">${esc(g.source||'Agency')}</span>
-        <span class="tag ${sc}">${esc(g.status||'Available')}</span>
+        <span class="tag ${sc}">${esc(isClosed?'Closed':g.status||'Available')}</span>
       </div>
       <button class="card-heart ${saved?'saved':''}" onclick="event.stopPropagation();toggleSave('agency-${esc(String(g.id))}',this)">${saved?'♥':'♡'}</button>
     </div>
