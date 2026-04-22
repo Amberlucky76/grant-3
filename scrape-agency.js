@@ -18,29 +18,36 @@ function fetchHtml(url) {
   });
 }
 
-// Check grant status using Puppeteer so JS-rendered content is visible
+// Check grant status and extract deadline using Puppeteer
 async function checkGrantStatus(browserPage, url) {
   try {
     await browserPage.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
     await new Promise(r => setTimeout(r, 2000));
 
-    // Get text from main content area only, skipping nav
-    const text = await browserPage.evaluate(() => {
+    const result = await browserPage.evaluate(() => {
       const main = document.querySelector('main, #main, #main-content, [role="main"], .main-content, article');
       const el = main || document.body;
-      return (el.innerText || '').toLowerCase();
-    });
+      const text = (el.innerText || '').toLowerCase();
+      const rawText = el.innerText || '';
 
-    // Log snippet starting after any nav content (skip first 200 chars)
-    const snippet = text.replace(/\s+/g, ' ').slice(0, 800);
-    console.log('  STATUS CHECK [' + url.split('/').pop() + ']: ' + snippet);
+      // Extract deadline - look for date patterns near deadline keywords
+      let dueDate = '';
+      const deadlinePatterns = [
+        /(?:deadline|due date|applications? due|close[sd]?|submit by|apply by)[^\n]{0,60}((?:january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{1,2},?\s+\d{4})/i,
+        /(?:deadline|due date|applications? due|close[sd]?|submit by|apply by)[^\n]{0,30}(\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4})/i,
+        /((?:january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{1,2},?\s+\d{4})(?:[^\n]{0,40}deadline|[^\n]{0,40}due|[^\n]{0,40}close)/i,
+      ];
+      for (const re of deadlinePatterns) {
+        const m = rawText.match(re);
+        if (m) { dueDate = m[1].trim(); break; }
+      }
 
-    // Pages that show award recipients = closed round
-    if (text.includes('grant recipients') ||
+      // Closed detection
+      const isClosed =
+        text.includes('grant recipients') ||
         text.includes('award recipients') ||
-        text.includes('grant awards') && text.includes('awarded') ||
+        (text.includes('grant awards') && text.includes('awarded')) ||
         text.includes('round 2 awards') ||
-        // Explicit closed language
         text.includes('application period is closed') ||
         text.includes('applications are closed') ||
         text.includes('not currently accepting') ||
@@ -58,12 +65,15 @@ async function checkGrantStatus(browserPage, url) {
         text.includes('this round is closed') ||
         text.includes('round is now closed') ||
         text.includes('awards have been made') ||
-        text.includes('awards were announced')) {
-      return 'Closed';
-    }
-    return 'Available';
+        text.includes('awards were announced');
+
+      return { status: isClosed ? 'Closed' : 'Available', dueDate };
+    });
+
+    console.log('  [' + url.split('/').pop() + '] status=' + result.status + (result.dueDate ? ' due=' + result.dueDate : ''));
+    return result;
   } catch(e) {
-    return 'Available';
+    return { status: 'Available', dueDate: '' };
   }
 }
 
@@ -221,54 +231,44 @@ async function scrapeParks() {
 }
 
 // ── HCR ──────────────────────────────────────────────────────
+// Scrapes municipal-facing HCR programs only (not individual grant-partners page)
 async function scrapeHCR() {
   console.log('Scraping HCR...');
-  try {
-    const html = await fetchHtml('https://hcr.ny.gov/grant-partners');
-    console.log('  HCR html length: ' + html.length);
+  // These are the known active municipal/nonprofit programs from HCR
+  // The grant-partners page is for individuals only and is not appropriate here
+  const known = [
+    {
+      title: 'Community Development Block Grant (CDBG)',
+      link: 'https://hcr.ny.gov/community-development-block-grant',
+      description: 'Federal funding for cities, towns, villages and counties to assist low- and moderate-income communities.',
+    },
+    {
+      title: 'NYS HOME Program',
+      link: 'https://hcr.ny.gov/nys-home-program',
+      description: 'Funding for affordable housing development, down payment assistance, and rehabilitation for municipalities and nonprofits.',
+    },
+    {
+      title: 'Pro-Housing Community Program',
+      link: 'https://hcr.ny.gov/pro-housing-community-program',
+      description: 'Certified localities gain exclusive access to up to $750 million in discretionary State funding.',
+    },
+    {
+      title: 'Vacant Rental Program (VRP)',
+      link: 'https://hcr.ny.gov/vrp',
+      description: 'Grants to rehabilitate vacant and unusable housing units into quality affordable rental units.',
+    },
+  ];
 
-    const grants = [];
-    const seen = new Set();
-
-    // Try multiple patterns since HCR uses varied markup
-    // Pattern 1: <strong><a href="...">Title</a></strong>
-    // Pattern 2: <a href="..."><strong>Title</strong></a>
-    // Pattern 3: plain bold links in the grant list section
-    const patterns = [
-      /<strong>\s*<a[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>\s*<\/strong>/gi,
-      /<a[^>]+href="([^"]+)"[^>]*>\s*<strong>([\s\S]*?)<\/strong>\s*<\/a>/gi,
-    ];
-
-    for (const re of patterns) {
-      let m;
-      while ((m = re.exec(html)) !== null) {
-        let href = m[1];
-        const title = stripHtml(m[2]);
-        if (isJunk(title) || seen.has(title)) continue;
-        seen.add(title);
-
-        // Decode Microsoft SafeLink wrapper
-        const safeMatch = href.match(/[?&]url=([^&]+)/);
-        if (safeMatch) {
-          try { href = decodeURIComponent(safeMatch[1]); } catch {}
-        }
-        const url = resolveUrl(href, 'https://hcr.ny.gov');
-        if (!url) continue;
-
-        grants.push({
-          id: 'hcr-' + title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30),
-          title, agency: 'NYS Homes & Community Renewal',
-          status: 'Available', dueDate: '',
-          link: url, source: 'HCR',
-        });
-      }
-    }
-
-    return grants; // status checked later via browser
-  } catch(e) {
-    console.log('  HCR error: ' + e.message);
-    return [];
-  }
+  return known.map(k => ({
+    id: 'hcr-' + k.title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30),
+    title: k.title,
+    agency: 'NYS Homes & Community Renewal',
+    status: 'Available',
+    dueDate: '',
+    description: k.description,
+    link: k.link,
+    source: 'HCR',
+  }));
 }
 
 // ── DASNY ─────────────────────────────────────────────────────
@@ -389,12 +389,20 @@ async function scrapeDASNY(page) {
   console.log('\nChecking status of ' + needsCheck.length + ' Parks/HCR grants...');
   const statusMap = {};
   for (const g of needsCheck) {
-    const status = await checkGrantStatus(page, g.link);
-    statusMap[g.id] = status;
-    if (status === 'Closed') console.log('  CLOSED: [' + g.source + '] ' + g.title);
+    const result = await checkGrantStatus(page, g.link);
+    statusMap[g.id] = result;
+    if (result.status === 'Closed') console.log('  CLOSED: [' + g.source + '] ' + g.title);
   }
-  const parksChecked = parksDeduped.map(g => ({ ...g, status: statusMap[g.id] || g.status }));
-  const hcrChecked = hcrDeduped.map(g => ({ ...g, status: statusMap[g.id] || g.status }));
+  const parksChecked = parksDeduped.map(g => ({
+    ...g,
+    status: (statusMap[g.id] || {}).status || g.status,
+    dueDate: (statusMap[g.id] || {}).dueDate || g.dueDate,
+  }));
+  const hcrChecked = hcrDeduped.map(g => ({
+    ...g,
+    status: (statusMap[g.id] || {}).status || g.status,
+    dueDate: (statusMap[g.id] || {}).dueDate || g.dueDate,
+  }));
 
   await browser.close();
 
