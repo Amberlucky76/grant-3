@@ -4,8 +4,23 @@ const path = require('path');
 
 const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL?PortalActualURL=https%3a%2f%2fesupplier.sfs.ny.gov%2fpsc%2ffscm%2fSUPPLIER%2fERP%2fc%2fNY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL&PortalContentURL=https%3a%2f%2fesupplier.sfs.ny.gov%2fpsc%2ffscm%2fSUPPLIER%2fERP%2fc%2fNY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL&PortalContentProvider=ERP&PortalCRefLabel=Search%20for%20Grant%20Opportunities&PortalRegistryName=SUPPLIER&PortalServletURI=https%3a%2f%2fesupplier.sfs.ny.gov%2fpsp%2ffscm%2f&PortalURI=https%3a%2f%2fesupplier.sfs.ny.gov%2fpsc%2ffscm%2f&PortalHostNode=ERP&NoCrumbs=yes&PortalKeyStruct=yes';
 
-const SFS_BASE = 'https://esupplier.sfs.ny.gov';
 const SFS_FALLBACK = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL';
+
+async function loadSearchResults(page) {
+  try {
+    await page.goto(NYS_URL, { waitUntil: 'networkidle0', timeout: 60000 });
+  } catch (e) {
+    console.log('Nav note:', e.message);
+  }
+  await new Promise(r => setTimeout(r, 5000));
+
+  await page.evaluate(() => {
+    const btns = Array.from(document.querySelectorAll('input[type=submit], button, a'));
+    const btn = btns.find(b => (b.value || b.innerText || '').trim().toLowerCase() === 'search');
+    if (btn) btn.click();
+  });
+  await new Promise(r => setTimeout(r, 7000));
+}
 
 (async () => {
   console.log('Launching browser...');
@@ -18,23 +33,10 @@ const SFS_FALLBACK = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SU
   await page.setViewport({ width: 1280, height: 900 });
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 
-  console.log('Navigating to search page...');
-  try {
-    await page.goto(NYS_URL, { waitUntil: 'networkidle0', timeout: 60000 });
-  } catch (e) {
-    console.log('Nav note:', e.message);
-  }
-  await new Promise(r => setTimeout(r, 5000));
+  console.log('Loading search results...');
+  await loadSearchResults(page);
 
-  // Click Search
-  await page.evaluate(() => {
-    const btns = Array.from(document.querySelectorAll('input[type=submit], button, a'));
-    const btn = btns.find(b => (b.value || b.innerText || '').trim().toLowerCase() === 'search');
-    if (btn) btn.click();
-  });
-  await new Promise(r => setTimeout(r, 7000));
-
-  // Scrape the results table
+  // First pass: collect all grants and their row indices from the table
   const rawGrants = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
@@ -45,7 +47,6 @@ const SFS_FALLBACK = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SU
       if (cells.length < 4) continue;
 
       const texts = cells.map(c => c.innerText.trim().replace(/\s+/g, ' ').split('\n')[0]);
-
       if (texts[0].toLowerCase().includes('event id') || texts[2]?.toLowerCase().includes('grant opportunity')) continue;
 
       const id = texts[colEventId];
@@ -61,72 +62,85 @@ const SFS_FALLBACK = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SU
       seen.add(title);
 
       const eligLower = eligibility.toLowerCase();
-      if (eligLower && !eligLower.includes('governmental') && !eligLower.includes('government')) {
-        console.log('SKIPPED (eligibility): [' + id + '] ' + title);
-        continue;
-      }
+      if (eligLower && !eligLower.includes('governmental') && !eligLower.includes('government')) continue;
 
+      // Extract the row index from the onclick e.g. 'AUC_NAME_LNK$0' -> 0
       const anchor = cells[colTitle]?.querySelector('a');
-      const titleHref = anchor ? anchor.getAttribute('href') : null;
+      const onclick = anchor ? (anchor.getAttribute('href') || '') : '';
+      const rowMatch = onclick.match(/AUC_NAME_LNK\$(\d+)/);
+      const rowIndex = rowMatch ? parseInt(rowMatch[1]) : null;
 
-      results.push({ id, agency, title, status, eligibility, dueDate, titleHref });
+      results.push({ id, agency, title, status, eligibility, dueDate, rowIndex });
     }
     return results;
   });
 
-  console.log('Found ' + rawGrants.length + ' governmental grants — fetching detail pages...');
+  console.log('Found ' + rawGrants.length + ' grants — clicking into each detail page...');
 
   const grants = [];
+
   for (const g of rawGrants) {
     let announcementLink = SFS_FALLBACK;
 
-    if (g.titleHref) {
-      const detailUrl = g.titleHref.startsWith('http') ? g.titleHref : SFS_BASE + g.titleHref;
-      console.log('Fetching detail for [' + g.id + ']: ' + detailUrl);
+    if (g.rowIndex !== null) {
+      console.log('Clicking row ' + g.rowIndex + ' for [' + g.id + ']...');
       try {
-        await page.goto(detailUrl, { waitUntil: 'networkidle0', timeout: 30000 });
-        await new Promise(r => setTimeout(r, 2000));
+        // Click the link using PeopleSoft's own function with the row index
+        await page.evaluate((idx) => {
+          const links = Array.from(document.querySelectorAll('a'));
+          const link = links.find(a => (a.getAttribute('href') || '').includes('AUC_NAME_LNK$' + idx));
+          if (link) link.click();
+        }, g.rowIndex);
 
+        await new Promise(r => setTimeout(r, 4000));
+
+        // Extract the Announcement Link from the detail page
         const found = await page.evaluate(() => {
           const allEls = Array.from(document.querySelectorAll('td, th, label, span, div'));
           for (const el of allEls) {
-            if (el.innerText && el.innerText.trim().toLowerCase().includes('announcement link')) {
+            const text = (el.innerText || '').trim().toLowerCase();
+            if (text === 'announcement link' || text.includes('announcement link')) {
               const parent = el.closest('tr') || el.parentElement;
               if (parent) {
-                const link = parent.querySelector('a[href]');
-                if (link) return link.href;
+                const a = parent.querySelector('a[href]');
+                if (a && a.href && !a.href.includes('javascript')) return a.href;
                 const nextRow = parent.nextElementSibling;
                 if (nextRow) {
-                  const link2 = nextRow.querySelector('a[href]');
-                  if (link2) return link2.href;
+                  const a2 = nextRow.querySelector('a[href]');
+                  if (a2 && a2.href && !a2.href.includes('javascript')) return a2.href;
                 }
               }
             }
           }
-          // Fallback: first external link on the page
-          const links = Array.from(document.querySelectorAll('a[href]'));
-          const external = links.find(a =>
+          // Fallback: any external non-SFS link
+          const allLinks = Array.from(document.querySelectorAll('a[href]'));
+          const ext = allLinks.find(a =>
             a.href &&
+            a.href.startsWith('http') &&
             !a.href.includes('esupplier.sfs.ny.gov') &&
-            !a.href.includes('javascript') &&
-            a.href.startsWith('http')
+            !a.href.includes('javascript')
           );
-          return external ? external.href : null;
+          return ext ? ext.href : null;
         });
 
         if (found) {
           announcementLink = found;
-          console.log('  -> Found: ' + announcementLink);
+          console.log('  -> ' + announcementLink);
         } else {
-          console.log('  -> No announcement link found, using SFS detail URL');
-          announcementLink = detailUrl;
+          console.log('  -> No external link found, keeping SFS fallback');
         }
+
+        // Go back to search results for next iteration
+        console.log('  Returning to search results...');
+        await loadSearchResults(page);
+
       } catch (e) {
         console.log('  -> Error for [' + g.id + ']: ' + e.message);
-        announcementLink = g.titleHref ? (SFS_BASE + g.titleHref) : SFS_FALLBACK;
+        // Try to recover by reloading search results
+        try { await loadSearchResults(page); } catch(_) {}
       }
     } else {
-      console.log('[' + g.id + '] No title link in table, using fallback');
+      console.log('[' + g.id + '] No row index found, skipping detail fetch');
     }
 
     grants.push({
