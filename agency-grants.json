@@ -44,7 +44,7 @@
       "id": "parks-environmental-protection-fund",
       "title": "Environmental Protection Fund",
       "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Closed",
+      "status": "Available",
       "dueDate": "July 31, 2025",
       "link": "https://parks.ny.gov/grants/environmental-protection-fund",
       "source": "NYS Parks"
@@ -131,15 +131,6 @@
       "source": "NYS Parks"
     },
     {
-      "id": "parks-ny-plays-initiative",
-      "title": "NY PLAYS Initiative",
-      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Available",
-      "dueDate": "",
-      "link": "https://www.dasny.org/PLAYS",
-      "source": "NYS Parks"
-    },
-    {
       "id": "hcr-community-development-block-gr",
       "title": "Community Development Block Grant (CDBG)",
       "agency": "NYS Homes & Community Renewal",
@@ -189,11 +180,11 @@
       "source": "DASNY"
     }
   ],
-  "fetched": "2026-04-22T18:04:56.077Z",
-  "count": 20,
+  "fetched": "2026-04-22T18:11:51.514Z",
+  "count": 19,
   "sources": {
     "efc": 4,
-    "parks": 11,
+    "parks": 10,
     "hcr": 4,
     "dasny": 1
   }
