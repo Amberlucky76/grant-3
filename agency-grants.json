@@ -80,7 +80,7 @@
       "id": "parks-lwcf-outdoor-recreation-legacy-partnersh",
       "title": "LWCF Outdoor Recreation Legacy Partnership Program",
       "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Available",
+      "status": "Closed",
       "dueDate": "May 2, 2025",
       "link": "https://parks.ny.gov/grants/lwcf-outdoor-recreation-legacy-partnership-program",
       "source": "NYS Parks"
@@ -89,7 +89,7 @@
       "id": "parks-boating-infrastructure-grant-program",
       "title": "Boating Infrastructure Grant Program",
       "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Available",
+      "status": "Closed",
       "dueDate": "",
       "link": "https://parks.ny.gov/grants/boating-infrastructure-grant-program",
       "source": "NYS Parks"
@@ -107,7 +107,7 @@
       "id": "parks-zbga-capital-grant-program",
       "title": "ZBGA Capital Grant Program",
       "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Available",
+      "status": "Closed",
       "dueDate": "",
       "link": "https://parks.ny.gov/grants/zbga-capital-grant-program",
       "source": "NYS Parks"
@@ -116,7 +116,7 @@
       "id": "parks-zbga-operational-support-grant-program",
       "title": "ZBGA Operational Support Grant Program",
       "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Available",
+      "status": "Closed",
       "dueDate": "",
       "link": "https://parks.ny.gov/grants/zoos-botanical-gardens-aquaria-operational-support-grant-program",
       "source": "NYS Parks"
@@ -180,7 +180,7 @@
       "source": "DASNY"
     }
   ],
-  "fetched": "2026-04-22T18:11:51.514Z",
+  "fetched": "2026-04-22T18:19:12.920Z",
   "count": 19,
   "sources": {
     "efc": 4,
