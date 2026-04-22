@@ -44,7 +44,7 @@
       "id": "parks-african-american-heritage-grant",
       "title": "African American Heritage Grant",
       "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Available",
+      "status": "Closed",
       "dueDate": "",
       "link": "https://parks.ny.gov/grants/african-american-heritage-grant",
       "source": "NYS Parks"
@@ -62,7 +62,7 @@
       "id": "parks-environmental-protection-fund",
       "title": "Environmental Protection Fund",
       "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Available",
+      "status": "Closed",
       "dueDate": "",
       "link": "https://parks.ny.gov/grants/environmental-protection-fund",
       "source": "NYS Parks"
@@ -80,7 +80,7 @@
       "id": "parks-legislative-initiatives",
       "title": "Legislative Initiatives",
       "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Available",
+      "status": "Closed",
       "dueDate": "",
       "link": "https://parks.ny.gov/grants/legislative-initiatives",
       "source": "NYS Parks"
@@ -134,7 +134,7 @@
       "id": "parks-dasny-ny-bricks-initiative",
       "title": "NY BRICKS Initiative",
       "agency": "NYS Parks / DASNY",
-      "status": "Available",
+      "status": "Closed",
       "dueDate": "",
       "link": "https://www.dasny.org/BRICKS",
       "source": "NYS Parks"
@@ -188,7 +188,7 @@
       "id": "hcr-vacant-rental-program",
       "title": "Vacant Rental Program",
       "agency": "NYS Homes & Community Renewal",
-      "status": "Available",
+      "status": "Closed",
       "dueDate": "",
       "link": "https://hcr.ny.gov/vrp",
       "source": "HCR"
@@ -203,7 +203,7 @@
       "source": "DASNY"
     }
   ],
-  "fetched": "2026-04-22T17:20:11.908Z",
+  "fetched": "2026-04-22T17:26:11.476Z",
   "count": 22,
   "sources": {
     "efc": 4,
