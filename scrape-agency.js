@@ -21,15 +21,27 @@ function fetchHtml(url) {
 // Check grant status using Puppeteer so JS-rendered content is visible
 async function checkGrantStatus(browserPage, url) {
   try {
-    await browserPage.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
-    await new Promise(r => setTimeout(r, 1500));
-    const text = await browserPage.evaluate(() => (document.body && document.body.innerText || '').toLowerCase());
+    await browserPage.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
+    await new Promise(r => setTimeout(r, 2000));
 
-    // Log a snippet of the page text so we can see what language is used
-    const snippet = text.replace(/\s+/g, ' ').slice(0, 600);
+    // Get text from main content area only, skipping nav
+    const text = await browserPage.evaluate(() => {
+      const main = document.querySelector('main, #main, #main-content, [role="main"], .main-content, article');
+      const el = main || document.body;
+      return (el.innerText || '').toLowerCase();
+    });
+
+    // Log snippet starting after any nav content (skip first 200 chars)
+    const snippet = text.replace(/\s+/g, ' ').slice(0, 800);
     console.log('  STATUS CHECK [' + url.split('/').pop() + ']: ' + snippet);
 
-    if (text.includes('application period is closed') ||
+    // Pages that show award recipients = closed round
+    if (text.includes('grant recipients') ||
+        text.includes('award recipients') ||
+        text.includes('grant awards') && text.includes('awarded') ||
+        text.includes('round 2 awards') ||
+        // Explicit closed language
+        text.includes('application period is closed') ||
         text.includes('applications are closed') ||
         text.includes('not currently accepting') ||
         text.includes('this program is closed') ||
@@ -41,7 +53,12 @@ async function checkGrantStatus(browserPage, url) {
         text.includes('currently closed') ||
         text.includes('not accepting applications') ||
         text.includes('funding is not available') ||
-        text.includes('not available at this time')) {
+        text.includes('not available at this time') ||
+        text.includes('applications have closed') ||
+        text.includes('this round is closed') ||
+        text.includes('round is now closed') ||
+        text.includes('awards have been made') ||
+        text.includes('awards were announced')) {
       return 'Closed';
     }
     return 'Available';
@@ -354,8 +371,21 @@ async function scrapeDASNY(page) {
   const [efc, parks, hcr] = await Promise.all([scrapeEFC(), scrapeParks(), scrapeHCR()]);
   const dasny = await scrapeDASNY(page);
 
+  // Deduplicate across all sources by title
+  const seenTitles = new Set();
+  const dedupe = (arr) => arr.filter(g => {
+    const key = g.title.toLowerCase().trim();
+    if (seenTitles.has(key)) { console.log('DEDUP: ' + g.title); return false; }
+    seenTitles.add(key);
+    return true;
+  });
+  const parksDeduped = dedupe(parks);
+  const hcrDeduped = dedupe(hcr);
+  // Add dasny titles to seen so NY PLAYS from parks doesn't duplicate DASNY's
+  dasny.forEach(g => seenTitles.add(g.title.toLowerCase().trim()));
+
   // Check status of Parks and HCR grants using Puppeteer (JS-rendered pages)
-  const needsCheck = [...parks, ...hcr].filter(g => g.link && g.link.startsWith('http'));
+  const needsCheck = [...parksDeduped, ...hcrDeduped].filter(g => g.link && g.link.startsWith('http'));
   console.log('\nChecking status of ' + needsCheck.length + ' Parks/HCR grants...');
   const statusMap = {};
   for (const g of needsCheck) {
@@ -363,8 +393,8 @@ async function scrapeDASNY(page) {
     statusMap[g.id] = status;
     if (status === 'Closed') console.log('  CLOSED: [' + g.source + '] ' + g.title);
   }
-  const parksChecked = parks.map(g => ({ ...g, status: statusMap[g.id] || g.status }));
-  const hcrChecked = hcr.map(g => ({ ...g, status: statusMap[g.id] || g.status }));
+  const parksChecked = parksDeduped.map(g => ({ ...g, status: statusMap[g.id] || g.status }));
+  const hcrChecked = hcrDeduped.map(g => ({ ...g, status: statusMap[g.id] || g.status }));
 
   await browser.close();
 
