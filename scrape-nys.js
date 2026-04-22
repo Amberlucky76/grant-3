@@ -4,6 +4,9 @@ const path = require('path');
 
 const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL?PortalActualURL=https%3a%2f%2fesupplier.sfs.ny.gov%2fpsc%2ffscm%2fSUPPLIER%2fERP%2fc%2fNY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL&PortalContentURL=https%3a%2f%2fesupplier.sfs.ny.gov%2fpsc%2ffscm%2fSUPPLIER%2fERP%2fc%2fNY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL&PortalContentProvider=ERP&PortalCRefLabel=Search%20for%20Grant%20Opportunities&PortalRegistryName=SUPPLIER&PortalServletURI=https%3a%2f%2fesupplier.sfs.ny.gov%2fpsp%2ffscm%2f&PortalURI=https%3a%2f%2fesupplier.sfs.ny.gov%2fpsc%2ffscm%2f&PortalHostNode=ERP&NoCrumbs=yes&PortalKeyStruct=yes';
 
+const SFS_BASE = 'https://esupplier.sfs.ny.gov';
+const SFS_FALLBACK = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL';
+
 (async () => {
   console.log('Launching browser...');
   const browser = await puppeteer.launch({
@@ -15,7 +18,7 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
   await page.setViewport({ width: 1280, height: 900 });
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 
-  console.log('Navigating...');
+  console.log('Navigating to search page...');
   try {
     await page.goto(NYS_URL, { waitUntil: 'networkidle0', timeout: 60000 });
   } catch (e) {
@@ -31,28 +34,11 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
   });
   await new Promise(r => setTimeout(r, 7000));
 
-  // Log the actual header row so we know column order
-  const headers = await page.evaluate(() => {
-    for (const row of document.querySelectorAll('tr')) {
-      const ths = row.querySelectorAll('th');
-      if (ths.length > 2) {
-        return Array.from(ths).map(th => th.innerText.trim());
-      }
-      const tds = row.querySelectorAll('td');
-      if (tds.length > 2) {
-        const texts = Array.from(tds).map(td => td.innerText.trim());
-        if (texts[0].toLowerCase().includes('event')) return texts;
-      }
-    }
-    return [];
-  });
-  console.log('Headers:', JSON.stringify(headers));
-
-  const grants = await page.evaluate(() => {
+  // Scrape the results table
+  const rawGrants = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
-
-    let colEventId = 0, colAgency = 1, colTitle = 2, colStatus = 3, colEligibility = 4, colDueDate = 7;
+    const colEventId = 0, colAgency = 1, colTitle = 2, colStatus = 3, colEligibility = 4, colDueDate = 7;
 
     for (const row of document.querySelectorAll('tr')) {
       const cells = Array.from(row.querySelectorAll('td'));
@@ -76,39 +62,89 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
 
       const eligLower = eligibility.toLowerCase();
       if (eligLower && !eligLower.includes('governmental') && !eligLower.includes('government')) {
-        console.log(`SKIPPED (eligibility): [${id}] ${title} | elig: ${eligibility}`);
+        console.log('SKIPPED (eligibility): [' + id + '] ' + title);
         continue;
       }
 
-      // Extract the grant-specific link
       const anchor = cells[colTitle]?.querySelector('a');
-      let link = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL';
+      const titleHref = anchor ? anchor.getAttribute('href') : null;
 
-      if (anchor) {
-        console.log(`ANCHOR for [${id}]: href=${anchor.getAttribute('href')} onclick=${anchor.getAttribute('onclick')}`);
-        const href = anchor.getAttribute('href');
-        const onclick = anchor.getAttribute('onclick') || '';
-
-        if (href && href !== '#' && href !== 'javascript:void(0)') {
-          link = href.startsWith('http') ? href : 'https://esupplier.sfs.ny.gov' + href;
-        } else if (onclick) {
-          const match = onclick.match(/AUC_ID[=']([^'&"]+)/);
-          if (match) {
-            link = `https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL?AUC_ID=${match[1]}&Action=U`;
-          }
-        }
-      }
-
-      console.log(`KEEPING: [${id}] ${title} | elig: ${eligibility}`);
-      results.push({ id, agency, title, status, eligibility, dueDate, link, source: 'NYS' });
+      results.push({ id, agency, title, status, eligibility, dueDate, titleHref });
     }
     return results;
   });
 
+  console.log('Found ' + rawGrants.length + ' governmental grants — fetching detail pages...');
+
+  const grants = [];
+  for (const g of rawGrants) {
+    let announcementLink = SFS_FALLBACK;
+
+    if (g.titleHref) {
+      const detailUrl = g.titleHref.startsWith('http') ? g.titleHref : SFS_BASE + g.titleHref;
+      console.log('Fetching detail for [' + g.id + ']: ' + detailUrl);
+      try {
+        await page.goto(detailUrl, { waitUntil: 'networkidle0', timeout: 30000 });
+        await new Promise(r => setTimeout(r, 2000));
+
+        const found = await page.evaluate(() => {
+          const allEls = Array.from(document.querySelectorAll('td, th, label, span, div'));
+          for (const el of allEls) {
+            if (el.innerText && el.innerText.trim().toLowerCase().includes('announcement link')) {
+              const parent = el.closest('tr') || el.parentElement;
+              if (parent) {
+                const link = parent.querySelector('a[href]');
+                if (link) return link.href;
+                const nextRow = parent.nextElementSibling;
+                if (nextRow) {
+                  const link2 = nextRow.querySelector('a[href]');
+                  if (link2) return link2.href;
+                }
+              }
+            }
+          }
+          // Fallback: first external link on the page
+          const links = Array.from(document.querySelectorAll('a[href]'));
+          const external = links.find(a =>
+            a.href &&
+            !a.href.includes('esupplier.sfs.ny.gov') &&
+            !a.href.includes('javascript') &&
+            a.href.startsWith('http')
+          );
+          return external ? external.href : null;
+        });
+
+        if (found) {
+          announcementLink = found;
+          console.log('  -> Found: ' + announcementLink);
+        } else {
+          console.log('  -> No announcement link found, using SFS detail URL');
+          announcementLink = detailUrl;
+        }
+      } catch (e) {
+        console.log('  -> Error for [' + g.id + ']: ' + e.message);
+        announcementLink = g.titleHref ? (SFS_BASE + g.titleHref) : SFS_FALLBACK;
+      }
+    } else {
+      console.log('[' + g.id + '] No title link in table, using fallback');
+    }
+
+    grants.push({
+      id: g.id,
+      agency: g.agency,
+      title: g.title,
+      status: g.status,
+      eligibility: g.eligibility,
+      dueDate: g.dueDate,
+      link: announcementLink,
+      source: 'NYS',
+    });
+  }
+
   await browser.close();
 
-  console.log(`Found ${grants.length} governmental grants`);
-  grants.forEach(g => console.log(` - [${g.id}] ${g.title} | ${g.eligibility}`));
+  console.log('\nDone. ' + grants.length + ' grants processed.');
+  grants.forEach(g => console.log(' - [' + g.id + '] ' + g.link));
 
   let manualGrants = [];
   const outputPath = path.join(process.cwd(), 'nys-grants.json');
@@ -116,7 +152,7 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
     try {
       const existing = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
       manualGrants = (existing.grants || []).filter(g => g.manual === true);
-      console.log(`Preserving ${manualGrants.length} manual entries`);
+      console.log('Preserving ' + manualGrants.length + ' manual entries');
     } catch(e) {
       console.log('Could not read existing file:', e.message);
     }
