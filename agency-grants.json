@@ -41,24 +41,6 @@
       "source": "EFC"
     },
     {
-      "id": "parks-african-american-heritage-grant",
-      "title": "African American Heritage Grant",
-      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Closed",
-      "dueDate": "",
-      "link": "https://parks.ny.gov/grants/african-american-heritage-grant",
-      "source": "NYS Parks"
-    },
-    {
-      "id": "parks-boating-infrastructure-grant-program",
-      "title": "Boating Infrastructure Grant Program",
-      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Available",
-      "dueDate": "",
-      "link": "https://parks.ny.gov/grants/boating-infrastructure-grant-program",
-      "source": "NYS Parks"
-    },
-    {
       "id": "parks-environmental-protection-fund",
       "title": "Environmental Protection Fund",
       "agency": "NYS Office of Parks, Recreation & Historic Preservation",
@@ -68,34 +50,7 @@
       "source": "NYS Parks"
     },
     {
-      "id": "parks-lwcf-outdoor-recreation-legacy-partnersh",
-      "title": "LWCF Outdoor Recreation Legacy Partnership Program",
-      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Available",
-      "dueDate": "May 2, 2025",
-      "link": "https://parks.ny.gov/grants/lwcf-outdoor-recreation-legacy-partnership-program",
-      "source": "NYS Parks"
-    },
-    {
-      "id": "parks-legislative-initiatives",
-      "title": "Legislative Initiatives",
-      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Closed",
-      "dueDate": "",
-      "link": "https://parks.ny.gov/grants/legislative-initiatives",
-      "source": "NYS Parks"
-    },
-    {
-      "id": "parks-maritime-heritage-subgrant-program",
-      "title": "Maritime Heritage Subgrant Program",
-      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
-      "status": "Closed",
-      "dueDate": "",
-      "link": "https://parks.ny.gov/grants/maritime-heritage-subgrant-program",
-      "source": "NYS Parks"
-    },
-    {
-      "id": "parks-municipal-parks-recreation-grant",
+      "id": "parks-municipal-parks-and-recreation-grant",
       "title": "Municipal Parks and Recreation Grant",
       "agency": "NYS Office of Parks, Recreation & Historic Preservation",
       "status": "Available",
@@ -113,6 +68,42 @@
       "source": "NYS Parks"
     },
     {
+      "id": "parks-african-american-heritage-grant",
+      "title": "African American Heritage Grant",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Closed",
+      "dueDate": "",
+      "link": "https://parks.ny.gov/grants/african-american-heritage-grant",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-lwcf-outdoor-recreation-legacy-partnersh",
+      "title": "LWCF Outdoor Recreation Legacy Partnership Program",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Available",
+      "dueDate": "May 2, 2025",
+      "link": "https://parks.ny.gov/grants/lwcf-outdoor-recreation-legacy-partnership-program",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-boating-infrastructure-grant-program",
+      "title": "Boating Infrastructure Grant Program",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Available",
+      "dueDate": "",
+      "link": "https://parks.ny.gov/grants/boating-infrastructure-grant-program",
+      "source": "NYS Parks"
+    },
+    {
+      "id": "parks-maritime-heritage-subgrant-program",
+      "title": "Maritime Heritage Subgrant Program",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
+      "status": "Closed",
+      "dueDate": "",
+      "link": "https://parks.ny.gov/grants/maritime-heritage-subgrant-program",
+      "source": "NYS Parks"
+    },
+    {
       "id": "parks-zbga-capital-grant-program",
       "title": "ZBGA Capital Grant Program",
       "agency": "NYS Office of Parks, Recreation & Historic Preservation",
@@ -122,7 +113,7 @@
       "source": "NYS Parks"
     },
     {
-      "id": "parks-zoos-botanical-gardens-aquaria-operation",
+      "id": "parks-zbga-operational-support-grant-program",
       "title": "ZBGA Operational Support Grant Program",
       "agency": "NYS Office of Parks, Recreation & Historic Preservation",
       "status": "Available",
@@ -131,27 +122,18 @@
       "source": "NYS Parks"
     },
     {
-      "id": "parks-dasny-ny-bricks-initiative",
-      "title": "NY BRICKS Initiative",
-      "agency": "NYS Parks / DASNY",
-      "status": "Closed",
-      "dueDate": "",
-      "link": "https://www.dasny.org/BRICKS",
-      "source": "NYS Parks"
-    },
-    {
-      "id": "parks-dasny-ny-swims-initiative",
-      "title": "NY SWIMS Initiative",
-      "agency": "NYS Parks / DASNY",
+      "id": "parks-snowmobile-trail-grant-program",
+      "title": "Snowmobile Trail Grant Program",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
       "status": "Available",
       "dueDate": "",
-      "link": "https://www.dasny.org/SWIMSRound2",
+      "link": "https://parks.ny.gov/activities/snowmobiling/snowmobile-grant-program",
       "source": "NYS Parks"
     },
     {
-      "id": "parks-dasny-new-york-places-for-learning--",
-      "title": "New York Places for Learning, Activity, and Youth Socialization (NY PLAYS) Initiative",
-      "agency": "NYS Parks / DASNY",
+      "id": "parks-ny-plays-initiative",
+      "title": "NY PLAYS Initiative",
+      "agency": "NYS Office of Parks, Recreation & Historic Preservation",
       "status": "Available",
       "dueDate": "",
       "link": "https://www.dasny.org/PLAYS",
@@ -207,11 +189,11 @@
       "source": "DASNY"
     }
   ],
-  "fetched": "2026-04-22T17:46:24.167Z",
-  "count": 22,
+  "fetched": "2026-04-22T18:04:56.077Z",
+  "count": 20,
   "sources": {
     "efc": 4,
-    "parks": 13,
+    "parks": 11,
     "hcr": 4,
     "dasny": 1
   }
