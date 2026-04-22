@@ -18,8 +18,39 @@ function fetchHtml(url) {
   });
 }
 
+// Fetch a grant detail page and check if it's currently open
+async function checkGrantStatus(url) {
+  try {
+    const html = await fetchHtml(url);
+    const lower = html.toLowerCase();
+    // Closed indicators
+    if (lower.includes('application period is closed') ||
+        lower.includes('applications are closed') ||
+        lower.includes('not currently accepting') ||
+        lower.includes('this program is closed') ||
+        lower.includes('closed for applications') ||
+        lower.includes('no longer accepting') ||
+        lower.includes('program is not currently') ||
+        lower.includes('applications are not') ||
+        lower.includes('deadline has passed')) {
+      return 'Closed';
+    }
+    return 'Available';
+  } catch(e) {
+    return 'Available'; // default open if we can't check
+  }
+}
+
 function stripHtml(str) {
-  return (str || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  return (str || '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ').trim();
 }
 
 function resolveUrl(href, base) {
@@ -87,11 +118,17 @@ async function scrapeEFC() {
       seen.add(title);
       if (desc.toLowerCase().includes('low-cost financing') || desc.toLowerCase().includes('revolving fund')) continue;
       if (isPast(dueDate)) { console.log('  EFC SKIP past: ' + title); continue; }
+      if (dueDate.toLowerCase().includes('currently closed') ||
+          dueDate.toLowerCase().includes('application period is currently closed')) {
+        console.log('  EFC SKIP closed: ' + title); continue;
+      }
 
+      const dueLower = dueDate.toLowerCase();
+      const efcStatus = (dueLower.includes('closed') || dueLower.includes('not available') || dueLower.includes('not accepting')) ? 'Closed' : 'Available';
       grants.push({
         id: 'efc-' + title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30),
         title, agency: 'NYS Environmental Facilities Corporation',
-        status: dueDate.toLowerCase().includes('closed') ? 'Closed' : 'Available',
+        status: efcStatus,
         dueDate: dueDate.slice(0, 120),
         description: desc.slice(0, 300),
         link: url || 'https://efc.ny.gov/apply',
@@ -124,10 +161,13 @@ async function scrapeParks() {
       const title = stripHtml(m[2]);
       if (isJunk(title) || seen.has(href)) continue;
       seen.add(href);
+      // Check surrounding HTML for closed/unavailable indicators
+      const surroundingText = html.substring(Math.max(0, m.index - 200), m.index + 200).toLowerCase();
+      const parksStatus = (surroundingText.includes('closed') || surroundingText.includes('not available') || surroundingText.includes('not currently')) ? 'Closed' : 'Available';
       grants.push({
         id: 'parks-' + href.replace('/grants/', '').replace(/[^a-z0-9]/g, '-').slice(0, 40),
         title, agency: 'NYS Office of Parks, Recreation & Historic Preservation',
-        status: 'Available', dueDate: '',
+        status: parksStatus, dueDate: '',
         link: 'https://parks.ny.gov' + href,
         source: 'NYS Parks',
       });
@@ -147,8 +187,21 @@ async function scrapeParks() {
       });
     }
 
-    console.log('  Parks: ' + grants.length + ' grants');
-    return grants;
+    // Check status of each grant page in parallel (max 5 at a time to avoid rate limiting)
+    console.log('  Parks: checking status of ' + grants.length + ' grants...');
+    const chunks = [];
+    for (let i = 0; i < grants.length; i += 5) chunks.push(grants.slice(i, i + 5));
+    const checked = [];
+    for (const chunk of chunks) {
+      const results = await Promise.all(chunk.map(async g => {
+        const status = await checkGrantStatus(g.link);
+        if (status === 'Closed') console.log('  Parks CLOSED: ' + g.title);
+        return { ...g, status };
+      }));
+      checked.push(...results);
+    }
+    console.log('  Parks: ' + checked.length + ' grants (' + checked.filter(g=>g.status==='Closed').length + ' closed)');
+    return checked;
   } catch(e) {
     console.log('  Parks error: ' + e.message);
     return [];
@@ -199,8 +252,21 @@ async function scrapeHCR() {
       }
     }
 
-    console.log('  HCR: ' + grants.length + ' grants');
-    return grants;
+    // Check status of each grant page in parallel
+    console.log('  HCR: checking status of ' + grants.length + ' grants...');
+    const chunks = [];
+    for (let i = 0; i < grants.length; i += 5) chunks.push(grants.slice(i, i + 5));
+    const checked = [];
+    for (const chunk of chunks) {
+      const results = await Promise.all(chunk.map(async g => {
+        const status = await checkGrantStatus(g.link);
+        if (status === 'Closed') console.log('  HCR CLOSED: ' + g.title);
+        return { ...g, status };
+      }));
+      checked.push(...results);
+    }
+    console.log('  HCR: ' + checked.length + ' grants (' + checked.filter(g=>g.status==='Closed').length + ' closed)');
+    return checked;
   } catch(e) {
     console.log('  HCR error: ' + e.message);
     return [];
