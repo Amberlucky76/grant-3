@@ -108,7 +108,7 @@ async function loadSearchResults(page) {
                 for (const c of candidates) {
                   const links = Array.from(c.querySelectorAll('a[href]'));
                   const httpLink = links.find(a => a.href && a.href.startsWith('http') && !a.href.includes('javascript'));
-                  if (httpLink) return httpLink.href;
+                  if (httpLink) return httpLink.href.replace(/^https?:\/\/https?:\/+/, 'https://');
                 }
               }
             }
@@ -122,7 +122,10 @@ async function loadSearchResults(page) {
             !a.href.includes('esupplier.sfs.ny.gov') &&
             !a.href.includes('javascript')
           );
-          return ext ? ext.href : null;
+          if (!ext) return null;
+          // Fix malformed URLs like https://https//... or http://https//...
+          const cleaned = ext.href.replace(/^https?:\/\/https?:\/+/, 'https://');
+          return cleaned;
         });
 
         if (found) {
