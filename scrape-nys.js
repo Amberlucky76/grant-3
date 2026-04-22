@@ -85,8 +85,27 @@ const NYS_URL = 'https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_
         continue;
       }
 
-      const anchor = cells[colTitle]?.querySelector('a');
-      const link = 'https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL';
+if (anchor) {
+  console.log(`ANCHOR for [${id}]: href=${anchor.getAttribute('href')} onclick=${anchor.getAttribute('onclick')}`);
+}
+
+      
+if (anchor) {
+  const href = anchor.getAttribute('href');
+  const onclick = anchor.getAttribute('onclick') || '';
+
+  if (href && href !== '#' && href !== 'javascript:void(0)') {
+    // Plain href link
+    link = href.startsWith('http') ? href : 'https://esupplier.sfs.ny.gov' + href;
+  } else if (onclick) {
+    // PeopleSoft onclick — extract the URL or event ID from the function call
+    // e.g. onclick="submitAction_win0(document.win0,'NY_SUPPUB_AUC_ID=FPIG20')"
+    const match = onclick.match(/AUC_ID[=']([^'&"]+)/);
+    if (match) {
+      link = `https://esupplier.sfs.ny.gov/psc/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL?AUC_ID=${match[1]}&Action=U`;
+    }
+  }
+}
 
       console.log(`KEEPING: [${id}] ${title} | elig: ${eligibility}`);
       results.push({ id, agency, title, status, eligibility, dueDate, link, source: 'NYS' });
