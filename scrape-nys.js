@@ -96,27 +96,29 @@ async function loadSearchResults(page) {
 
         // Extract the Announcement Link from the detail page
         const found = await page.evaluate(() => {
+          // Strategy 1: find element with text "Announcement Link" and grab the http link near it
           const allEls = Array.from(document.querySelectorAll('td, th, label, span, div'));
           for (const el of allEls) {
             const text = (el.innerText || '').trim().toLowerCase();
             if (text === 'announcement link' || text.includes('announcement link')) {
               const parent = el.closest('tr') || el.parentElement;
               if (parent) {
-                const a = parent.querySelector('a[href]');
-                if (a && a.href && !a.href.includes('javascript')) return a.href;
-                const nextRow = parent.nextElementSibling;
-                if (nextRow) {
-                  const a2 = nextRow.querySelector('a[href]');
-                  if (a2 && a2.href && !a2.href.includes('javascript')) return a2.href;
+                // Check this row and the next for an http link (not mailto)
+                const candidates = [parent, parent.nextElementSibling].filter(Boolean);
+                for (const c of candidates) {
+                  const links = Array.from(c.querySelectorAll('a[href]'));
+                  const httpLink = links.find(a => a.href && a.href.startsWith('http') && !a.href.includes('javascript'));
+                  if (httpLink) return httpLink.href;
                 }
               }
             }
           }
-          // Fallback: any external non-SFS link
+          // Strategy 2: any http link that isn't SFS and isn't mailto
           const allLinks = Array.from(document.querySelectorAll('a[href]'));
           const ext = allLinks.find(a =>
             a.href &&
             a.href.startsWith('http') &&
+            !a.href.startsWith('mailto') &&
             !a.href.includes('esupplier.sfs.ny.gov') &&
             !a.href.includes('javascript')
           );
