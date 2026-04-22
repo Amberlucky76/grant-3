@@ -173,11 +173,13 @@ async function scrapeEFC() {
 
       const dueLower = dueDate.toLowerCase();
       const efcStatus = (dueLower.includes('closed') || dueLower.includes('not available') || dueLower.includes('not accepting')) ? 'Closed' : 'Available';
+      // Only keep dueDate if it contains an actual date value
+      const hasDate = /\d{1,2}[\/.\-]\d{1,2}|(january|february|march|april|may|june|july|august|september|october|november|december)/i.test(dueDate);
       grants.push({
         id: 'efc-' + title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30),
         title, agency: 'NYS Environmental Facilities Corporation',
         status: efcStatus,
-        dueDate: dueDate.slice(0, 120),
+        dueDate: hasDate ? dueDate.slice(0, 120) : '',
         description: desc.slice(0, 300),
         link: url || 'https://efc.ny.gov/apply',
         source: 'EFC',
