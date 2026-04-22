@@ -883,7 +883,7 @@ function renderNYSCard(g) {
   if (g.dueDate) dl = `<span class="deadline-row urgent">⏱ Due: ${esc(g.dueDate)}</span>`;
   else if (g.award) dl = `<span class="deadline-row rolling">◈ ${esc(g.award)}</span>`;
   const hasId = g.id && !String(g.id).startsWith('nys-');
-  const viewHref = g.url || 'https://grantsmanagement.ny.gov/search-funding-sfs';
+  const viewHref = g.link || g.url || 'https://grantsmanagement.ny.gov/search-funding-sfs';
   return `<div class="grant-card">
     <div class="card-top"><div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag tag-nys">NYS</span><span class="tag ${sc}">${esc(g.status||'Available')}</span></div>
     <button class="card-heart ${saved?'saved':''}" onclick="event.stopPropagation();toggleSave('nys-${esc(String(g.id))}',this)">${saved?'♥':'♡'}</button></div>
