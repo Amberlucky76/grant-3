@@ -802,9 +802,16 @@ function renderGrants() {
 
   // Agency grants section
   if (hasAgency) {
+    const now = new Date();
     const ag = (state.agencyGrants||[]).filter(g => {
       const s = (g.status||'').toLowerCase();
-      return !s.includes('closed');
+      if (s.includes('closed')) return false;
+      // Filter out grants with past due dates
+      if (g.dueDate) {
+        const d = new Date(g.dueDate);
+        if (!isNaN(d.getTime()) && d < now) return false;
+      }
+      return true;
     });
     if (ag.length > 0) {
       const sources = [...new Set(ag.map(g=>g.source))].join(', ');
