@@ -1,8 +1,23 @@
 const puppeteer = require('puppeteer');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
 // ── HELPERS ──────────────────────────────────────────────────
+function fetchHtml(url) {
+  return new Promise((resolve, reject) => {
+    https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
+      // Follow redirects
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+        return fetchHtml(res.headers.location).then(resolve).catch(reject);
+      }
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => resolve(data));
+    }).on('error', reject);
+  });
+}
+
 function stripHtml(str) {
   return (str || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 }
@@ -13,24 +28,23 @@ function resolveUrl(href, base) {
   try { return new URL(href, base).href; } catch { return null; }
 }
 
-// Returns true if the date string is in the past
 function isPast(dateStr) {
   if (!dateStr) return false;
   const s = dateStr.toLowerCase();
-  if (s.includes('rolling') || s.includes('ongoing') || s.includes('closed') || s.includes('open')) return false;
+  if (s.includes('rolling') || s.includes('ongoing')) return false;
   const parsed = new Date(dateStr);
   if (isNaN(parsed.getTime())) return false;
   return parsed < new Date();
 }
 
-// Navigation / chrome words that indicate a non-grant item
 const NAV_JUNK = [
   'main navigation', 'custom log in', 'cloudflare', 'investor relations',
   'rfps & bids', 'rfps and bids', 'services', 'public information',
   'connect with us', 'careers', 'contact us', 'about', 'news', 'events',
-  'skip to', 'log in', 'log out', 'sign in', 'toggle navigation',
+  'log in', 'log out', 'sign in', 'toggle navigation', 'skip to',
   'capital grant programs administered by dasny:',
   'grant programs administered with other state',
+  'grant administration',
 ];
 
 function isJunk(title) {
@@ -42,151 +56,155 @@ function isJunk(title) {
 // ── EFC ──────────────────────────────────────────────────────
 async function scrapeEFC() {
   console.log('Scraping EFC...');
-  const res = await fetch('https://efc.ny.gov/apply');
-  const html = await res.text();
+  try {
+    const html = await fetchHtml('https://efc.ny.gov/apply');
+    console.log('  EFC html length: ' + html.length);
 
-  const grants = [];
-  const rowRe = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
-  const linkRe = /<a[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i;
+    const grants = [];
+    const seen = new Set();
 
-  let rowMatch;
-  while ((rowMatch = rowRe.exec(html)) !== null) {
-    const rowHtml = rowMatch[1];
-    const cells = [];
-    let cellMatch;
-    const cellRegex = /<td[^>]*>([\s\S]*?)<\/td>/gi;
-    while ((cellMatch = cellRegex.exec(rowHtml)) !== null) {
-      cells.push(cellMatch[1]);
+    // Each row: <tr><td><a href="...">Title</a></td><td>Description</td><td>Deadline</td></tr>
+    const rowRe = /<tr[\s\S]*?<\/tr>/gi;
+    let rowMatch;
+    while ((rowMatch = rowRe.exec(html)) !== null) {
+      const row = rowMatch[0];
+      const cells = [];
+      const cellRe = /<td[^>]*>([\s\S]*?)<\/td>/gi;
+      let cm;
+      while ((cm = cellRe.exec(row)) !== null) cells.push(cm[1]);
+      if (cells.length < 2) continue;
+
+      const linkRe = /<a[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i;
+      const lm = linkRe.exec(cells[0]);
+      if (!lm) continue;
+
+      const title = stripHtml(lm[2]);
+      const url = resolveUrl(lm[1], 'https://efc.ny.gov');
+      const desc = stripHtml(cells[1]);
+      const dueDate = cells[2] ? stripHtml(cells[2]) : '';
+
+      if (isJunk(title) || seen.has(title)) continue;
+      seen.add(title);
+      if (desc.toLowerCase().includes('low-cost financing') || desc.toLowerCase().includes('revolving fund')) continue;
+      if (isPast(dueDate)) { console.log('  EFC SKIP past: ' + title); continue; }
+
+      grants.push({
+        id: 'efc-' + title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30),
+        title, agency: 'NYS Environmental Facilities Corporation',
+        status: dueDate.toLowerCase().includes('closed') ? 'Closed' : 'Available',
+        dueDate: dueDate.slice(0, 120),
+        description: desc.slice(0, 300),
+        link: url || 'https://efc.ny.gov/apply',
+        source: 'EFC',
+      });
     }
-    if (cells.length < 2) continue;
-
-    const linkMatch = linkRe.exec(cells[0]);
-    if (!linkMatch) continue;
-
-    const url = resolveUrl(linkMatch[1], 'https://efc.ny.gov');
-    const title = stripHtml(linkMatch[2]);
-    const description = stripHtml(cells[1]);
-    const dueDate = cells[2] ? stripHtml(cells[2]) : '';
-
-    if (isJunk(title)) continue;
-    // Skip financing/loan programs, keep grants only
-    if (description.toLowerCase().includes('low-cost financing') ||
-        description.toLowerCase().includes('revolving fund')) continue;
-    // Skip if deadline has passed
-    if (isPast(dueDate)) { console.log('  EFC SKIP (past): ' + title); continue; }
-
-    grants.push({
-      id: 'efc-' + title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30),
-      title,
-      agency: 'NYS Environmental Facilities Corporation',
-      status: dueDate.toLowerCase().includes('closed') ? 'Closed' : 'Available',
-      dueDate: dueDate.slice(0, 120),
-      description: description.slice(0, 300),
-      link: url || 'https://efc.ny.gov/apply',
-      source: 'EFC',
-    });
+    console.log('  EFC: ' + grants.length + ' grants');
+    return grants;
+  } catch(e) {
+    console.log('  EFC error: ' + e.message);
+    return [];
   }
-
-  console.log('  EFC: ' + grants.length + ' grants');
-  return grants;
 }
 
 // ── NYS PARKS ────────────────────────────────────────────────
 async function scrapeParks() {
   console.log('Scraping NYS Parks...');
-  const res = await fetch('https://parks.ny.gov/grants');
-  const html = await res.text();
+  try {
+    const html = await fetchHtml('https://parks.ny.gov/grants');
+    console.log('  Parks html length: ' + html.length);
 
-  const grants = [];
-  const seen = new Set();
+    const grants = [];
+    const seen = new Set();
 
-  // Only grab links that are under the grants sub-nav: href="/grants/..." 
-  // but NOT the top-level /grants page itself
-  const linkRe = /<a[^>]+href="(\/grants\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
-  let match;
-  while ((match = linkRe.exec(html)) !== null) {
-    const href = match[1];
-    const title = stripHtml(match[2]);
-    if (isJunk(title)) continue;
-    if (seen.has(href)) continue;
-    seen.add(href);
+    // Grant links are in the sidebar nav: href="/grants/program-name"
+    const linkRe = /<a[^>]+href="(\/grants\/[^"#?]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+    let m;
+    while ((m = linkRe.exec(html)) !== null) {
+      const href = m[1];
+      const title = stripHtml(m[2]);
+      if (isJunk(title) || seen.has(href)) continue;
+      seen.add(href);
+      grants.push({
+        id: 'parks-' + href.replace('/grants/', '').replace(/[^a-z0-9]/g, '-').slice(0, 40),
+        title, agency: 'NYS Office of Parks, Recreation & Historic Preservation',
+        status: 'Available', dueDate: '',
+        link: 'https://parks.ny.gov' + href,
+        source: 'NYS Parks',
+      });
+    }
 
-    grants.push({
-      id: 'parks-' + href.replace('/grants/', '').replace(/[^a-z0-9]/g, '-').slice(0, 40),
-      title,
-      agency: 'NYS Office of Parks, Recreation & Historic Preservation',
-      status: 'Available',
-      dueDate: '',
-      link: 'https://parks.ny.gov' + href,
-      source: 'NYS Parks',
-    });
+    // DASNY-hosted parks grants (NY BRICKS, NY SWIMS)
+    const dasnyRe = /<a[^>]+href="(https:\/\/www\.dasny\.org\/[^"#?]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+    while ((m = dasnyRe.exec(html)) !== null) {
+      const title = stripHtml(m[2]);
+      if (isJunk(title) || seen.has(m[1])) continue;
+      seen.add(m[1]);
+      grants.push({
+        id: 'parks-dasny-' + title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30),
+        title, agency: 'NYS Parks / DASNY',
+        status: 'Available', dueDate: '',
+        link: m[1], source: 'NYS Parks',
+      });
+    }
+
+    console.log('  Parks: ' + grants.length + ' grants');
+    return grants;
+  } catch(e) {
+    console.log('  Parks error: ' + e.message);
+    return [];
   }
-
-  // Also grab DASNY-hosted parks grants (NY BRICKS, NY SWIMS) linked from this page
-  const dasnyRe = /<a[^>]+href="(https:\/\/www\.dasny\.org\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
-  while ((match = dasnyRe.exec(html)) !== null) {
-    const title = stripHtml(match[2]);
-    if (isJunk(title) || seen.has(match[1])) continue;
-    seen.add(match[1]);
-    grants.push({
-      id: 'parks-dasny-' + title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30),
-      title,
-      agency: 'NYS Parks / DASNY',
-      status: 'Available',
-      dueDate: '',
-      link: match[1],
-      source: 'NYS Parks',
-    });
-  }
-
-  console.log('  Parks: ' + grants.length + ' grants');
-  return grants;
 }
 
 // ── HCR ──────────────────────────────────────────────────────
 async function scrapeHCR() {
   console.log('Scraping HCR...');
-  const res = await fetch('https://hcr.ny.gov/grant-partners');
-  const html = await res.text();
+  try {
+    const html = await fetchHtml('https://hcr.ny.gov/grant-partners');
+    console.log('  HCR html length: ' + html.length);
 
-  const grants = [];
-  const seen = new Set();
+    const grants = [];
+    const seen = new Set();
 
-  // HCR grant programs are inside <strong> tags wrapping <a> links
-  // e.g. [**Access to Home**](https://hcr.ny.gov/access-home)
-  // In HTML: <strong><a href="/access-home">Access to Home</a></strong>
-  // Only grab /hcr.ny.gov internal program links, not nav or external safelinks
-  const re = /<strong>\s*<a[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>\s*<\/strong>/gi;
-  let match;
-  while ((match = re.exec(html)) !== null) {
-    const href = match[1];
-    const title = stripHtml(match[2]);
-    if (isJunk(title)) continue;
-    if (seen.has(title)) continue;
-    seen.add(title);
+    // Try multiple patterns since HCR uses varied markup
+    // Pattern 1: <strong><a href="...">Title</a></strong>
+    // Pattern 2: <a href="..."><strong>Title</strong></a>
+    // Pattern 3: plain bold links in the grant list section
+    const patterns = [
+      /<strong>\s*<a[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>\s*<\/strong>/gi,
+      /<a[^>]+href="([^"]+)"[^>]*>\s*<strong>([\s\S]*?)<\/strong>\s*<\/a>/gi,
+    ];
 
-    // Resolve safelinks and relative URLs
-    let url = href;
-    const safeMatch = href.match(/url=([^&]+)/);
-    if (safeMatch) {
-      try { url = decodeURIComponent(safeMatch[1]); } catch {}
+    for (const re of patterns) {
+      let m;
+      while ((m = re.exec(html)) !== null) {
+        let href = m[1];
+        const title = stripHtml(m[2]);
+        if (isJunk(title) || seen.has(title)) continue;
+        seen.add(title);
+
+        // Decode Microsoft SafeLink wrapper
+        const safeMatch = href.match(/[?&]url=([^&]+)/);
+        if (safeMatch) {
+          try { href = decodeURIComponent(safeMatch[1]); } catch {}
+        }
+        const url = resolveUrl(href, 'https://hcr.ny.gov');
+        if (!url) continue;
+
+        grants.push({
+          id: 'hcr-' + title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30),
+          title, agency: 'NYS Homes & Community Renewal',
+          status: 'Available', dueDate: '',
+          link: url, source: 'HCR',
+        });
+      }
     }
-    url = resolveUrl(url, 'https://hcr.ny.gov');
-    if (!url) continue;
 
-    grants.push({
-      id: 'hcr-' + title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30),
-      title,
-      agency: 'NYS Homes & Community Renewal',
-      status: 'Available',
-      dueDate: '',
-      link: url,
-      source: 'HCR',
-    });
+    console.log('  HCR: ' + grants.length + ' grants');
+    return grants;
+  } catch(e) {
+    console.log('  HCR error: ' + e.message);
+    return [];
   }
-
-  console.log('  HCR: ' + grants.length + ' grants');
-  return grants;
 }
 
 // ── DASNY ─────────────────────────────────────────────────────
@@ -198,16 +216,14 @@ async function scrapeDASNY(page) {
     });
     await new Promise(r => setTimeout(r, 3000));
 
-    const grants = await page.evaluate(() => {
-      const NAV_JUNK = [
-        'main navigation', 'custom log in', 'cloudflare', 'investor relations',
-        'rfps & bids', 'services', 'public information', 'connect with us',
-        'careers', 'contact us', 'about', 'news', 'events', 'log in',
-        'capital grant programs administered by dasny:',
-        'grant programs administered with other state',
-        'grant administration',
-      ];
+    // Log raw headings for debugging
+    const debug = await page.evaluate(() => {
+      const hs = Array.from(document.querySelectorAll('h2, h3'));
+      return hs.map(h => h.innerText.trim()).filter(t => t.length > 2);
+    });
+    console.log('  DASNY headings found: ' + JSON.stringify(debug));
 
+    const grants = await page.evaluate((NAV_JUNK) => {
       function isJunk(title) {
         if (!title || title.length < 5) return true;
         const t = title.toLowerCase().trim();
@@ -216,13 +232,9 @@ async function scrapeDASNY(page) {
 
       const results = [];
       const seen = new Set();
-
-      // DASNY grant programs are under <h3> headings in the main content area
-      // Find the main content div first to avoid nav headings
-      const main = document.querySelector('main, .main-content, #main-content, article, .field--type-text-with-summary')
-                   || document.body;
-
+      const main = document.querySelector('main, .main-content, #main-content, [role="main"], article') || document.body;
       const headings = Array.from(main.querySelectorAll('h3'));
+
       for (const h of headings) {
         const title = (h.innerText || '').trim();
         if (isJunk(title) || seen.has(title)) continue;
@@ -234,28 +246,27 @@ async function scrapeDASNY(page) {
 
         for (let i = 0; i < 8 && el; i++) {
           const text = el.innerText || '';
-          // Look for date patterns
           const dateMatch = text.match(/([A-Z][a-z]+ \d{1,2},? \d{4})/);
           if (dateMatch && !dueDate) dueDate = dateMatch[1];
-          // Grab first real http link (not nav, not mailto)
+
           const anchors = Array.from(el.querySelectorAll('a[href]'));
           for (const a of anchors) {
             if (a.href && a.href.startsWith('http') &&
                 !a.href.includes('javascript') &&
-                !a.href.includes('dasny.org/about') &&
-                !a.href.includes('dasny.org/opportunities') &&
-                !a.href.includes('dasny.org/news') &&
+                !a.href.includes('/about/what-we-do') &&
+                !a.href.includes('/opportunities') &&
+                !a.href.includes('/news') &&
+                !a.href.includes('grantsmanagement.ny.gov/register') &&
                 link.includes('/grants-administration')) {
               link = a.href;
             }
           }
           el = el.nextElementSibling;
         }
-
         results.push({ title, dueDate, link });
       }
       return results;
-    });
+    }, NAV_JUNK);
 
     const now = new Date();
     const formatted = grants
@@ -264,17 +275,14 @@ async function scrapeDASNY(page) {
         if (!g.dueDate) return true;
         const d = new Date(g.dueDate);
         if (isNaN(d.getTime())) return true;
-        if (d < now) { console.log('  DASNY SKIP (past): ' + g.title); return false; }
+        if (d < now) { console.log('  DASNY SKIP past: ' + g.title + ' (' + g.dueDate + ')'); return false; }
         return true;
       })
       .map(g => ({
         id: 'dasny-' + g.title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30),
-        title: g.title,
-        agency: 'DASNY',
-        status: 'Available',
-        dueDate: g.dueDate,
-        link: g.link,
-        source: 'DASNY',
+        title: g.title, agency: 'DASNY',
+        status: 'Available', dueDate: g.dueDate,
+        link: g.link, source: 'DASNY',
       }));
 
     console.log('  DASNY: ' + formatted.length + ' grants');
@@ -295,12 +303,9 @@ async function scrapeDASNY(page) {
   await page.setViewport({ width: 1280, height: 900 });
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 
-  const [efc, parks, hcr, dasny] = await Promise.all([
-    scrapeEFC(),
-    scrapeParks(),
-    scrapeHCR(),
-    scrapeDASNY(page),
-  ]);
+  // Run static scrapers in parallel, DASNY needs the browser
+  const [efc, parks, hcr] = await Promise.all([scrapeEFC(), scrapeParks(), scrapeHCR()]);
+  const dasny = await scrapeDASNY(page);
 
   await browser.close();
 
@@ -315,16 +320,12 @@ async function scrapeDASNY(page) {
       const existing = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
       manualGrants = (existing.grants || []).filter(g => g.manual === true);
       console.log('Preserving ' + manualGrants.length + ' manual entries');
-    } catch(e) {
-      console.log('Could not read existing file:', e.message);
-    }
+    } catch(e) { console.log('Could not read existing file:', e.message); }
   }
 
   const allGrants = [...scraped, ...manualGrants];
   const output = {
-    grants: allGrants,
-    fetched: new Date().toISOString(),
-    count: allGrants.length,
+    grants: allGrants, fetched: new Date().toISOString(), count: allGrants.length,
     sources: { efc: efc.length, parks: parks.length, hcr: hcr.length, dasny: dasny.length },
   };
   fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
