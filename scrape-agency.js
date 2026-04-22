@@ -24,6 +24,11 @@ async function checkGrantStatus(browserPage, url) {
     await browserPage.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
     await new Promise(r => setTimeout(r, 1500));
     const text = await browserPage.evaluate(() => (document.body && document.body.innerText || '').toLowerCase());
+
+    // Log a snippet of the page text so we can see what language is used
+    const snippet = text.replace(/\s+/g, ' ').slice(0, 600);
+    console.log('  STATUS CHECK [' + url.split('/').pop() + ']: ' + snippet);
+
     if (text.includes('application period is closed') ||
         text.includes('applications are closed') ||
         text.includes('not currently accepting') ||
