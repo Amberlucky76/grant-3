@@ -18,26 +18,30 @@ function fetchHtml(url) {
   });
 }
 
-// Fetch a grant detail page and check if it's currently open
-async function checkGrantStatus(url) {
+// Check grant status using Puppeteer so JS-rendered content is visible
+async function checkGrantStatus(browserPage, url) {
   try {
-    const html = await fetchHtml(url);
-    const lower = html.toLowerCase();
-    // Closed indicators
-    if (lower.includes('application period is closed') ||
-        lower.includes('applications are closed') ||
-        lower.includes('not currently accepting') ||
-        lower.includes('this program is closed') ||
-        lower.includes('closed for applications') ||
-        lower.includes('no longer accepting') ||
-        lower.includes('program is not currently') ||
-        lower.includes('applications are not') ||
-        lower.includes('deadline has passed')) {
+    await browserPage.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
+    await new Promise(r => setTimeout(r, 1500));
+    const text = await browserPage.evaluate(() => (document.body && document.body.innerText || '').toLowerCase());
+    if (text.includes('application period is closed') ||
+        text.includes('applications are closed') ||
+        text.includes('not currently accepting') ||
+        text.includes('this program is closed') ||
+        text.includes('closed for applications') ||
+        text.includes('no longer accepting') ||
+        text.includes('program is not currently') ||
+        text.includes('applications are not currently') ||
+        text.includes('deadline has passed') ||
+        text.includes('currently closed') ||
+        text.includes('not accepting applications') ||
+        text.includes('funding is not available') ||
+        text.includes('not available at this time')) {
       return 'Closed';
     }
     return 'Available';
   } catch(e) {
-    return 'Available'; // default open if we can't check
+    return 'Available';
   }
 }
 
@@ -187,21 +191,7 @@ async function scrapeParks() {
       });
     }
 
-    // Check status of each grant page in parallel (max 5 at a time to avoid rate limiting)
-    console.log('  Parks: checking status of ' + grants.length + ' grants...');
-    const chunks = [];
-    for (let i = 0; i < grants.length; i += 5) chunks.push(grants.slice(i, i + 5));
-    const checked = [];
-    for (const chunk of chunks) {
-      const results = await Promise.all(chunk.map(async g => {
-        const status = await checkGrantStatus(g.link);
-        if (status === 'Closed') console.log('  Parks CLOSED: ' + g.title);
-        return { ...g, status };
-      }));
-      checked.push(...results);
-    }
-    console.log('  Parks: ' + checked.length + ' grants (' + checked.filter(g=>g.status==='Closed').length + ' closed)');
-    return checked;
+    return grants; // status checked later via browser
   } catch(e) {
     console.log('  Parks error: ' + e.message);
     return [];
@@ -252,21 +242,7 @@ async function scrapeHCR() {
       }
     }
 
-    // Check status of each grant page in parallel
-    console.log('  HCR: checking status of ' + grants.length + ' grants...');
-    const chunks = [];
-    for (let i = 0; i < grants.length; i += 5) chunks.push(grants.slice(i, i + 5));
-    const checked = [];
-    for (const chunk of chunks) {
-      const results = await Promise.all(chunk.map(async g => {
-        const status = await checkGrantStatus(g.link);
-        if (status === 'Closed') console.log('  HCR CLOSED: ' + g.title);
-        return { ...g, status };
-      }));
-      checked.push(...results);
-    }
-    console.log('  HCR: ' + checked.length + ' grants (' + checked.filter(g=>g.status==='Closed').length + ' closed)');
-    return checked;
+    return grants; // status checked later via browser
   } catch(e) {
     console.log('  HCR error: ' + e.message);
     return [];
@@ -369,13 +345,25 @@ async function scrapeDASNY(page) {
   await page.setViewport({ width: 1280, height: 900 });
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 
-  // Run static scrapers in parallel, DASNY needs the browser
+  // Run static scrapers (EFC, Parks, HCR use https.get; DASNY uses browser)
   const [efc, parks, hcr] = await Promise.all([scrapeEFC(), scrapeParks(), scrapeHCR()]);
   const dasny = await scrapeDASNY(page);
 
+  // Check status of Parks and HCR grants using Puppeteer (JS-rendered pages)
+  const needsCheck = [...parks, ...hcr].filter(g => g.link && g.link.startsWith('http'));
+  console.log('\nChecking status of ' + needsCheck.length + ' Parks/HCR grants...');
+  const statusMap = {};
+  for (const g of needsCheck) {
+    const status = await checkGrantStatus(page, g.link);
+    statusMap[g.id] = status;
+    if (status === 'Closed') console.log('  CLOSED: [' + g.source + '] ' + g.title);
+  }
+  const parksChecked = parks.map(g => ({ ...g, status: statusMap[g.id] || g.status }));
+  const hcrChecked = hcr.map(g => ({ ...g, status: statusMap[g.id] || g.status }));
+
   await browser.close();
 
-  const scraped = [...efc, ...parks, ...hcr, ...dasny];
+  const scraped = [...efc, ...parksChecked, ...hcrChecked, ...dasny];
   console.log('\nTotal agency grants: ' + scraped.length);
   scraped.forEach(g => console.log(' [' + g.source + '] ' + g.title + (g.dueDate ? ' · ' + g.dueDate : '')));
 
