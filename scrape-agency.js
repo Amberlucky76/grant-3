@@ -42,8 +42,17 @@ async function checkGrantStatus(browserPage, url) {
         if (m) { dueDate = m[1].trim(); break; }
       }
 
+      // Open language that can override a known-closed default
+      const isExplicitlyOpen =
+        text.includes('applications are now open') ||
+        text.includes('applications are open') ||
+        text.includes('now accepting applications') ||
+        text.includes('apply now') ||
+        text.includes('application period is open') ||
+        text.includes('submit your application');
+
       // Closed detection
-      const isClosed =
+      const isClosed = !isExplicitlyOpen && (
         text.includes('grant recipients') ||
         text.includes('award recipients') ||
         (text.includes('grant awards') && text.includes('awarded')) ||
@@ -65,7 +74,7 @@ async function checkGrantStatus(browserPage, url) {
         text.includes('this round is closed') ||
         text.includes('round is now closed') ||
         text.includes('awards have been made') ||
-        text.includes('awards were announced');
+        text.includes('awards were announced'));
 
       return { status: isClosed ? 'Closed' : 'Available', dueDate };
     });
@@ -196,14 +205,25 @@ async function scrapeParks() {
     { title: 'ZBGA Capital Grant Program', link: 'https://parks.ny.gov/grants/zbga-capital-grant-program' },
     { title: 'ZBGA Operational Support Grant Program', link: 'https://parks.ny.gov/grants/zoos-botanical-gardens-aquaria-operational-support-grant-program' },
     { title: 'Snowmobile Trail Grant Program', link: 'https://parks.ny.gov/activities/snowmobiling/snowmobile-grant-program' },
-    { title: 'NY PLAYS Initiative', link: 'https://www.dasny.org/PLAYS' },
+    // NY PLAYS is listed under DASNY with deadline — skip here to avoid duplicate
   ];
+
+  // Programs confirmed closed — Puppeteer will override to Available if they reopen
+  const knownClosed = new Set([
+    'https://parks.ny.gov/grants/environmental-protection-fund',
+    'https://parks.ny.gov/grants/lwcf-outdoor-recreation-legacy-partnership-program',
+    'https://parks.ny.gov/grants/boating-infrastructure-grant-program',
+    'https://parks.ny.gov/grants/zbga-capital-grant-program',
+    'https://parks.ny.gov/grants/zoos-botanical-gardens-aquaria-operational-support-grant-program',
+    'https://parks.ny.gov/grants/african-american-heritage-grant',
+    'https://parks.ny.gov/grants/maritime-heritage-subgrant-program',
+  ]);
 
   return known.map(k => ({
     id: 'parks-' + k.title.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 40),
     title: k.title,
     agency: 'NYS Office of Parks, Recreation & Historic Preservation',
-    status: 'Available',
+    status: knownClosed.has(k.link) ? 'Closed' : 'Available',
     dueDate: '',
     link: k.link,
     source: 'NYS Parks',
