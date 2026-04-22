@@ -5,7 +5,7 @@
       "title": "Green Resiliency Grants and Green Innovation Grant Program",
       "agency": "NYS Environmental Facilities Corporation",
       "status": "Available",
-      "dueDate": "$75 million is available, applications due by 4 p.m. on June 12.",
+      "dueDate": "",
       "description": "Grants for implementing green infrastructure projects including stormwater management, water efficiency, and energy efficiency.",
       "link": "https://efc.ny.gov/grg",
       "source": "EFC"
@@ -15,7 +15,7 @@
       "title": "Wastewater Infrastructure Engineering Planning Grants",
       "agency": "NYS Environmental Facilities Corporation",
       "status": "Available",
-      "dueDate": "$3 million is available, applications due by 4 p.m. on June 12.",
+      "dueDate": "",
       "description": "Planning grants help communities prepare to apply for grants and financing through the CWSRF. Planning grants help fund the development of an engineering report, which is required in the EFC financing application process. EPGs help municipalities advance fiscally sound and well-designed projects to ",
       "link": "https://efc.ny.gov/epg",
       "source": "EFC"
@@ -25,19 +25,9 @@
       "title": "Clean Vessel Assistance Program",
       "agency": "NYS Environmental Facilities Corporation",
       "status": "Available",
-      "dueDate": "Ongoing",
+      "dueDate": "",
       "description": "Reimbursement grants to marinas for the installation, renovation & replacement of pumpout stations.",
       "link": "https://efc.ny.gov/clean-vessel",
-      "source": "EFC"
-    },
-    {
-      "id": "efc-septic-system-replacement-prog",
-      "title": "Septic System Replacement Program",
-      "agency": "NYS Environmental Facilities Corporation",
-      "status": "Available",
-      "dueDate": "Homeowners and small businesses should reach out to their local program contact.",
-      "description": "Funding to counties to help homeowners and small businesses replace cesspools and septic systems.",
-      "link": "https://efc.ny.gov/septic-replacement",
       "source": "EFC"
     },
     {
@@ -180,10 +170,10 @@
       "source": "DASNY"
     }
   ],
-  "fetched": "2026-04-22T18:19:12.920Z",
-  "count": 19,
+  "fetched": "2026-04-22T18:43:23.266Z",
+  "count": 18,
   "sources": {
-    "efc": 4,
+    "efc": 3,
     "parks": 10,
     "hcr": 4,
     "dasny": 1
