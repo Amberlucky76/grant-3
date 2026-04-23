@@ -236,9 +236,8 @@
 <body>
 
 <div style="background:#fef9c3;border-bottom:1px solid #fde047;padding:7px 20px;font-size:12px;color:#854d0e;text-align:center;font-family:'Inter',sans-serif;">
-  work in progress :) — some links and filters are not active yet - thank you for your patience! 
+  🚧 Work in progress — some links and filters are not currently active
 </div>
-  
 <header class="topbar">
   <div class="brand"><div class="brand-icon">G</div>Grants</div>
   <nav class="nav-tabs">
@@ -952,7 +951,7 @@ function renderNYSCard(g) {
     <button class="card-heart ${saved?'saved':''}" onclick="event.stopPropagation();toggleSave('nys-${esc(String(g.id))}',this)">${saved?'♥':'♡'}</button></div>
     <div class="card-title">${esc(g.title)}</div>
     <div class="card-agency">${esc(g.agency||'New York State')}</div>
-    <div class="card-mid">${g.eligibility?`<span class="card-category" style="font-size:10px;">${esc(g.eligibility.slice(0,40))}</span>`:'<span></span>'}</div>
+    <div class="card-mid"><span></span></div>
     ${dl}
     <div class="card-bottom">
       ${hasId?`<div class="card-id-row"><span>ID · ${esc(String(g.id))}</span><button class="copy-id-btn" onclick="event.stopPropagation();copyId('${esc(String(g.id))}',this)">copy</button></div>`:'<div></div>'}
