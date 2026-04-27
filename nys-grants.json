@@ -31,6 +31,16 @@
       "source": "NYS"
     },
     {
+      "id": "GRO 26",
+      "agency": "DEC01",
+      "title": "Growing Reforestation Opportunities",
+      "status": "Available",
+      "eligibility": "For Profit, Governmental Entity, Individual, Not-For-Profit, Tribal Organization",
+      "dueDate": "08/05/2026 2:00PM EDT",
+      "link": "https://dec.ny.gov/",
+      "source": "NYS"
+    },
+    {
       "id": "MWRR 2024",
       "agency": "DEC01",
       "title": "Municipal Waste Reduction and Rcycling. Prgrm. 24",
@@ -38,6 +48,26 @@
       "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
       "dueDate": "11/01/2027 3:00PM EDT",
       "link": "https://dec.ny.gov/environmental-protection/waste-management/grants",
+      "source": "NYS"
+    },
+    {
+      "id": "TMBR 26",
+      "agency": "DEC01",
+      "title": "Tree Market Boost & Revitalization Program 2026",
+      "status": "Available",
+      "eligibility": "For Profit, Governmental Entity, Individual, Not-For-Profit, Tribal Organization",
+      "dueDate": "08/05/2026 2:00PM EDT",
+      "link": "https://dec.ny.gov/",
+      "source": "NYS"
+    },
+    {
+      "id": "TND 26",
+      "agency": "DEC01",
+      "title": "25 Million Trees Nursery Discount Program",
+      "status": "Available",
+      "eligibility": "For Profit, Governmental Entity, Individual, Not-For-Profit, Tribal Organization",
+      "dueDate": "08/05/2026 2:00PM EDT",
+      "link": "https://dec.ny.gov/",
       "source": "NYS"
     },
     {
@@ -149,18 +179,8 @@
       "dueDate": "06/05/2026 4:00PM EDT",
       "link": "https://dol.ny.gov/funding-opportunities",
       "source": "NYS"
-    },
-    {
-      "id": "NNDS 2027",
-      "agency": "TDA01",
-      "title": "Nutrition Navigators Direct Services",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
-      "dueDate": "04/24/2026 2:00PM EDT",
-      "link": "https://otda.ny.gov/contracts/2026/NNDS/",
-      "source": "NYS"
     }
   ],
-  "fetched": "2026-04-22T17:52:43.863Z",
-  "count": 16
+  "fetched": "2026-04-27T10:30:38.477Z",
+  "count": 18
 }
