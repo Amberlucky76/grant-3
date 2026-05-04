@@ -159,23 +159,14 @@
       "description": "Grants to rehabilitate vacant and unusable housing units into quality affordable rental units.",
       "link": "https://hcr.ny.gov/vrp",
       "source": "HCR"
-    },
-    {
-      "id": "dasny-new-york-places-for-learning--",
-      "title": "New York Places for Learning, Activity and Youth Socialization \n(NY PLAYS)",
-      "agency": "DASNY",
-      "status": "Available",
-      "dueDate": "May 4, 2026",
-      "link": "https://www.dasny.org/sites/default/files/inline-files/NY%20PLAYS%20RFA.pdf",
-      "source": "DASNY"
     }
   ],
-  "fetched": "2026-04-27T11:02:08.068Z",
-  "count": 18,
+  "fetched": "2026-05-04T11:05:26.890Z",
+  "count": 17,
   "sources": {
     "efc": 3,
     "parks": 10,
     "hcr": 4,
-    "dasny": 1
+    "dasny": 0
   }
 }
