@@ -31,6 +31,16 @@
       "source": "NYS"
     },
     {
+      "id": "HAB 2026",
+      "agency": "DEC01",
+      "title": "Harmful Algal Bloom Research Grant Program 2026",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
+      "dueDate": "09/15/2026 3:00PM EDT",
+      "link": "https://dec.ny.gov/environmental-protection/water/water-quality/harmful-algal-blooms",
+      "source": "NYS"
+    },
+    {
       "id": "MWRR 2024",
       "agency": "DEC01",
       "title": "Municipal Waste Reduction and Rcycling. Prgrm. 24",
@@ -131,16 +141,6 @@
       "source": "NYS"
     },
     {
-      "id": "HECOE2025",
-      "agency": "DOH01",
-      "title": "RFA #20662 - HE Training Center of Expertise",
-      "status": "Available",
-      "eligibility": "Governmental Entity, Not-For-Profit, Tribal Organization",
-      "dueDate": "05/07/2026 4:00PM EDT",
-      "link": "https://esupplier.sfs.ny.gov/psp/fscm/SUPPLIER/ERP/c/NY_SUPPUB_FL.AUC_RESP_INQ_AUC.GBL",
-      "source": "NYS"
-    },
-    {
       "id": "NAV2026",
       "agency": "DOH01",
       "title": "RFA#20706: Consumer Assistance Navigator Program",
@@ -179,8 +179,18 @@
       "dueDate": "07/02/2026 1:00PM EDT",
       "link": "https://omh.ny.gov/omhweb/rfp/",
       "source": "NYS"
+    },
+    {
+      "id": "ZBGAOS26",
+      "agency": "PRK01",
+      "title": "ZBGA OPERATIONAL SUPPORT FY2026-2029",
+      "status": "Available",
+      "eligibility": "Governmental Entity, Not-For-Profit",
+      "dueDate": "07/17/2026 4:00PM EDT",
+      "link": "https://parks.ny.gov/grants/zoos-botanical-gardens-aquaria-operational-support-grant-program",
+      "source": "NYS"
     }
   ],
-  "fetched": "2026-05-04T10:27:02.734Z",
-  "count": 18
+  "fetched": "2026-05-11T11:38:45.072Z",
+  "count": 19
 }
